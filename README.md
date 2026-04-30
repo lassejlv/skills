@@ -2,33 +2,41 @@
 
 Personal agent skills packaged as a multi-skill repository.
 
+Repository: https://github.com/lassejlv/skills
+
 ## Install
 
-List available skills from this checkout:
+List available skills:
 
 ```sh
-npx skills add . --list
+npx skills add lassejlv/skills --list
 ```
 
 Install every skill:
 
 ```sh
-npx skills add . --skill '*'
+npx skills add lassejlv/skills --skill '*'
 ```
 
 Install one skill:
 
 ```sh
-npx skills add . --skill legal-policy-drafter
-npx skills add . --skill plain-design-engineer
+npx skills add lassejlv/skills --skill legal-policy-drafter
+npx skills add lassejlv/skills --skill plain-design-engineer
 ```
 
-After this repo is pushed to GitHub, replace `.` with `owner/repo` or the full
-GitHub URL:
+You can also install from the full GitHub URL:
 
 ```sh
-npx skills add owner/repo --skill legal-policy-drafter
-npx skills add owner/repo --skill plain-design-engineer
+npx skills add https://github.com/lassejlv/skills --skill legal-policy-drafter
+npx skills add https://github.com/lassejlv/skills --skill plain-design-engineer
+```
+
+For local development from this checkout:
+
+```sh
+npx skills add . --list
+npx skills add . --skill plain-design-engineer
 ```
 
 ## Layout
