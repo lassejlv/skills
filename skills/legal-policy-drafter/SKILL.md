@@ -1,19 +1,31 @@
 ---
 name: legal-policy-drafter
-description: Draft professional Terms of Service and Privacy Policy markdown files from a real codebase. Use when Codex is asked to create, update, or audit TERMS.md, PRIVACY.md, Terms, Privacy Policy, cookie/privacy notices, GDPR-friendly legal docs, SaaS policy docs, or app-store/legal website policy pages. The skill guides repo exploration, 4-5 subagent research passes when delegation is explicitly allowed, targeted lookup of detected libraries/services/providers, user intake questions for business/legal details, and writing TERMS.md plus PRIVACY.md without inventing unknown facts.
+description: Draft, update, or audit legal-policy documents such as TERMS.md, PRIVACY.md, cookie notices, SaaS policies, app-store privacy text, and GDPR-friendly privacy disclosures from repository evidence. Use for legal policy work that requires inspecting product behavior, data flows, billing, auth, analytics, subprocessors, and missing business facts without inventing unsupported claims.
 ---
 
 # Legal Policy Drafter
 
 ## Core Rule
 
-Draft practical legal-policy documents from evidence, not guesses. Treat the output as a professional draft for review, not legal advice.
+Draft practical legal-policy documents from evidence, not guesses. Treat the output as a professional draft for owner/counsel review, not legal advice.
 
-Before writing `TERMS.md` or `PRIVACY.md`, inspect the current repository and ask for missing business facts. Do not invent company identity, jurisdiction, support email, retention periods, subprocessors, pricing terms, children policy, or contact details.
+Before writing policy text, inspect the current repository and ask for missing blockers. Do not invent company identity, jurisdiction, contact details, retention periods, subprocessors, pricing terms, children policy, compliance claims, or security guarantees.
+
+If the user wants speed, ask at most 5 blocker questions and mark unresolved facts with `TODO(confirm):`.
+
+## Modes
+
+Infer the mode from the request:
+
+- `draft`: create fresh `TERMS.md` and `PRIVACY.md`.
+- `update`: revise existing policy docs while preserving accurate useful text.
+- `audit`: report gaps and contradictions without editing unless asked.
+- `app-store`: produce concise mobile/app-store privacy wording in addition to or instead of full docs.
+- `enterprise`: emphasize subprocessors, DPA/security posture, admin/workspace controls, SLAs, support, and organization authority.
 
 ## Intake
 
-Ask concise questions before drafting unless the answers are already present in the repo or user prompt:
+Ask only for facts that block a truthful draft and are not present in the repo or user prompt:
 
 - Legal/service identity: company or owner name, product name, website URL, country/state of establishment, governing law preference.
 - Contact: support/legal/privacy email, postal address if needed, DPO/EU representative if applicable.
@@ -24,8 +36,6 @@ Ask concise questions before drafting unless the answers are already present in 
 - Operations: hosting region, providers/subprocessors, retention/deletion/export process, security contact, data transfer mechanism.
 - Output preferences: overwrite existing files, update existing docs, or create first drafts.
 
-If the user wants speed, ask only for blockers and mark unresolved items with `TODO(confirm):`.
-
 ## Exploration Workflow
 
 1. Read existing policy/legal files first: `TERMS.md`, `PRIVACY.md`, `LICENSE`, `README`, docs, marketing pages, app-store metadata, footer/contact copy.
@@ -33,7 +43,23 @@ If the user wants speed, ask only for blockers and mark unresolved items with `T
 3. Inspect data and infrastructure: schemas, migrations, ORM models, config files, env examples, Docker/worker/deploy files, analytics/error tracking, payment/email/storage/cloud providers.
 4. Search or fetch current official documentation for detected third-party services that affect privacy or terms. Prefer official docs, subprocessor lists, DPA/privacy pages, SDK docs, and configuration docs. Use Context7 for library/framework/API/CLI docs when available; use web search for current provider privacy, cookie, subprocessor, and DPA facts. Record source names/URLs in working notes, not necessarily in the final policy unless useful.
 5. Compare evidence against the GDPR checklist in `references/gdpr-policy-checklist.md`.
-6. Draft or update both files at the requested location, defaulting to the repo root.
+6. Build a working evidence matrix before drafting:
+
+```md
+| Finding | Evidence file/provider | Policy impact | Confidence |
+```
+
+7. Draft, update, or audit the requested output, defaulting to repo-root `TERMS.md` and `PRIVACY.md` for full policy work.
+
+## References
+
+Load these files only when needed:
+
+- `references/gdpr-policy-checklist.md`: GDPR-friendly coverage checklist and repo search hints.
+- `references/provider-research.md`: how to verify third-party provider privacy, DPA, cookie, and subprocessor facts.
+- `references/privacy-template.md`: preferred `PRIVACY.md` structure and section-level prompts.
+- `references/terms-template.md`: preferred `TERMS.md` structure and section-level prompts.
+- `references/output-checklist.md`: final self-check before presenting the work.
 
 ## Subagent Plan
 
@@ -59,6 +85,7 @@ Merge the notes into a single evidence table before drafting. Resolve conflicts 
 - Keep GDPR friendliness concrete: legal bases, data categories, purposes, processors, transfers, retention, rights, deletion/export/contact, security, cookies/tracking, and children.
 - For Terms, cover service description, accounts, acceptable use, user content, payments/refunds if relevant, third-party services, availability, termination, disclaimers, liability, governing law, changes, and contact.
 - Preserve useful existing policy text when updating files, but remove contradictions and stale claims after confirming with evidence.
+- Never claim SOC 2, HIPAA, GDPR compliance, encryption details, uptime, support response times, refund rights, data residency, or deletion timelines unless the repo or user confirms them.
 
 ## Final Response
 
