@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plain Design Engineer"
+  short_description: "PlanetScale-inspired infrastructure UI styling"
+  default_prompt: "Use $plain-design-engineer to restyle this interface with a plain, technical PlanetScale-inspired design."

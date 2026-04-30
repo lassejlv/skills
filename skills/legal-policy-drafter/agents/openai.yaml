@@ -1,0 +1,4 @@
+interface:
+  display_name: "Legal Policy Drafter"
+  short_description: "Draft GDPR-friendly Terms and Privacy docs"
+  default_prompt: "Use $legal-policy-drafter to inspect this repo and draft TERMS.md plus PRIVACY.md."
