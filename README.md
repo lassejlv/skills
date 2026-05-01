@@ -52,6 +52,7 @@ skills/
     agents/
   plain-design-engineer/
     SKILL.md
+    references/
     agents/
 ```
 
