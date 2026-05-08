@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backend Security Audit"
+  short_description: "Find backend vulnerabilities and report fixes"
+  default_prompt: "Use $backend-security-audit to audit this backend for vulnerabilities and report findings before making fixes."
