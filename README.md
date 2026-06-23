@@ -21,6 +21,7 @@ npx skills add lassejlv/skills --skill '*'
 Install one skill:
 
 ```sh
+npx skills add lassejlv/skills --skill aws-account-cleanup
 npx skills add lassejlv/skills --skill legal-policy-drafter
 npx skills add lassejlv/skills --skill plain-design-engineer
 npx skills add lassejlv/skills --skill backend-security-audit
@@ -29,6 +30,7 @@ npx skills add lassejlv/skills --skill backend-security-audit
 You can also install from the full GitHub URL:
 
 ```sh
+npx skills add https://github.com/lassejlv/skills --skill aws-account-cleanup
 npx skills add https://github.com/lassejlv/skills --skill legal-policy-drafter
 npx skills add https://github.com/lassejlv/skills --skill plain-design-engineer
 npx skills add https://github.com/lassejlv/skills --skill backend-security-audit
@@ -38,6 +40,7 @@ For local development from this checkout:
 
 ```sh
 npx skills add . --list
+npx skills add . --skill aws-account-cleanup
 npx skills add . --skill plain-design-engineer
 npx skills add . --skill backend-security-audit
 ```
@@ -49,6 +52,10 @@ Each skill lives in its own directory under `skills/` and must include a
 
 ```text
 skills/
+  aws-account-cleanup/
+    SKILL.md
+    references/
+    agents/
   backend-security-audit/
     SKILL.md
     references/
@@ -65,6 +72,8 @@ skills/
 
 ## Skills
 
+- `aws-account-cleanup`: Dry-run AWS account inventory and guarded resource
+  deletion with explicit confirmation gates.
 - `backend-security-audit`: Review backend code, auth, data access, secrets,
   integrations, dependencies, and deployment settings for confirmed security
   findings.

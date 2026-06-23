@@ -1,0 +1,4 @@
+interface:
+  display_name: "AWS Account Cleanup"
+  short_description: "Dry-run and guarded AWS resource removal"
+  default_prompt: "Use $aws-account-cleanup to dry-run my AWS account cleanup and guide confirmed removals."
