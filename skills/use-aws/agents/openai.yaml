@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use AWS"
+  short_description: "Safer AWS account operations"
+  default_prompt: "Use $use-aws to inspect my active AWS account and summarize the safe next steps."

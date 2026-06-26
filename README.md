@@ -25,6 +25,7 @@ npx skills add lassejlv/skills --skill aws-account-cleanup
 npx skills add lassejlv/skills --skill legal-policy-drafter
 npx skills add lassejlv/skills --skill plain-design-engineer
 npx skills add lassejlv/skills --skill backend-security-audit
+npx skills add lassejlv/skills --skill use-aws
 ```
 
 You can also install from the full GitHub URL:
@@ -34,6 +35,7 @@ npx skills add https://github.com/lassejlv/skills --skill aws-account-cleanup
 npx skills add https://github.com/lassejlv/skills --skill legal-policy-drafter
 npx skills add https://github.com/lassejlv/skills --skill plain-design-engineer
 npx skills add https://github.com/lassejlv/skills --skill backend-security-audit
+npx skills add https://github.com/lassejlv/skills --skill use-aws
 ```
 
 For local development from this checkout:
@@ -43,6 +45,7 @@ npx skills add . --list
 npx skills add . --skill aws-account-cleanup
 npx skills add . --skill plain-design-engineer
 npx skills add . --skill backend-security-audit
+npx skills add . --skill use-aws
 ```
 
 ## Layout
@@ -68,6 +71,11 @@ skills/
     SKILL.md
     references/
     agents/
+  use-aws/
+    SKILL.md
+    scripts/
+    references/
+    agents/
 ```
 
 ## Skills
@@ -81,3 +89,5 @@ skills/
   markdown files from a real codebase.
 - `plain-design-engineer`: Create, restyle, or review frontend interfaces with a
   plain infrastructure-product visual direction.
+- `use-aws`: Operate and investigate AWS accounts through profile-aware CLI
+  workflows with read-only discovery first and explicit safety gates.
