@@ -26,6 +26,7 @@ npx skills add lassejlv/skills --skill legal-policy-drafter
 npx skills add lassejlv/skills --skill plain-design-engineer
 npx skills add lassejlv/skills --skill backend-security-audit
 npx skills add lassejlv/skills --skill use-aws
+npx skills add lassejlv/skills --skill no-vibe-code
 ```
 
 You can also install from the full GitHub URL:
@@ -36,6 +37,7 @@ npx skills add https://github.com/lassejlv/skills --skill legal-policy-drafter
 npx skills add https://github.com/lassejlv/skills --skill plain-design-engineer
 npx skills add https://github.com/lassejlv/skills --skill backend-security-audit
 npx skills add https://github.com/lassejlv/skills --skill use-aws
+npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
 ```
 
 For local development from this checkout:
@@ -46,6 +48,7 @@ npx skills add . --skill aws-account-cleanup
 npx skills add . --skill plain-design-engineer
 npx skills add . --skill backend-security-audit
 npx skills add . --skill use-aws
+npx skills add . --skill no-vibe-code
 ```
 
 ## Layout
@@ -76,6 +79,10 @@ skills/
     scripts/
     references/
     agents/
+  no-vibe-code/
+    SKILL.md
+    slop-check.mjs
+    samples/
 ```
 
 ## Skills
@@ -91,3 +98,7 @@ skills/
   plain infrastructure-product visual direction.
 - `use-aws`: Operate and investigate AWS accounts through profile-aware CLI
   workflows with read-only discovery first and explicit safety gates.
+- `no-vibe-code`: Lint HTML/CSS/JSX for vibe-coded AI-slop frontend tells (AI
+  purple, purple→blue gradients, gradient clip-text, Inter, emoji-as-icons,
+  centered-hero + three cards) via a zero-dependency Node driver that fails the
+  build on high-severity findings.

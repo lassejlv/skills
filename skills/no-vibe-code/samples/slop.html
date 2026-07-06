@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- Deliberately vibe-coded. slop-check.mjs should light this up. -->
+<html class="dark">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --radius: 0.5rem; }
+    body { font-family: Inter, sans-serif; background: #0b0b0f; color: #9ca3af; }
+    .hero { background: linear-gradient(135deg, #8b5cf6, #3b82f6); }
+    .glow { box-shadow: 0 0 40px #a855f7; }
+    .glass { backdrop-filter: blur(12px); }
+    .eyebrow { text-transform: uppercase; }
+  </style>
+</head>
+<body>
+  <section class="hero text-center">
+    <span class="rounded-full text-xs">✨ New</span>
+    <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500">
+      Ship faster with AI
+    </h1>
+    <p class="uppercase">Trusted by 10K+ teams · 99.9% uptime · 3x faster</p>
+  </section>
+
+  <section class="grid grid-cols-3">
+    <div class="card border-l-4 border-purple-500 glow">🚀 <b>Fast</b></div>
+    <div class="card border-l-4 border-blue-500 glow">⚡ <b>Powerful</b></div>
+    <div class="card border-l-4 border-indigo-500 glow">🎯 <b>Precise</b></div>
+  </section>
+
+  <section>
+    <div class="step-1"><span>01</span> Sign up</div>
+    <div class="step-2"><span>02</span> Connect</div>
+    <div class="step-3"><span>03</span> Launch</div>
+  </section>
+</body>
+</html>

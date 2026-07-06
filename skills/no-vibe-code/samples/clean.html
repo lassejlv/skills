@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- A deliberate design: chosen type, one accent, no generated tells. -->
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Spline+Sans+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink: #1c1a17; --paper: #f4f1ea; --clay: #b3502f; }
+    body { font-family: Fraunces, Georgia, serif; background: var(--paper); color: var(--ink); }
+    .lead { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 0.98; max-width: 14ch; }
+    .rule { border: 0; border-top: 1px solid var(--ink); }
+    .mono { font-family: "Spline Sans Mono", monospace; letter-spacing: -0.01em; }
+    .cta { background: var(--clay); color: var(--paper); padding: 0.75rem 1.25rem; }
+    .cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="lead">A field guide to the tools in your hands.</h1>
+    <hr class="rule">
+    <p class="mono">Vol. 01 — Instruments &amp; their makers.</p>
+  </header>
+  <main>
+    <article>
+      <h2>The plane</h2>
+      <p>Cut from beech, tuned by ear, sharpened past the point most would stop.</p>
+      <a class="cta" href="#">Read the entry</a>
+    </article>
+  </main>
+</body>
+</html>
