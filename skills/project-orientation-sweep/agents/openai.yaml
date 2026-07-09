@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Orientation Sweep"
+  short_description: "Map projects from small repos to monorepos"
+  default_prompt: "Use $project-orientation-sweep to explore this checkout, classify its scale, map the active surfaces, and identify targeted validation before making changes."
