@@ -1,0 +1,4 @@
+interface:
+  display_name: "libtermy Implementation"
+  short_description: "Build and tune libtermy hosts"
+  default_prompt: "Use $libtermy-implementation to integrate libtermy into a macOS Swift terminal host and optimize rendering."
