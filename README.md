@@ -25,6 +25,7 @@ npx skills add lassejlv/skills --skill aws-account-cleanup
 npx skills add lassejlv/skills --skill legal-policy-drafter
 npx skills add lassejlv/skills --skill plain-design-engineer
 npx skills add lassejlv/skills --skill backend-security-audit
+npx skills add lassejlv/skills --skill libtermy-implementation
 npx skills add lassejlv/skills --skill use-aws
 npx skills add lassejlv/skills --skill no-vibe-code
 ```
@@ -36,6 +37,7 @@ npx skills add https://github.com/lassejlv/skills --skill aws-account-cleanup
 npx skills add https://github.com/lassejlv/skills --skill legal-policy-drafter
 npx skills add https://github.com/lassejlv/skills --skill plain-design-engineer
 npx skills add https://github.com/lassejlv/skills --skill backend-security-audit
+npx skills add https://github.com/lassejlv/skills --skill libtermy-implementation
 npx skills add https://github.com/lassejlv/skills --skill use-aws
 npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
 ```
@@ -47,6 +49,7 @@ npx skills add . --list
 npx skills add . --skill aws-account-cleanup
 npx skills add . --skill plain-design-engineer
 npx skills add . --skill backend-security-audit
+npx skills add . --skill libtermy-implementation
 npx skills add . --skill use-aws
 npx skills add . --skill no-vibe-code
 ```
@@ -68,6 +71,11 @@ skills/
     agents/
   legal-policy-drafter/
     SKILL.md
+    references/
+    agents/
+  libtermy-implementation/
+    SKILL.md
+    scripts/
     references/
     agents/
   plain-design-engineer/
@@ -94,6 +102,8 @@ skills/
   findings.
 - `legal-policy-drafter`: Draft professional Terms of Service and Privacy Policy
   markdown files from a real codebase.
+- `libtermy-implementation`: Implement and optimize libtermy hosts across the
+  Rust core, C FFI, and native macOS Swift rendering stack.
 - `plain-design-engineer`: Create, restyle, or review frontend interfaces with a
   plain infrastructure-product visual direction.
 - `use-aws`: Operate and investigate AWS accounts through profile-aware CLI
