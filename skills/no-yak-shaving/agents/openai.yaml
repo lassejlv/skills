@@ -1,0 +1,4 @@
+interface:
+  display_name: "No Yak Shaving"
+  short_description: "Ship simple code and only valuable tests"
+  default_prompt: "Use $no-yak-shaving to implement this cleanly without pointless tests or overengineering."

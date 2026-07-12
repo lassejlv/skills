@@ -28,6 +28,7 @@ npx skills add lassejlv/skills --skill backend-security-audit
 npx skills add lassejlv/skills --skill libtermy-implementation
 npx skills add lassejlv/skills --skill use-aws
 npx skills add lassejlv/skills --skill no-vibe-code
+npx skills add lassejlv/skills --skill no-yak-shaving
 ```
 
 You can also install from the full GitHub URL:
@@ -40,6 +41,7 @@ npx skills add https://github.com/lassejlv/skills --skill backend-security-audit
 npx skills add https://github.com/lassejlv/skills --skill libtermy-implementation
 npx skills add https://github.com/lassejlv/skills --skill use-aws
 npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
+npx skills add https://github.com/lassejlv/skills --skill no-yak-shaving
 ```
 
 For local development from this checkout:
@@ -52,6 +54,7 @@ npx skills add . --skill backend-security-audit
 npx skills add . --skill libtermy-implementation
 npx skills add . --skill use-aws
 npx skills add . --skill no-vibe-code
+npx skills add . --skill no-yak-shaving
 ```
 
 ## Layout
@@ -91,6 +94,9 @@ skills/
     SKILL.md
     slop-check.mjs
     samples/
+  no-yak-shaving/
+    SKILL.md
+    agents/
 ```
 
 ## Skills
@@ -112,3 +118,5 @@ skills/
   purple, purple→blue gradients, gradient clip-text, Inter, emoji-as-icons,
   centered-hero + three cards) via a zero-dependency Node driver that fails the
   build on high-severity findings.
+- `no-yak-shaving`: Keep implementation direct and proportionate, reject
+  speculative abstractions, and add only tests that protect meaningful behavior.
