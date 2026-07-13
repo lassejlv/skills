@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gitty"
+  short_description: "Generate and safely apply Git commit messages"
+  default_prompt: "Use $gitty to inspect my changes and generate a safe commit message."

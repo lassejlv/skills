@@ -29,6 +29,7 @@ npx skills add lassejlv/skills --skill libtermy-implementation
 npx skills add lassejlv/skills --skill use-aws
 npx skills add lassejlv/skills --skill no-vibe-code
 npx skills add lassejlv/skills --skill no-yak-shaving
+npx skills add lassejlv/skills --skill gitty
 ```
 
 You can also install from the full GitHub URL:
@@ -42,6 +43,7 @@ npx skills add https://github.com/lassejlv/skills --skill libtermy-implementatio
 npx skills add https://github.com/lassejlv/skills --skill use-aws
 npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
 npx skills add https://github.com/lassejlv/skills --skill no-yak-shaving
+npx skills add https://github.com/lassejlv/skills --skill gitty
 ```
 
 For local development from this checkout:
@@ -55,6 +57,7 @@ npx skills add . --skill libtermy-implementation
 npx skills add . --skill use-aws
 npx skills add . --skill no-vibe-code
 npx skills add . --skill no-yak-shaving
+npx skills add . --skill gitty
 ```
 
 ## Layout
@@ -97,6 +100,10 @@ skills/
   no-yak-shaving/
     SKILL.md
     agents/
+  gitty/
+    SKILL.md
+    references/
+    agents/
 ```
 
 ## Skills
@@ -120,3 +127,5 @@ skills/
   build on high-severity findings.
 - `no-yak-shaving`: Keep implementation direct and proportionate, reject
   speculative abstractions, and add only tests that protect meaningful behavior.
+- `gitty`: Inspect repository changes and generate, copy, commit, or push
+  repository-aware commit messages through Codex, Claude Code, or OpenCode.
