@@ -30,6 +30,7 @@ npx skills add lassejlv/skills --skill use-aws
 npx skills add lassejlv/skills --skill no-vibe-code
 npx skills add lassejlv/skills --skill no-yak-shaving
 npx skills add lassejlv/skills --skill gitty
+npx skills add lassejlv/skills --skill paper-to-gpui
 ```
 
 You can also install from the full GitHub URL:
@@ -44,6 +45,7 @@ npx skills add https://github.com/lassejlv/skills --skill use-aws
 npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
 npx skills add https://github.com/lassejlv/skills --skill no-yak-shaving
 npx skills add https://github.com/lassejlv/skills --skill gitty
+npx skills add https://github.com/lassejlv/skills --skill paper-to-gpui
 ```
 
 For local development from this checkout:
@@ -58,6 +60,7 @@ npx skills add . --skill use-aws
 npx skills add . --skill no-vibe-code
 npx skills add . --skill no-yak-shaving
 npx skills add . --skill gitty
+npx skills add . --skill paper-to-gpui
 ```
 
 ## Layout
@@ -104,6 +107,11 @@ skills/
     SKILL.md
     references/
     agents/
+  paper-to-gpui/
+    SKILL.md
+    scripts/
+    references/
+    agents/
 ```
 
 ## Skills
@@ -129,3 +137,6 @@ skills/
   speculative abstractions, and add only tests that protect meaningful behavior.
 - `gitty`: Inspect repository changes and generate, copy, commit, or push
   repository-aware commit messages through Codex, Claude Code, or OpenCode.
+- `paper-to-gpui`: Inspect selected Paper designs through MCP and translate
+  their layout, typography, assets, states, and tokens into faithful native
+  Rust/GPUI views with screenshot-driven validation.

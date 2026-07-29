@@ -1,0 +1,12 @@
+interface:
+  display_name: "Paper to GPUI"
+  short_description: "Translate Paper designs into precise GPUI views"
+  default_prompt: "Use $paper-to-gpui to inspect my selected Paper frame through MCP and implement it faithfully in this GPUI app."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "paper"
+      description: "Read Paper designs, computed styles, screenshots, fonts, and assets from the currently open Paper Desktop file"
+      transport: "streamable_http"
+      url: "http://127.0.0.1:29979/mcp"
