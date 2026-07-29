@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build PlanetScale-Style Pages"
+  short_description: "PlanetScale-inspired technical landing pages"
+  default_prompt: "Use $build-planetscale-landing-pages to design and implement a technical landing page with a precise, document-like visual system."

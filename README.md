@@ -32,6 +32,7 @@ npx skills add lassejlv/skills --skill no-yak-shaving
 npx skills add lassejlv/skills --skill gitty
 npx skills add lassejlv/skills --skill paper-to-gpui
 npx skills add lassejlv/skills --skill clean-codebase
+npx skills add lassejlv/skills --skill build-planetscale-landing-pages
 ```
 
 You can also install from the full GitHub URL:
@@ -48,6 +49,7 @@ npx skills add https://github.com/lassejlv/skills --skill no-yak-shaving
 npx skills add https://github.com/lassejlv/skills --skill gitty
 npx skills add https://github.com/lassejlv/skills --skill paper-to-gpui
 npx skills add https://github.com/lassejlv/skills --skill clean-codebase
+npx skills add https://github.com/lassejlv/skills --skill build-planetscale-landing-pages
 ```
 
 For local development from this checkout:
@@ -64,6 +66,7 @@ npx skills add . --skill no-yak-shaving
 npx skills add . --skill gitty
 npx skills add . --skill paper-to-gpui
 npx skills add . --skill clean-codebase
+npx skills add . --skill build-planetscale-landing-pages
 ```
 
 ## Layout
@@ -119,6 +122,11 @@ skills/
     SKILL.md
     references/
     agents/
+  build-planetscale-landing-pages/
+    SKILL.md
+    references/
+    assets/
+    agents/
 ```
 
 ## Skills
@@ -149,3 +157,6 @@ skills/
   Rust/GPUI views with screenshot-driven validation.
 - `clean-codebase`: Coordinate eight evidence-first cleanup agents across
   duplication, types, dead code, cycles, error handling, legacy paths, and slop.
+- `build-planetscale-landing-pages`: Design and implement technical,
+  proof-heavy landing pages with monospace type, ruled grids, editorial copy,
+  restrained accents, and responsive production QA.
