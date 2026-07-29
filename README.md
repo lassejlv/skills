@@ -31,6 +31,7 @@ npx skills add lassejlv/skills --skill no-vibe-code
 npx skills add lassejlv/skills --skill no-yak-shaving
 npx skills add lassejlv/skills --skill gitty
 npx skills add lassejlv/skills --skill paper-to-gpui
+npx skills add lassejlv/skills --skill clean-codebase
 ```
 
 You can also install from the full GitHub URL:
@@ -46,6 +47,7 @@ npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
 npx skills add https://github.com/lassejlv/skills --skill no-yak-shaving
 npx skills add https://github.com/lassejlv/skills --skill gitty
 npx skills add https://github.com/lassejlv/skills --skill paper-to-gpui
+npx skills add https://github.com/lassejlv/skills --skill clean-codebase
 ```
 
 For local development from this checkout:
@@ -61,6 +63,7 @@ npx skills add . --skill no-vibe-code
 npx skills add . --skill no-yak-shaving
 npx skills add . --skill gitty
 npx skills add . --skill paper-to-gpui
+npx skills add . --skill clean-codebase
 ```
 
 ## Layout
@@ -112,6 +115,10 @@ skills/
     scripts/
     references/
     agents/
+  clean-codebase/
+    SKILL.md
+    references/
+    agents/
 ```
 
 ## Skills
@@ -140,3 +147,5 @@ skills/
 - `paper-to-gpui`: Inspect selected Paper designs through MCP and translate
   their layout, typography, assets, states, and tokens into faithful native
   Rust/GPUI views with screenshot-driven validation.
+- `clean-codebase`: Coordinate eight evidence-first cleanup agents across
+  duplication, types, dead code, cycles, error handling, legacy paths, and slop.

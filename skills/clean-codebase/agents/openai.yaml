@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clean Codebase"
+  short_description: "Run an eight-agent code quality cleanup"
+  default_prompt: "Use $clean-codebase to research and implement a safe, comprehensive cleanup of this repository with eight specialized subagents."
