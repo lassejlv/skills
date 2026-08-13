@@ -33,6 +33,7 @@ npx skills add lassejlv/skills --skill gitty
 npx skills add lassejlv/skills --skill paper-to-gpui
 npx skills add lassejlv/skills --skill clean-codebase
 npx skills add lassejlv/skills --skill build-planetscale-landing-pages
+npx skills add lassejlv/skills --skill build-gpui-apps
 ```
 
 You can also install from the full GitHub URL:
@@ -50,6 +51,7 @@ npx skills add https://github.com/lassejlv/skills --skill gitty
 npx skills add https://github.com/lassejlv/skills --skill paper-to-gpui
 npx skills add https://github.com/lassejlv/skills --skill clean-codebase
 npx skills add https://github.com/lassejlv/skills --skill build-planetscale-landing-pages
+npx skills add https://github.com/lassejlv/skills --skill build-gpui-apps
 ```
 
 For local development from this checkout:
@@ -67,6 +69,7 @@ npx skills add . --skill gitty
 npx skills add . --skill paper-to-gpui
 npx skills add . --skill clean-codebase
 npx skills add . --skill build-planetscale-landing-pages
+npx skills add . --skill build-gpui-apps
 ```
 
 ## Layout
@@ -127,7 +130,32 @@ skills/
     references/
     assets/
     agents/
+  build-gpui-apps/
+    SKILL.md
+    scripts/
+    references/
+    assets/
+      reference-app/       # exact-revision compile/test fixture
+    tests/                 # realistic forward-test scenarios
+    agents/
 ```
+
+## Validate
+
+Validate every skill package, metadata file, Markdown fence, and local link:
+
+```sh
+python -m pip install pyyaml==6.0.3
+python scripts/validate_skills.py
+```
+
+The GPUI suite also has an exact-revision compile/test fixture:
+
+```sh
+skills/build-gpui-apps/scripts/validate_reference_app.sh
+```
+
+The same checks run in GitHub Actions on pull requests and pushes to `main`.
 
 ## Skills
 
@@ -160,3 +188,8 @@ skills/
 - `build-planetscale-landing-pages`: Design and implement technical,
   proof-heavy landing pages with monospace type, ruled grids, editorial copy,
   restrained accents, and responsive production QA.
+- `build-gpui-apps`: Build and review stable native Rust/GPUI apps with
+  production-ready starter setup, state architecture, Apple-style materials
+  and motion, accessible input and IME, clipboard/drag/drop, menus and
+  multi-window lifecycle, packaging, async/performance discipline,
+  compile-checked examples, tests, CI, and Paper-to-GPUI fidelity.

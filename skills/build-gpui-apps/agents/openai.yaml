@@ -1,0 +1,12 @@
+interface:
+  display_name: "Build GPUI Apps"
+  short_description: "Production-ready, polished Rust apps with GPUI"
+  default_prompt: "Use $build-gpui-apps to set up, build, or review a production-ready, Apple-polished GPUI app."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "paper"
+      description: "Conditionally inspect selected Paper designs, styles, screenshots, fonts, tokens, and assets"
+      transport: "streamable_http"
+      url: "http://127.0.0.1:29979/mcp"
