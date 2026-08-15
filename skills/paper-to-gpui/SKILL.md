@@ -1,6 +1,6 @@
 ---
 name: paper-to-gpui
-description: Translate Paper.design artboards, selected frames, components, tokens, computed styles, and exported assets into faithful native Rust interfaces built with GPUI. Use when Codex must inspect a Paper file through the Paper Desktop MCP server, implement or update a GPUI view to match it closely, map web-style layout and typography to GPUI elements, preserve an existing GPUI app's architecture and design system, or run a screenshot-driven visual fidelity pass.
+description: "Primary skill for faithfully translating Paper.design artboards, selected frames, components, tokens, computed styles, and exported assets into native Rust/GPUI views. Use when Paper fidelity is the central task: inspecting a Paper file through the Paper Desktop MCP server, implementing or updating an existing GPUI view to match it closely, mapping web-style layout and typography to GPUI, or running screenshot-driven comparison. For general GPUI scaffolding, architecture, platform integration, or production hardening where Paper is only one input, use build-gpui-apps instead."
 ---
 
 # Paper to GPUI

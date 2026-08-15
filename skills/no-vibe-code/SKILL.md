@@ -1,6 +1,6 @@
 ---
 name: no-vibe-code
-description: Stop shipping vibe-coded / AI-slop frontend. Use when building, designing, reviewing, or screenshotting any UI, landing page, web app, or component — to avoid the generated-default look (AI purple, purple→blue gradients, gradient clip-text, Inter everywhere, glassmorphism, emoji-as-icons, centered-hero + three cards, colored left-border cards, badge-above-H1, 01/02/03 step boxes, forced dark mode, untouched shadcn). Run slop-check.mjs to lint HTML/CSS/JSX for the tells before you call the UI done.
+description: Static frontend design-lint and completion guard against vibe-coded or AI-slop UI. Use when the user explicitly asks to avoid generated-default design, when reviewing HTML/CSS/JSX/TSX/Vue/Svelte for common tells, or as a final validation pass after frontend implementation. Run slop-check.mjs to detect patterns such as AI purple, gradient clip-text, Inter-by-default, glassmorphism, emoji icons, generic card grids, and untouched component defaults. This diagnoses visual clichés; use a dedicated design skill for the primary aesthetic direction.
 ---
 
 # no-vibe-code
@@ -16,9 +16,9 @@ rather than *designed on purpose*. It has two parts that work together:
    fix for each tell. It's what the linter encodes, written out so you internalize
    it while designing.
 
-Paths below are relative to this skill dir (`~/.claude/skills/no-vibe-code/`).
-When driving a real project, point the linter at that project's source with an
-absolute path to the driver (see Run).
+Paths below are relative to the directory containing this `SKILL.md`. When
+driving a real project, resolve the installed skill directory and invoke the
+linter by absolute path so it works from any agent or project checkout.
 
 This skill is a **linter + checklist**, not an aesthetic. For *positive* direction
 (deriving a distinctive look from the subject), pair it with the `frontend-design`
@@ -29,7 +29,7 @@ skill — that one tells you what to build; this one tells you what to never shi
 Node ≥ 18. Nothing else — no install, no deps.
 
 ```bash
-node --version   # verified: v24.11.0
+node --version
 ```
 
 ## Run (agent path) — lint before you call the UI done
@@ -41,7 +41,7 @@ re-run until it PASSes → then screenshot.** Don't declare a frontend done unti
 Point it at a project's source (absolute path to the driver so it works from any cwd):
 
 ```bash
-node ~/.claude/skills/no-vibe-code/slop-check.mjs ./src
+node /absolute/path/to/no-vibe-code/slop-check.mjs ./src
 ```
 
 From inside this skill dir, the bundled samples demonstrate both outcomes:
@@ -178,8 +178,8 @@ take a UI from "heavy slop" to "clean":
 - **Legit violet brand keeps failing** — it's a HIGH by design; confirm by eye,
   and if the whole brand is genuinely violet, that's your one justified exception.
 - **Want it in CI** — it already exits non-zero on HIGH; add
-  `node ~/.claude/skills/no-vibe-code/slop-check.mjs ./src` (or `--strict`) as a
-  lint step.
+  `node /absolute/path/to/no-vibe-code/slop-check.mjs ./src` (or `--strict`) as
+  a lint step.
 
 ## The driver
 

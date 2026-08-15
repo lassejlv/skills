@@ -1,6 +1,6 @@
 ---
 name: build-planetscale-landing-pages
-description: "Design, implement, redesign, or review technical product landing pages with a PlanetScale-inspired visual language: monospace typography, editorial copy, stark light or dark surfaces, ruled grids, tables, proof-heavy sections, and restrained accent color. Use for developer tools, infrastructure, databases, APIs, open-source products, technical SaaS, launch pages, pricing pages, and documentation-like marketing sites. Preserve the product's own identity; do not copy PlanetScale branding or content."
+description: "Primary design skill for technical marketing pages explicitly requesting a PlanetScale-inspired or document-like visual language: monospace typography, editorial copy, stark surfaces, ruled grids, tables, proof-heavy sections, and restrained accent color. Use for developer-tool, infrastructure, database, API, open-source, technical SaaS, launch, and pricing pages when that specific direction is wanted. For broader plain infrastructure UI, dashboards, docs, or design review without this landing-page brief, use plain-design-engineer instead. Preserve the product's identity; do not copy PlanetScale branding or content."
 ---
 
 # Build PlanetScale Landing Pages

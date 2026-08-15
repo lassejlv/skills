@@ -1,6 +1,6 @@
 ---
 name: build-gpui-apps
-description: Build, scaffold, refactor, debug, review, and visually validate production Rust desktop interfaces with GPUI. Use for setting up a production-ready GPUI starter app; new GPUI apps or components; Entity, Context, action, async, and lifecycle architecture; Apple-style macOS UI, Liquid Glass or translucent materials, motion, gestures, focus, keyboard, accessibility, text input, IME, clipboard, drag and drop, menus, multi-window behavior, and restoration; packaging, CI, performance, and testing work; or translating selected Paper.design frames into maintainable GPUI code with screenshot comparison. Covers published GPUI and pinned Zed revisions, macOS/Linux/Windows boundaries, narrow AppKit interop, and stability audits.
+description: Build, scaffold, refactor, debug, review, and visually validate production Rust desktop interfaces with GPUI. Use for production-ready GPUI starter apps; new GPUI apps or components; Entity, Context, action, async, and lifecycle architecture; Apple-style macOS UI, materials, motion, gestures, focus, accessibility, text input, IME, clipboard, drag and drop, menus, multi-window behavior, restoration, packaging, CI, performance, testing, and broader app work that may use Paper.design as one input. When the primary task is faithfully translating a selected Paper.design frame into an existing GPUI view, use paper-to-gpui instead. Covers published GPUI and pinned Zed revisions, platform boundaries, narrow AppKit interop, and stability audits.
 ---
 
 # Build GPUI Apps
@@ -60,7 +60,8 @@ task, but always follow the core contract and workflow below.
 | Add editable text, IME, clipboard, drag/drop, menus, multi-window behavior, or restoration | [input-windows.md](references/input-windows.md) | [accessibility-platform.md](references/accessibility-platform.md), [testing-qa.md](references/testing-qa.md) |
 | Add async loading, background work, virtualization, or performance fixes | [async-performance.md](references/async-performance.md) | [architecture-state.md](references/architecture-state.md) |
 | Add or review tests, launch checks, screenshots, or release gates | [testing-qa.md](references/testing-qa.md) | [visual-validation.md](references/visual-validation.md) |
-| Translate a Paper.design selection into GPUI | [paper-to-gpui.md](references/paper-to-gpui.md) | [paper-mcp.md](references/paper-mcp.md), [visual-validation.md](references/visual-validation.md) |
+| Use Paper.design inside broader GPUI app or architecture work | [paper-to-gpui.md](references/paper-to-gpui.md) | [paper-mcp.md](references/paper-mcp.md), [visual-validation.md](references/visual-validation.md) |
+| Faithfully translate a selected Paper.design frame as the primary task | Use the standalone `paper-to-gpui` skill | Return here only for broader app architecture or production work |
 | Need complete, copyable patterns | [worked-patterns.md](references/worked-patterns.md) | The domain reference for the pattern |
 | Verify why a rule exists or refresh time-sensitive claims | [sources.md](references/sources.md) | Current target source and official docs |
 
@@ -266,7 +267,11 @@ minimal example production-ready. Use the complete acceptance matrix in
 
 ## Paper.design path
 
-For any Paper-to-GPUI request:
+Use this path when Paper is one input to broader GPUI app, architecture, or
+production work. When faithful translation of a selected Paper frame is the
+primary task, route to the standalone `paper-to-gpui` skill instead.
+
+For Paper input within broader work:
 
 1. Require a live Paper MCP connection and one exact selected frame or node ID.
 2. Verify the open file with `get_basic_info` and intent with `get_selection`.

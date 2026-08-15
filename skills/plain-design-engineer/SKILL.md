@@ -1,6 +1,6 @@
 ---
 name: plain-design-engineer
-description: Create, redesign, or review frontend interfaces with a plain, technical infrastructure-product style. Use for developer tools, databases, observability, APIs, CLIs, SaaS dashboards, docs, and landing pages that should feel precise, editorial, content-led, and credible instead of glossy or generic.
+description: Primary design skill for creating, redesigning, or reviewing frontend interfaces with a plain, technical infrastructure-product style. Use for developer tools, databases, observability, APIs, CLIs, SaaS dashboards, docs, and general landing pages that should feel precise, editorial, content-led, and credible instead of glossy or generic. When the request specifically calls for a PlanetScale-inspired technical marketing page with ruled grids, monospace typography, and proof-heavy sections, use build-planetscale-landing-pages instead.
 ---
 
 # Plain Design Engineer
@@ -21,6 +21,10 @@ Infer the mode from the request:
 - `landing`: developer or infrastructure landing page.
 - `dashboard`: dense product, admin, analytics, billing, or ops UI.
 - `docs`: technical docs, API docs, changelog, or product education surface.
+
+For an explicitly PlanetScale-inspired marketing page, route to the dedicated
+`build-planetscale-landing-pages` skill. Use this skill for broader product UI,
+dashboard, docs, review, and plain infrastructure-design work.
 
 ## First Pass
 

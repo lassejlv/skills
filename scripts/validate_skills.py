@@ -22,6 +22,7 @@ except ImportError:
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+README_PATH = REPO_ROOT / "README.md"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 FENCE_RE = re.compile(r"^\s*(```+|~~~+)")
@@ -111,6 +112,9 @@ def validate_links(path: Path, text: str, errors: list[str]) -> None:
 def validate_agent_metadata(skill_dir: Path, skill_name: str, errors: list[str]) -> None:
     path = skill_dir / "agents" / "openai.yaml"
     if not path.exists():
+        errors.append(
+            f"{display(path)}: missing required repository interface metadata"
+        )
         return
 
     data = load_yaml(path, path.read_text(encoding="utf-8"), errors)
@@ -139,6 +143,49 @@ def validate_agent_metadata(skill_dir: Path, skill_name: str, errors: list[str])
     if isinstance(default_prompt, str) and f"${skill_name}" not in default_prompt:
         errors.append(
             f"{display(path)}: interface.default_prompt must mention ${skill_name}"
+        )
+
+
+def validate_readme_catalog(skill_names: set[str], errors: list[str]) -> None:
+    text = README_PATH.read_text(encoding="utf-8")
+
+    install_sources = {
+        "short GitHub source": "npx skills add lassejlv/skills --skill ",
+        "full GitHub URL": (
+            "npx skills add https://github.com/lassejlv/skills --skill "
+        ),
+        "local checkout": "npx skills add . --skill ",
+    }
+    for label, prefix in install_sources.items():
+        pattern = re.compile(
+            rf"^{re.escape(prefix)}([a-z0-9]+(?:-[a-z0-9]+)*)$", re.MULTILINE
+        )
+        documented = set(pattern.findall(text))
+        missing = sorted(skill_names - documented)
+        extra = sorted(documented - skill_names)
+        if missing:
+            errors.append(
+                f"README.md: {label} install examples missing: {', '.join(missing)}"
+            )
+        if extra:
+            errors.append(
+                f"README.md: {label} install examples contain unknown skills: "
+                f"{', '.join(extra)}"
+            )
+
+    cataloged = set(
+        re.findall(r"^- `([a-z0-9]+(?:-[a-z0-9]+)*)`:", text, re.MULTILINE)
+    )
+    missing_catalog = sorted(skill_names - cataloged)
+    extra_catalog = sorted(cataloged - skill_names)
+    if missing_catalog:
+        errors.append(
+            f"README.md: skill catalog missing: {', '.join(missing_catalog)}"
+        )
+    if extra_catalog:
+        errors.append(
+            f"README.md: skill catalog contains unknown skills: "
+            f"{', '.join(extra_catalog)}"
         )
 
 
@@ -235,13 +282,17 @@ def main() -> int:
 
     errors: list[str] = []
     markdown_count = sum(validate_skill(skill, errors) for skill in skills)
+    validate_readme_catalog({skill.parent.name for skill in skills}, errors)
     if errors:
         print("Skill validation failed:", file=sys.stderr)
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
 
-    print(f"Validated {len(skills)} skills and {markdown_count} Markdown files.")
+    print(
+        f"Validated the README catalog, {len(skills)} skills, "
+        f"and {markdown_count} Markdown files."
+    )
     return 0
 
 

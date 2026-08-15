@@ -29,6 +29,7 @@ npx skills add lassejlv/skills --skill libtermy-implementation
 npx skills add lassejlv/skills --skill use-aws
 npx skills add lassejlv/skills --skill no-vibe-code
 npx skills add lassejlv/skills --skill no-yak-shaving
+npx skills add lassejlv/skills --skill project-orientation-sweep
 npx skills add lassejlv/skills --skill gitty
 npx skills add lassejlv/skills --skill paper-to-gpui
 npx skills add lassejlv/skills --skill clean-codebase
@@ -47,6 +48,7 @@ npx skills add https://github.com/lassejlv/skills --skill libtermy-implementatio
 npx skills add https://github.com/lassejlv/skills --skill use-aws
 npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
 npx skills add https://github.com/lassejlv/skills --skill no-yak-shaving
+npx skills add https://github.com/lassejlv/skills --skill project-orientation-sweep
 npx skills add https://github.com/lassejlv/skills --skill gitty
 npx skills add https://github.com/lassejlv/skills --skill paper-to-gpui
 npx skills add https://github.com/lassejlv/skills --skill clean-codebase
@@ -59,12 +61,14 @@ For local development from this checkout:
 ```sh
 npx skills add . --list
 npx skills add . --skill aws-account-cleanup
+npx skills add . --skill legal-policy-drafter
 npx skills add . --skill plain-design-engineer
 npx skills add . --skill backend-security-audit
 npx skills add . --skill libtermy-implementation
 npx skills add . --skill use-aws
 npx skills add . --skill no-vibe-code
 npx skills add . --skill no-yak-shaving
+npx skills add . --skill project-orientation-sweep
 npx skills add . --skill gitty
 npx skills add . --skill paper-to-gpui
 npx skills add . --skill clean-codebase
@@ -75,7 +79,8 @@ npx skills add . --skill build-gpui-apps
 ## Layout
 
 Each skill lives in its own directory under `skills/` and must include a
-`SKILL.md` file with YAML frontmatter:
+`SKILL.md` file with YAML frontmatter plus `agents/openai.yaml` interface
+metadata:
 
 ```text
 skills/
@@ -109,8 +114,14 @@ skills/
     SKILL.md
     slop-check.mjs
     samples/
+    agents/
   no-yak-shaving/
     SKILL.md
+    agents/
+  project-orientation-sweep/
+    SKILL.md
+    scripts/
+    references/
     agents/
   gitty/
     SKILL.md
@@ -149,6 +160,13 @@ python -m pip install pyyaml==6.0.3
 python scripts/validate_skills.py
 ```
 
+Exercise the deterministic inventory, GPUI inspection, frontend lint, and
+spring fixtures:
+
+```sh
+scripts/test_skill_tools.sh
+```
+
 The GPUI suite also has an exact-revision compile/test fixture:
 
 ```sh
@@ -178,6 +196,8 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   build on high-severity findings.
 - `no-yak-shaving`: Keep implementation direct and proportionate, reject
   speculative abstractions, and add only tests that protect meaningful behavior.
+- `project-orientation-sweep`: Map an unfamiliar checkout, classify its scale,
+  identify active surfaces, and choose proportionate validation before editing.
 - `gitty`: Inspect repository changes and generate, copy, commit, or push
   repository-aware commit messages through Codex, Claude Code, or OpenCode.
 - `paper-to-gpui`: Inspect selected Paper designs through MCP and translate
@@ -192,4 +212,4 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   production-ready starter setup, state architecture, Apple-style materials
   and motion, accessible input and IME, clipboard/drag/drop, menus and
   multi-window lifecycle, packaging, async/performance discipline,
-  compile-checked examples, tests, CI, and Paper-to-GPUI fidelity.
+  compile-checked examples, tests, CI, and broader Paper-informed app work.

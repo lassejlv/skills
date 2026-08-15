@@ -33,19 +33,8 @@ jobs:
       - name: Validate skill packages
         run: python scripts/validate_skills.py
 
-      - name: Check shell syntax
-        run: |
-          while IFS= read -r -d '' script; do
-            bash -n "$script"
-          done < <(find skills -type f -name '*.sh' -print0)
-
-      - name: Exercise GPUI inspector
-        run: skills/build-gpui-apps/scripts/inspect_gpui_project.sh skills/build-gpui-apps/assets/reference-app
-
-      - name: Test pure spring helpers
-        run: |
-          rustc --edition=2021 --test skills/build-gpui-apps/assets/spring.rs -o "$RUNNER_TEMP/gpui-spring-tests"
-          "$RUNNER_TEMP/gpui-spring-tests"
+      - name: Test deterministic skill tools
+        run: scripts/test_skill_tools.sh
 
   gpui-reference:
     name: GPUI reference app
