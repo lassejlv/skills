@@ -35,6 +35,8 @@ npx skills add lassejlv/skills --skill paper-to-gpui
 npx skills add lassejlv/skills --skill clean-codebase
 npx skills add lassejlv/skills --skill build-planetscale-landing-pages
 npx skills add lassejlv/skills --skill build-gpui-apps
+npx skills add lassejlv/skills --skill minimize-api-responses
+npx skills add lassejlv/skills --skill tcut-terminal-video
 ```
 
 You can also install from the full GitHub URL:
@@ -54,6 +56,8 @@ npx skills add https://github.com/lassejlv/skills --skill paper-to-gpui
 npx skills add https://github.com/lassejlv/skills --skill clean-codebase
 npx skills add https://github.com/lassejlv/skills --skill build-planetscale-landing-pages
 npx skills add https://github.com/lassejlv/skills --skill build-gpui-apps
+npx skills add https://github.com/lassejlv/skills --skill minimize-api-responses
+npx skills add https://github.com/lassejlv/skills --skill tcut-terminal-video
 ```
 
 For local development from this checkout:
@@ -74,6 +78,8 @@ npx skills add . --skill paper-to-gpui
 npx skills add . --skill clean-codebase
 npx skills add . --skill build-planetscale-landing-pages
 npx skills add . --skill build-gpui-apps
+npx skills add . --skill minimize-api-responses
+npx skills add . --skill tcut-terminal-video
 ```
 
 ## Layout
@@ -149,6 +155,14 @@ skills/
       reference-app/       # exact-revision compile/test fixture
     tests/                 # realistic forward-test scenarios
     agents/
+  minimize-api-responses/
+    SKILL.md
+    references/
+    agents/
+  tcut-terminal-video/
+    SKILL.md
+    references/
+    agents/
 ```
 
 ## Validate
@@ -213,3 +227,9 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   and motion, accessible input and IME, clipboard/drag/drop, menus and
   multi-window lifecycle, packaging, async/performance discipline,
   compile-checked examples, tests, CI, and broader Paper-informed app work.
+- `minimize-api-responses`: Build and review API endpoints so each caller gets
+  only the fields it needs and is authorized to access, backed by explicit
+  response schemas and negative contract tests.
+- `tcut-terminal-video`: Create polished, repeatable terminal demos with tcut,
+  from easy scripted recordings to TUI automation, browser compositing,
+  deterministic tests, re-rendering, and guarded S3-compatible publishing.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Minimize API Responses"
+  short_description: "Return only necessary data from API endpoints"
+  default_prompt: "Use $minimize-api-responses to review these API endpoints and remove unnecessary response data."

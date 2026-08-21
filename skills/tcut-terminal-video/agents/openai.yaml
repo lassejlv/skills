@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tcut Terminal Video"
+  short_description: "Create polished, repeatable terminal demos"
+  default_prompt: "Use $tcut-terminal-video to create a polished terminal demo from this workflow."
