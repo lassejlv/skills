@@ -37,6 +37,7 @@ npx skills add lassejlv/skills --skill build-planetscale-landing-pages
 npx skills add lassejlv/skills --skill build-gpui-apps
 npx skills add lassejlv/skills --skill minimize-api-responses
 npx skills add lassejlv/skills --skill tcut-terminal-video
+npx skills add lassejlv/skills --skill use-goal
 ```
 
 You can also install from the full GitHub URL:
@@ -58,6 +59,7 @@ npx skills add https://github.com/lassejlv/skills --skill build-planetscale-land
 npx skills add https://github.com/lassejlv/skills --skill build-gpui-apps
 npx skills add https://github.com/lassejlv/skills --skill minimize-api-responses
 npx skills add https://github.com/lassejlv/skills --skill tcut-terminal-video
+npx skills add https://github.com/lassejlv/skills --skill use-goal
 ```
 
 For local development from this checkout:
@@ -80,6 +82,7 @@ npx skills add . --skill build-planetscale-landing-pages
 npx skills add . --skill build-gpui-apps
 npx skills add . --skill minimize-api-responses
 npx skills add . --skill tcut-terminal-video
+npx skills add . --skill use-goal
 ```
 
 ## Layout
@@ -163,6 +166,10 @@ skills/
     SKILL.md
     references/
     agents/
+  use-goal/
+    SKILL.md
+    examples.md
+    agents/
 ```
 
 ## Validate
@@ -233,3 +240,5 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 - `tcut-terminal-video`: Create polished, repeatable terminal demos with tcut,
   from easy scripted recordings to TUI automation, browser compositing,
   deterministic tests, re-rendering, and guarded S3-compatible publishing.
+- `use-goal`: Run persistent, checkpointed goals with explicit completion
+  criteria and clear start, resume, pause, replace, status, and delete commands.

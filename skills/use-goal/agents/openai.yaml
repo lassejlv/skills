@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use Goal"
+  short_description: "Run durable goals through verified completion"
+  default_prompt: "Use $use-goal to turn this objective into a durable goal and keep working until every acceptance criterion is verified."
