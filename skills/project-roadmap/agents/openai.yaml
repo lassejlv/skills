@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Roadmap"
+  short_description: "Turn the current project into a clear roadmap"
+  default_prompt: "Use $project-roadmap to inspect this checkout and write a detailed, simple, evidence-backed ROADMAP.md with where to start, phased priorities, good ideas, project guidelines, risks, and exit criteria."

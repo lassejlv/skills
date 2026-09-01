@@ -30,6 +30,7 @@ npx skills add lassejlv/skills --skill use-aws
 npx skills add lassejlv/skills --skill no-vibe-code
 npx skills add lassejlv/skills --skill no-yak-shaving
 npx skills add lassejlv/skills --skill project-orientation-sweep
+npx skills add lassejlv/skills --skill project-roadmap
 npx skills add lassejlv/skills --skill gitty
 npx skills add lassejlv/skills --skill paper-to-gpui
 npx skills add lassejlv/skills --skill clean-codebase
@@ -53,6 +54,7 @@ npx skills add https://github.com/lassejlv/skills --skill use-aws
 npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
 npx skills add https://github.com/lassejlv/skills --skill no-yak-shaving
 npx skills add https://github.com/lassejlv/skills --skill project-orientation-sweep
+npx skills add https://github.com/lassejlv/skills --skill project-roadmap
 npx skills add https://github.com/lassejlv/skills --skill gitty
 npx skills add https://github.com/lassejlv/skills --skill paper-to-gpui
 npx skills add https://github.com/lassejlv/skills --skill clean-codebase
@@ -77,6 +79,7 @@ npx skills add . --skill use-aws
 npx skills add . --skill no-vibe-code
 npx skills add . --skill no-yak-shaving
 npx skills add . --skill project-orientation-sweep
+npx skills add . --skill project-roadmap
 npx skills add . --skill gitty
 npx skills add . --skill paper-to-gpui
 npx skills add . --skill clean-codebase
@@ -134,6 +137,9 @@ skills/
     SKILL.md
     scripts/
     references/
+    agents/
+  project-roadmap/
+    SKILL.md
     agents/
   gitty/
     SKILL.md
@@ -226,6 +232,9 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   speculative abstractions, and add only tests that protect meaningful behavior.
 - `project-orientation-sweep`: Map an unfamiliar checkout, classify its scale,
   identify active surfaces, and choose proportionate validation before editing.
+- `project-roadmap`: Inspect the current project and write an evidence-backed
+  Markdown roadmap with a clear starting point, phased priorities, useful ideas,
+  project guidelines, risks, dependencies, and measurable exit criteria.
 - `gitty`: Inspect repository changes and generate, copy, commit, or push
   repository-aware commit messages through Codex, Claude Code, or OpenCode.
 - `paper-to-gpui`: Inspect selected Paper designs through MCP and translate
