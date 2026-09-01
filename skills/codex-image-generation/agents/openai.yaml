@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Image Generation"
+  short_description: "Generate images through Codex CLI"
+  default_prompt: "Use $codex-image-generation to generate this image through Codex CLI and save the verified PNG in the workspace."

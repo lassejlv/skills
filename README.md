@@ -38,6 +38,7 @@ npx skills add lassejlv/skills --skill build-gpui-apps
 npx skills add lassejlv/skills --skill minimize-api-responses
 npx skills add lassejlv/skills --skill tcut-terminal-video
 npx skills add lassejlv/skills --skill use-goal
+npx skills add lassejlv/skills --skill codex-image-generation
 ```
 
 You can also install from the full GitHub URL:
@@ -60,6 +61,7 @@ npx skills add https://github.com/lassejlv/skills --skill build-gpui-apps
 npx skills add https://github.com/lassejlv/skills --skill minimize-api-responses
 npx skills add https://github.com/lassejlv/skills --skill tcut-terminal-video
 npx skills add https://github.com/lassejlv/skills --skill use-goal
+npx skills add https://github.com/lassejlv/skills --skill codex-image-generation
 ```
 
 For local development from this checkout:
@@ -83,6 +85,7 @@ npx skills add . --skill build-gpui-apps
 npx skills add . --skill minimize-api-responses
 npx skills add . --skill tcut-terminal-video
 npx skills add . --skill use-goal
+npx skills add . --skill codex-image-generation
 ```
 
 ## Layout
@@ -170,6 +173,10 @@ skills/
     SKILL.md
     examples.md
     agents/
+  codex-image-generation/
+    SKILL.md
+    references/
+    agents/
 ```
 
 ## Validate
@@ -242,3 +249,6 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   deterministic tests, re-rendering, and guarded S3-compatible publishing.
 - `use-goal`: Run persistent, checkpointed goals with explicit completion
   criteria and clear start, resume, pause, replace, status, and delete commands.
+- `codex-image-generation`: Generate or edit raster images through Codex CLI's
+  built-in image tool, with complete option boundaries, reference-image
+  handling, safe workspace output, and artifact validation.
