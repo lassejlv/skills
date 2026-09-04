@@ -1,4 +1,4 @@
 interface:
   display_name: "No Vibe Code"
   short_description: "Catch generated-default frontend design tells"
-  default_prompt: "Use $no-vibe-code to lint this frontend for AI-slop design tells and help me fix the high-confidence findings."
+  default_prompt: "Use $no-vibe-code to review this frontend for generic design patterns, triage lint findings against the brief, and inspect the rendered UI."

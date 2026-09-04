@@ -231,10 +231,9 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   plain infrastructure-product visual direction.
 - `use-aws`: Operate and investigate AWS accounts through profile-aware CLI
   workflows with read-only discovery first and explicit safety gates.
-- `no-vibe-code`: Lint HTML/CSS/JSX for vibe-coded AI-slop frontend tells (AI
-  purple, purple→blue gradients, gradient clip-text, Inter, emoji-as-icons,
-  centered-hero + three cards) via a zero-dependency Node driver that fails the
-  build on high-severity findings.
+- `no-vibe-code`: Review frontend source and rendered UI for generic design
+  patterns with a zero-dependency Node linter, triage matches against the brief,
+  and preserve intentional brand choices.
 - `no-yak-shaving`: Keep implementation direct and proportionate, reject
   speculative abstractions, and add only tests that protect meaningful behavior.
 - `project-orientation-sweep`: Map an unfamiliar checkout, classify its scale,

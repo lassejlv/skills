@@ -1,59 +1,56 @@
 ---
 name: no-yak-shaving
-description: Keep code changes simple, direct, and proportionate. Use when implementing, refactoring, or reviewing code to prevent overengineering, speculative abstractions, unnecessary compatibility layers, defensive code for impossible states, and tests that only restate the implementation instead of protecting meaningful behavior.
+description: Keep implementation, refactoring, and code review proportionate to the requested behavior. Use to avoid speculative abstractions, unrelated cleanup, and tests that mirror implementation while preserving necessary contracts and validation.
 ---
 
 # No Yak Shaving
 
-Ship the smallest clear solution that fully handles the real requirement.
+Deliver the smallest clear solution that fully meets the requirement. Minimize
+unnecessary complexity, not functionality or evidence of correctness.
 
-## Work from reality
+## Choose the scope
 
-- Inspect the actual call sites, constraints, and existing conventions before designing.
-- Solve the requested problem, not hypothetical future variants.
-- Prefer boring, readable code over clever machinery.
-- Reuse an existing abstraction only when it genuinely fits. Do not add one merely to make a small change look architectural.
-- Keep the diff narrow. Do not bundle unrelated cleanup.
+- Inspect the relevant call sites, contracts, and local conventions before editing.
+- Separate work required for the requested outcome from adjacent improvements.
+  Include a prerequisite only when the outcome depends on it.
+- Reuse existing code when it fits. Prefer a direct function, explicit branch, or
+  small data structure when no reusable mechanism is needed.
+- Preserve unrelated changes. In a review, report actionable complexity with a
+  concrete simplification; do not turn the review into an unsolicited rewrite.
 
-## Refuse ceremonial complexity
+## Make complexity justify itself
 
-- Do not introduce factories, registries, adapters, generic frameworks, configuration switches, or dependency injection for a single concrete use case.
-- Do not add fallback paths for states the system cannot reach.
-- Do not preserve obsolete behavior unless compatibility is an explicit requirement.
-- Do not split straightforward logic across extra files or layers without a concrete readability or ownership benefit.
-- Do not optimize before evidence identifies a real bottleneck.
+- Add a layer, dependency, option, or abstraction only for a current need, such as
+  distinct callers, a real integration boundary, or clearer ownership. A second
+  consumer is useful evidence, not a quota; small duplication can be clearer.
+- Keep straightforward logic together unless splitting it improves navigation,
+  ownership, or testing of meaningful behavior.
+- Preserve compatibility when callers, persisted data, or rollout requirements
+  depend on it. Verify obsolescence before removing old behavior.
+- Validate untrusted inputs and handle failures that can occur. Omit defensive
+  branches only when an enforced invariant makes the state unreachable.
+- Optimize performance against a measured bottleneck or an explicit target.
+  Avoid speculative tuning and general frameworks for imagined future variants.
 
-If a direct function, explicit branch, or small data structure solves the problem cleanly, use it.
+## Validate the behavior
 
-## Make tests earn their keep
+Use the narrowest checks that address the change's actual risk, including required
+repository checks. Add or update tests for a public contract, a realistic
+regression, consequential boundaries, or subtle branching and state transitions.
 
-Add or change a test only when it protects meaningful behavior or a realistic regression.
+Do not add tests whose only evidence is that a private helper was called, a mock
+returned its configured value, or the implementation matches a copied algorithm.
+A simple assertion is still valuable when it protects a real contract, including
+a consequential default value. Preserve valuable existing tests.
 
-Good tests cover at least one of:
+For a reversible, low-impact change, existing checks or direct inspection may be
+enough. State what was verified and any material gap; do not claim tests ran when
+they did not. Do not use simplicity as a reason to skip necessary integration or
+user-visible verification.
 
-- A user-visible outcome or public contract.
-- A bug that could realistically return.
-- Important boundary behavior, error handling, state transitions, or integration seams.
-- Logic with enough branching or subtlety that inspection alone is insufficient.
+## Stop at completion
 
-Skip tests that only:
-
-- Assert a constant, default value, type declaration, or language behavior.
-- Mirror the implementation line by line.
-- Test private helpers with no meaningful behavioral distinction.
-- Mock every dependency and prove only that mocks return configured values.
-- Inflate coverage without increasing confidence.
-- Lock down incidental formatting or implementation details that may safely change.
-
-Do not delete valuable existing tests merely because they are simple. When behavior changes, update the narrowest relevant test. When no new test adds meaningful confidence, say so plainly and validate with the most relevant existing checks.
-
-## Complexity checkpoint
-
-Before finishing, ask:
-
-1. Does every new abstraction have at least two real consumers or a strong present-tense reason to exist?
-2. Can any layer, option, branch, helper, or test disappear without weakening correctness or clarity?
-3. Does the code read naturally to the next person without an architectural tour?
-4. Did validation target the actual risk of the change?
-
-Simplify when any answer exposes ceremony. Stop once the requirement is met, the code is clear, and the real risks are covered.
+Before finishing, remove anything introduced by this change that can disappear
+without weakening the requirement, correctness, or clarity. Stop when the full
+requested behavior works and relevant validation is complete. Report the result
+and evidence briefly; mention a deferred improvement only if it matters to the user.
