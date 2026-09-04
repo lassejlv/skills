@@ -17,7 +17,25 @@ Build one coherent Cloudflare-native application. Keep server-only code inside t
 - **Object storage:** Cloudflare R2. R2 is the Cloudflare product; “Cloudflare S3” means its S3-compatible API, not AWS S3.
 - **Language:** TypeScript with generated Cloudflare binding types.
 
-Preserve the package manager and repository structure in an existing project. For a new project, prefer `pnpm` unless the user requests another package manager.
+Preserve the package manager, lockfile, and repository structure in an existing project. For a new project, check whether Bun is available with `bun --version`. If it succeeds, use Bun consistently for package installation, scripts, tests, and one-off package executables. Otherwise use `pnpm` unless the user requests another package manager.
+
+## Package manager policy
+
+When Bun is selected:
+
+```text
+bun install                    install dependencies
+bun install --frozen-lockfile  reproduce an existing lockfile
+bun add <package>              add a dependency
+bun add -d <package>           add a development dependency
+bun run <script>               run a package.json script
+bunx <package>                 execute a package CLI
+```
+
+- Prefer the Bun equivalent for every package-manager command in upstream documentation.
+- Keep `bun.lock` as the only package-manager lockfile in a new Bun project.
+- Do not mix Bun, pnpm, npm, or Yarn commands in one workflow unless an upstream tool genuinely requires it; document that exception.
+- Do not replace an existing project's package manager merely because Bun is installed unless the user asks for that migration.
 
 ## Critical database boundary
 
@@ -112,7 +130,7 @@ At minimum, verify sign-up or the configured sign-in method, sign-in, session re
 
 - Install Tailwind CSS v4 through `@tailwindcss/vite` and import it with `@import "tailwindcss";` in the global stylesheet.
 - Initialize shadcn/ui against the project's real source alias and global CSS. Use the current CLI rather than copying an old v3 Tailwind setup.
-- For a new coss-based component system, use the current coss style initializer (currently `pnpm dlx shadcn@latest init @coss/style`). Add an individual component through the coss registry (currently `pnpm dlx shadcn@latest add @coss/<component>`) and review the generated source.
+- For a new coss-based component system, use the current coss style initializer. With Bun, run `bunx --bun shadcn@latest init @coss/style`; otherwise use the selected package manager's equivalent. Add components through the coss registry with `bunx --bun shadcn@latest add @coss/<component>` or the matching non-Bun command, then review the generated source.
 - Read `https://coss.com/ui/llms.txt`, then open the component-specific coss page before adding a coss component.
 - Treat shadcn and coss components as owned source code: adapt tokens and behavior locally, preserve accessibility, and review generated changes.
 - Use one implementation source per component family. Prefer coss when it provides the exact component and use shadcn for gaps or project-established primitives. Do not keep competing dialog, form, menu, or toast foundations without a documented reason.
@@ -156,7 +174,7 @@ Files containing `.server` are a convention, not a security boundary by themselv
 
 Run the narrowest available project commands plus these stack-specific checks:
 
-1. Install dependencies from the lockfile and confirm the resolved Vite major is 8.
+1. Install dependencies from the lockfile with the selected package manager and confirm the resolved Vite major is 8. In a Bun project, use `bun install --frozen-lockfile` for reproducible validation.
 2. Generate Cloudflare types and run TypeScript checking.
 3. Generate/review migrations, apply them to the local database, and verify a representative Drizzle query.
 4. Run the app through the Cloudflare Vite development runtime; do not validate only in a generic Node runtime.

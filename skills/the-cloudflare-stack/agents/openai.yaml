@@ -1,4 +1,4 @@
 interface:
   display_name: "The Cloudflare Stack"
   short_description: "Build the preferred full-stack Cloudflare architecture"
-  default_prompt: "Use $the-cloudflare-stack to build this app with TanStack Start on Cloudflare Workers, Vite 8, Better Auth and Drizzle, the correct D1 or Hyperdrive database lane, R2 storage, Tailwind CSS v4, shadcn/ui, and coss ui."
+  default_prompt: "Use $the-cloudflare-stack to build this app with TanStack Start on Cloudflare Workers, Vite 8, Better Auth and Drizzle, the correct D1 or Hyperdrive database lane, R2 storage, Tailwind CSS v4, shadcn/ui, and coss ui. Prefer Bun for package management when it is available."

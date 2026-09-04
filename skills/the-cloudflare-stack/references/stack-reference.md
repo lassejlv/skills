@@ -4,6 +4,7 @@ Use primary documentation and refresh the relevant pages before implementation. 
 
 ## Application runtime and build
 
+- [Bun package manager](https://bun.sh/docs/pm) — installs, lockfiles, scripts, workspaces, and package executable commands when Bun is available.
 - [TanStack Start: Cloudflare Workers official partner hosting](https://tanstack.com/start/latest/docs/framework/react/guide/hosting#cloudflare-workers-official-partner) — required Vite plugin, SSR environment, Worker entrypoint, scripts, and deployment flow.
 - [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) — Worker runtime emulation, configuration, bindings, environments, and limitations.
 - [Vite 8 migration guide](https://vite.dev/guide/migration) — Rolldown/Oxc changes and removed or deprecated configuration.
