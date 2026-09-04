@@ -40,6 +40,7 @@ npx skills add lassejlv/skills --skill minimize-api-responses
 npx skills add lassejlv/skills --skill tcut-terminal-video
 npx skills add lassejlv/skills --skill use-goal
 npx skills add lassejlv/skills --skill codex-image-generation
+npx skills add lassejlv/skills --skill the-cloudflare-stack
 ```
 
 You can also install from the full GitHub URL:
@@ -64,6 +65,7 @@ npx skills add https://github.com/lassejlv/skills --skill minimize-api-responses
 npx skills add https://github.com/lassejlv/skills --skill tcut-terminal-video
 npx skills add https://github.com/lassejlv/skills --skill use-goal
 npx skills add https://github.com/lassejlv/skills --skill codex-image-generation
+npx skills add https://github.com/lassejlv/skills --skill the-cloudflare-stack
 ```
 
 For local development from this checkout:
@@ -89,6 +91,7 @@ npx skills add . --skill minimize-api-responses
 npx skills add . --skill tcut-terminal-video
 npx skills add . --skill use-goal
 npx skills add . --skill codex-image-generation
+npx skills add . --skill the-cloudflare-stack
 ```
 
 ## Layout
@@ -183,6 +186,10 @@ skills/
     SKILL.md
     references/
     agents/
+  the-cloudflare-stack/
+    SKILL.md
+    references/
+    agents/
 ```
 
 ## Validate
@@ -261,3 +268,6 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 - `codex-image-generation`: Generate or edit raster images through Codex CLI's
   built-in image tool, with complete option boundaries, reference-image
   handling, safe workspace output, and artifact validation.
+- `the-cloudflare-stack`: Build full-stack TanStack Start applications on
+  Cloudflare Workers with Vite 8, Better Auth, Drizzle, the correct D1 or
+  Hyperdrive database lane, R2 storage, Tailwind CSS v4, shadcn/ui, and coss ui.
