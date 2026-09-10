@@ -41,6 +41,7 @@ npx skills add lassejlv/skills --skill tcut-terminal-video
 npx skills add lassejlv/skills --skill use-goal
 npx skills add lassejlv/skills --skill codex-image-generation
 npx skills add lassejlv/skills --skill the-cloudflare-stack
+npx skills add lassejlv/skills --skill create-ui-kit-from-website
 ```
 
 You can also install from the full GitHub URL:
@@ -66,6 +67,7 @@ npx skills add https://github.com/lassejlv/skills --skill tcut-terminal-video
 npx skills add https://github.com/lassejlv/skills --skill use-goal
 npx skills add https://github.com/lassejlv/skills --skill codex-image-generation
 npx skills add https://github.com/lassejlv/skills --skill the-cloudflare-stack
+npx skills add https://github.com/lassejlv/skills --skill create-ui-kit-from-website
 ```
 
 For local development from this checkout:
@@ -92,6 +94,7 @@ npx skills add . --skill tcut-terminal-video
 npx skills add . --skill use-goal
 npx skills add . --skill codex-image-generation
 npx skills add . --skill the-cloudflare-stack
+npx skills add . --skill create-ui-kit-from-website
 ```
 
 ## Layout
@@ -186,6 +189,10 @@ skills/
     SKILL.md
     references/
     agents/
+  create-ui-kit-from-website/
+    SKILL.md
+    examples.md
+    agents/
   the-cloudflare-stack/
     SKILL.md
     references/
@@ -270,3 +277,6 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 - `the-cloudflare-stack`: Build full-stack TanStack Start applications on
   Cloudflare Workers with Vite 8, Better Auth, Drizzle, the correct D1 or
   Hyperdrive database lane, R2 storage, Tailwind CSS v4, shadcn/ui, and coss ui.
+- `create-ui-kit-from-website`: Inspect websites with available browser tools and
+  extract editable components, original SVGs, tokens, states, and motion guides
+  into Paper, with an HTML/CSS fallback and evidence-based visual verification.

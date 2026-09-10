@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create UI-kit from website"
+  short_description: "Extract website components into an editable UI kit"
+  default_prompt: "Use $create-ui-kit-from-website to inspect this website with your available tools, including the in-app browser, and create a faithful UI kit in Paper. If Paper is unavailable, build an index.html and CSS kit. Include original SVGs, component states, tokens, motion explanations, and verified coverage notes."
