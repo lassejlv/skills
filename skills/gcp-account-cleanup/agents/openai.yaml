@@ -1,0 +1,4 @@
+interface:
+  display_name: "GCP Account Cleanup"
+  short_description: "Dry-run and guarded Google Cloud resource removal"
+  default_prompt: "Use $gcp-account-cleanup to dry-run my Google Cloud project cleanup and guide confirmed removals."

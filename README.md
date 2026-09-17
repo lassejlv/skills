@@ -22,6 +22,7 @@ Install one skill:
 
 ```sh
 npx skills add lassejlv/skills --skill aws-account-cleanup
+npx skills add lassejlv/skills --skill gcp-account-cleanup
 npx skills add lassejlv/skills --skill legal-policy-drafter
 npx skills add lassejlv/skills --skill plain-design-engineer
 npx skills add lassejlv/skills --skill backend-security-audit
@@ -48,6 +49,7 @@ You can also install from the full GitHub URL:
 
 ```sh
 npx skills add https://github.com/lassejlv/skills --skill aws-account-cleanup
+npx skills add https://github.com/lassejlv/skills --skill gcp-account-cleanup
 npx skills add https://github.com/lassejlv/skills --skill legal-policy-drafter
 npx skills add https://github.com/lassejlv/skills --skill plain-design-engineer
 npx skills add https://github.com/lassejlv/skills --skill backend-security-audit
@@ -75,6 +77,7 @@ For local development from this checkout:
 ```sh
 npx skills add . --list
 npx skills add . --skill aws-account-cleanup
+npx skills add . --skill gcp-account-cleanup
 npx skills add . --skill legal-policy-drafter
 npx skills add . --skill plain-design-engineer
 npx skills add . --skill backend-security-audit
@@ -106,6 +109,10 @@ metadata:
 ```text
 skills/
   aws-account-cleanup/
+    SKILL.md
+    references/
+    agents/
+  gcp-account-cleanup/
     SKILL.md
     references/
     agents/
@@ -227,6 +234,8 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 
 - `aws-account-cleanup`: Dry-run AWS account inventory and guarded resource
   deletion with explicit confirmation gates.
+- `gcp-account-cleanup`: Dry-run Google Cloud project inventory and guarded
+  resource deletion with explicit confirmation gates.
 - `backend-security-audit`: Review backend code, auth, data access, secrets,
   integrations, dependencies, and deployment settings for confirmed security
   findings.
