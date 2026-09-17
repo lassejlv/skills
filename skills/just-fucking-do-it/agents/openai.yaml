@@ -1,0 +1,4 @@
+interface:
+  display_name: "Just Fucking Do It"
+  short_description: "Finish the task without needless approval requests"
+  default_prompt: "Use $just-fucking-do-it to complete this task end to end and report the result concisely."

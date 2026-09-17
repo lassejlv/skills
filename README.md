@@ -30,6 +30,7 @@ npx skills add lassejlv/skills --skill libtermy-implementation
 npx skills add lassejlv/skills --skill use-aws
 npx skills add lassejlv/skills --skill no-vibe-code
 npx skills add lassejlv/skills --skill no-yak-shaving
+npx skills add lassejlv/skills --skill just-fucking-do-it
 npx skills add lassejlv/skills --skill project-orientation-sweep
 npx skills add lassejlv/skills --skill project-roadmap
 npx skills add lassejlv/skills --skill gitty
@@ -57,6 +58,7 @@ npx skills add https://github.com/lassejlv/skills --skill libtermy-implementatio
 npx skills add https://github.com/lassejlv/skills --skill use-aws
 npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
 npx skills add https://github.com/lassejlv/skills --skill no-yak-shaving
+npx skills add https://github.com/lassejlv/skills --skill just-fucking-do-it
 npx skills add https://github.com/lassejlv/skills --skill project-orientation-sweep
 npx skills add https://github.com/lassejlv/skills --skill project-roadmap
 npx skills add https://github.com/lassejlv/skills --skill gitty
@@ -85,6 +87,7 @@ npx skills add . --skill libtermy-implementation
 npx skills add . --skill use-aws
 npx skills add . --skill no-vibe-code
 npx skills add . --skill no-yak-shaving
+npx skills add . --skill just-fucking-do-it
 npx skills add . --skill project-orientation-sweep
 npx skills add . --skill project-roadmap
 npx skills add . --skill gitty
@@ -144,6 +147,9 @@ skills/
     samples/
     agents/
   no-yak-shaving/
+    SKILL.md
+    agents/
+  just-fucking-do-it/
     SKILL.md
     agents/
   project-orientation-sweep/
@@ -252,6 +258,8 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   and preserve intentional brand choices.
 - `no-yak-shaving`: Keep implementation direct and proportionate, reject
   speculative abstractions, and add only tests that protect meaningful behavior.
+- `just-fucking-do-it`: Finish authorized tasks after diagnosis, make routine
+  choices without needless approval requests, and report results concisely.
 - `project-orientation-sweep`: Map an unfamiliar checkout, classify its scale,
   identify active surfaces, and choose proportionate validation before editing.
 - `project-roadmap`: Inspect the current project and write an evidence-backed
