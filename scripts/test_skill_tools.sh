@@ -26,6 +26,9 @@ require_command bash
 require_command git
 require_command node
 require_command rustc
+require_command python3
+
+python3 "$repo_root/skills/use-goal/scripts/test_goal_state.py"
 
 while IFS= read -r -d '' script; do
   bash -n "$script"

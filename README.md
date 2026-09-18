@@ -197,6 +197,8 @@ skills/
   use-goal/
     SKILL.md
     examples.md
+    references/
+    scripts/
     agents/
   codex-image-generation/
     SKILL.md
@@ -221,8 +223,8 @@ python -m pip install pyyaml==6.0.3
 python scripts/validate_skills.py
 ```
 
-Exercise the deterministic inventory, GPUI inspection, frontend lint, and
-spring fixtures:
+Exercise the deterministic inventory, GPUI inspection, frontend lint, spring,
+and goal-state recovery fixtures:
 
 ```sh
 scripts/test_skill_tools.sh
@@ -286,8 +288,9 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 - `tcut-terminal-video`: Create polished, repeatable terminal demos with tcut,
   from easy scripted recordings to TUI automation, browser compositing,
   deterministic tests, re-rendering, and guarded S3-compatible publishing.
-- `use-goal`: Run persistent, checkpointed goals with explicit completion
-  criteria and clear start, resume, pause, replace, status, and delete commands.
+- `use-goal`: Run persistent goals through verified completion with YAML
+  metadata for harnesses, revision-checked atomic checkpoints, local memory,
+  previous-goal history, and explicit lifecycle commands.
 - `codex-image-generation`: Generate or edit raster images through Codex CLI's
   built-in image tool, with complete option boundaries, reference-image
   handling, safe workspace output, and artifact validation.
