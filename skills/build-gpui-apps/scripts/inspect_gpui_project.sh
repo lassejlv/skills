@@ -86,12 +86,12 @@ files |
   head -120
 
 section "GPUI declarations"
-search 'gpui(_platform)?[[:space:]]*=' -g 'Cargo.toml' | head -120
+search 'gpui([-_][[:alnum:]_]+)*' -g 'Cargo.toml' | head -120
 
 section "Locked GPUI packages"
 if [ -f "$project_path/Cargo.lock" ]; then
   awk '
-    /^name = "gpui"$|^name = "gpui_platform"$|^name = "gpui_macros"$|^name = "gpui_util"$|^name = "gpui_tokio"$|^name = "gpui_http_client"$/ {
+    /^name = "gpui([-_][[:alnum:]_]+)*"$/ {
       show=1
       print
       next
@@ -104,6 +104,9 @@ if [ -f "$project_path/Cargo.lock" ]; then
 else
   echo "No root Cargo.lock"
 fi
+
+section "UI import roots and Kit bootstrap"
+search 'gpui_kit::|gpui::|gpui_component::|gpui_base::|gpui_platform::|Root::render_.*_layer' -g '*.rs' | head -160
 
 section "Likely app, view, component, theme, and platform sources"
 files |
@@ -134,7 +137,10 @@ for pattern in \
   'context\(' \
   'uniform_list\(' \
   'list\(' \
-  '#\[gpui::test\]'; do
+  '#\[gpui::test\]' \
+  '#\[gpui_kit::test\]' \
+  'gpui_kit::(application|init|open_window)' \
+  'v_virtual_list\(|h_virtual_list\('; do
   count="$(search "$pattern" | wc -l | tr -d ' ')"
   printf '%-30s %s\n' "$pattern" "$count"
 done
@@ -163,7 +169,7 @@ files |
 
 section "Suggested first reads"
 echo "1. Repository instructions and root Cargo.toml"
-echo "2. Owning crate Cargo.toml and the exact GPUI lock entry"
+echo "2. Owning crate Cargo.toml, chosen framework, and exact Kit/GPUI lock entries"
 echo "3. App startup and root window/view"
 echo "4. One nearby component with similar input/state behavior"
 echo "5. Theme, assets, actions, focus, async, and test-support modules"

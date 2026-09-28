@@ -48,6 +48,44 @@ gpui_output="$tmp_dir/build-gpui-inspector.txt"
 expect_output "$gpui_output" "## GPUI declarations"
 expect_output "$gpui_output" "#\[gpui::test\]"
 
+kit_fixture="$tmp_dir/kit-project"
+mkdir -p "$kit_fixture/src"
+cat > "$kit_fixture/Cargo.toml" <<'TOML'
+[package]
+name = "kit-inspector-fixture"
+version = "0.1.0"
+[dependencies]
+desktop-ui = { package = "gpui-kit", version = "0.7.0" }
+gpui-shell = "0.7.0"
+TOML
+cat > "$kit_fixture/Cargo.lock" <<'TOML'
+version = 4
+[[package]]
+name = "gpui-kit"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "gpui-pre"
+version = "0.3.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+TOML
+cat > "$kit_fixture/src/main.rs" <<'RS'
+use gpui_kit::*;
+#[gpui_kit::test]
+fn retained_state() {}
+RS
+kit_output="$tmp_dir/kit-inspector.txt"
+"$repo_root/skills/build-gpui-apps/scripts/inspect_gpui_project.sh" \
+  "$kit_fixture" > "$kit_output"
+expect_output "$kit_output" 'desktop-ui = { package = "gpui-kit"'
+expect_output "$kit_output" 'name = "gpui-kit"'
+expect_output "$kit_output" 'name = "gpui-pre"'
+expect_output "$kit_output" 'use gpui_kit::*;'
+expect_output "$kit_output" '#\[gpui_kit::test\]'
+
+python3 "$repo_root/skills/build-gpui-apps/scripts/sync_gpui_kit_docs.py" --check
+
 paper_output="$tmp_dir/paper-gpui-inspector.txt"
 "$repo_root/skills/paper-to-gpui/scripts/inspect_gpui_project.sh" \
   "$reference_app" > "$paper_output"

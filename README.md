@@ -182,8 +182,9 @@ skills/
     SKILL.md
     scripts/
     references/
+      gpui-kit/            # merged skills and full indexed documentation
     assets/
-      reference-app/       # exact-revision compile/test fixture
+      reference-app/       # direct upstream GPUI compile/test fixture
     tests/                 # realistic forward-test scenarios
     agents/
   minimize-api-responses/
@@ -277,11 +278,12 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 - `build-planetscale-landing-pages`: Design and implement technical,
   proof-heavy landing pages with monospace type, ruled grids, editorial copy,
   restrained accents, and responsive production QA.
-- `build-gpui-apps`: Build and review stable native Rust/GPUI apps with
-  production-ready starter setup, state architecture, Apple-style materials
-  and motion, accessible input and IME, clipboard/drag/drop, menus and
-  multi-window lifecycle, packaging, async/performance discipline,
-  compile-checked examples, tests, CI, and broader Paper-informed app work.
+- `build-gpui-apps`: Build native Rust desktop apps with GPUI Kit recommended
+  and an explicit framework choice before adoption. Merges the GPUI Kit
+  component and design skills with all 183 English application, Component,
+  Base, and Shell documentation pages, including coding/design, packaging,
+  auto updates, native integration, accessibility, testing, and production
+  delivery. Retains a separate pinned upstream GPUI path and Paper workflows.
 - `minimize-api-responses`: Build and review API endpoints so each caller gets
   only the fields it needs and is authorized to access, backed by explicit
   response schemas and negative contract tests.

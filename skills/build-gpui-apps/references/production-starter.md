@@ -6,9 +6,19 @@ means the project can be reproduced, diagnosed, tested, packaged, upgraded,
 and operated safely. It does not mean adding every possible subsystem before
 the product needs it.
 
-Use [gpui-starter](https://github.com/lassejlv/gpui-starter) as a concrete
-minimal example. Inspect its current branch before using it; the snapshot below
-is evidence, not a promise that `main` never changes.
+First follow the [framework choice policy](../SKILL.md#choose-the-framework-first):
+recommend GPUI Kit and ask before adopting or migrating it. For the Kit path,
+use [Getting Started](gpui-kit/upstream/docs/getting-started.md), the normative
+[Coding Guides](gpui-kit/upstream/docs/coding-guides.md),
+[Packaging](gpui-kit/upstream/docs/packaging.md), and
+[Auto Update](gpui-kit/upstream/docs/auto-update.md) with the production
+contracts below. Use `gpui-kit` and `gpui_kit` throughout application code.
+
+The [gpui-starter](https://github.com/lassejlv/gpui-starter) sections below
+retain a concrete **direct upstream GPUI** example. Use its dependency and
+bootstrap snippets only for that selected path. Its architecture may inform
+Kit work, but its Zed dependencies and toolchain are not Kit requirements.
+Inspect its current branch before adopting it; the snapshot is historical.
 
 ## Contents
 
@@ -80,7 +90,7 @@ Select one path:
 
 | Situation | Path |
 |---|---|
-| Empty target directory | Start from the current `gpui-starter` or the smallest example at the chosen GPUI revision |
+| Empty target directory | Ask the framework question; after agreement start from Kit Getting Started, or a pinned upstream example if that was selected |
 | Existing GPUI app | Harden in place; do not replace working architecture with the example |
 | Existing non-GPUI Rust domain crate | Keep it headless and add desktop/UI crates around it |
 | Platform-specific native app | Decide whether GPUI replaces or embeds the native surface before scaffolding |
@@ -98,6 +108,9 @@ actions, state ownership, and packaging. Never bulk-copy a starter over an
 existing checkout.
 
 ## Understand the gpui-starter example
+
+This section and “Adopt the example safely” describe the optional direct
+upstream path. Skip their cloning/dependency instructions for a Kit app.
 
 Snapshot inspected on 2026-08-13:
 
@@ -178,6 +191,13 @@ request explicitly includes migration.
 
 ## Make builds reproducible
 
+For **GPUI Kit**, record the selected `gpui-kit` version and its locked GPUI
+snapshot, choose the supported Rust toolchain from that release, and commit
+`Cargo.lock`. Follow [project versioning](project-versioning.md#gpui-kit).
+Use `gpui_kit::platform` for exposed platform APIs; verify Kit feature flags
+rather than adding direct GPUI platform packages. The Git/toolchain examples
+below apply **only to the direct upstream starter**.
+
 Use the target checkout as authority. For the inspected example, the lockfile
 resolves Zed commit `101ca00a…`; the matching Zed toolchain is Rust 1.95.0.
 When starting from a later commit, derive both facts again.
@@ -191,7 +211,7 @@ profile = "minimal"
 components = ["rustfmt", "clippy"]
 ```
 
-For a production application, make the Git revision explicit in the manifest
+For a production application using direct Git GPUI, make the Git revision explicit in the manifest
 as well as the lockfile:
 
 ```toml
@@ -319,8 +339,10 @@ main
   -> activate application
 ```
 
-Use the exact pinned startup API. Do not paste an `Application::new()` example
-into a revision that uses `gpui_platform::application()`.
+Use the exact selected startup API. Kit uses `gpui_kit::application()`,
+`gpui_kit::init(cx)`, and its documented window helper/Root contract. Direct
+upstream GPUI may use `gpui_platform::application()` or another pinned shape.
+Do not transfer bootstrap code between the two paths blindly.
 
 Requirements:
 
@@ -482,7 +504,7 @@ Use the narrowest reliable test for each contract:
    persistence paths, identity mapping, stale-generation rules, geometry.
 2. **Service tests:** deterministic fakes, timeouts, cancellation, offline/error
    mapping, atomic persistence.
-3. **`#[gpui::test]`:** actions, entity events, focus, input, windows, async
+3. **`#[gpui_kit::test]` (or `#[gpui::test]` for direct upstream):** actions, entity events, focus, input, windows, async
    orchestration, accessibility state.
 4. **Launch smoke:** real application opens, renders, accepts input, and exits
    cleanly in debug and release modes.
@@ -545,6 +567,10 @@ mixed change just to make a scanner quiet.
 
 ## Package and sign each platform
 
+Read the complete [Kit Packaging guide](gpui-kit/upstream/docs/packaging.md)
+for artifact assembly, identity, resources, native libraries, signing, and
+installed-app validation on each supported platform.
+
 Do not call a raw `target/release/<binary>` a finished desktop release.
 
 ### macOS
@@ -589,6 +615,10 @@ inspectable. Generate checksums and a machine-readable update/release manifest
 only when a consumer actually uses them.
 
 ## Plan updates, migrations, and recovery
+
+Read [Auto Update](gpui-kit/upstream/docs/auto-update.md). Kit provides UI and
+task/state tools, not a built-in installer. Match update installation to the
+package owner and verify the complete payload before replacement.
 
 Choose one update owner:
 
@@ -705,7 +735,7 @@ Use this completion language precisely:
 ## Completion checklist
 
 - [ ] Product name, package/binary slug, app ID, publisher, platforms, and distribution recorded
-- [ ] Source starter commit and exact GPUI revision recorded
+- [ ] Framework choice established; Kit version and matching GPUI snapshot, or upstream starter commit/revision, recorded
 - [ ] Matching Rust toolchain and committed `Cargo.lock` enforced
 - [ ] Product identity renamed across runtime, storage, and packaging
 - [ ] Desktop/UI/core boundaries match actual ownership

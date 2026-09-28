@@ -1,5 +1,14 @@
 # Worked GPUI patterns
 
+> Stack boundary: follow the [framework choice](../SKILL.md#choose-the-framework-first).
+> For Kit apps, read the relevant [current Kit guide](gpui-kit/upstream/index.md)
+> first and import through `gpui_kit`. The direct `gpui`/`gpui_platform` code and
+> pinned-source claims below belong to the retained upstream fixture; they do
+> not override Kit components, tokens, Root/overlay ownership, motion, or tests.
+> Preserve the product and platform contracts here, checking exact APIs in the
+> chosen stack before use.
+
+
 These examples show the current GPUI 0.2.2/upstream shape reviewed on
 2026-08-13. They are deliberately small. Adapt imports, result types, theme,
 component library, and signatures to the target's pinned source.

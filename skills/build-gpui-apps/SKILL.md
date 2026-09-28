@@ -1,328 +1,234 @@
 ---
 name: build-gpui-apps
-description: Build, scaffold, refactor, debug, review, and visually validate production Rust desktop interfaces with GPUI. Use for production-ready GPUI starter apps; new GPUI apps or components; Entity, Context, action, async, and lifecycle architecture; Apple-style macOS UI, materials, motion, gestures, focus, accessibility, text input, IME, clipboard, drag and drop, menus, multi-window behavior, restoration, packaging, CI, performance, testing, and broader app work that may use Paper.design as one input. When the primary task is faithfully translating a selected Paper.design frame into an existing GPUI view, use paper-to-gpui instead. Covers published GPUI and pinned Zed revisions, platform boundaries, narrow AppKit interop, and stability audits.
+description: Build, scaffold, refactor, debug, review, and validate native Rust desktop applications with GPUI. Recommend GPUI Kit and ask before adopting it; use gpui_kit imports after agreement, or preserve the chosen upstream GPUI stack. Includes the merged GPUI Kit component and design skills, full application/Base/Component/Shell documentation, coding and design guides, state, actions, async, input, accessibility, motion, themes, native integration, packaging, auto updates, testing, and production delivery. Use paper-to-gpui when the primary task is faithfully translating a selected Paper.design frame into an existing view.
 ---
 
 # Build GPUI Apps
 
-Build native GPUI software that is correct before it is glossy, genuinely
-platform-aware before it is Apple-styled, and verified in the running app
-before it is called complete.
+Build native desktop software with explicit state ownership, accessible
+interaction, and evidence from the running app. **Recommend GPUI Kit as the
+application entry point, and ask before adopting it.** GPUI Kit re-exports
+GPUI; it does not replace GPUI's rendering engine.
 
-This is a routed umbrella skill. Read only the reference layers needed for the
-task, but always follow the core contract and workflow below.
+This skill merges `gpui-kit` and `gpui-kit-design-guides` into one
+self-contained package. The [full documentation index](references/gpui-kit/upstream/index.md)
+bundles every English application, Component, Base, and Shell page in the
+official index. Read only the relevant pages, not the whole bundle at once.
+
+## Choose the framework first
+
+1. Inspect repository instructions, dirty state, manifests, lockfile, current
+   imports, entrypoint, theme, component system, and supported platforms. Use
+   `scripts/inspect_gpui_project.sh /path/to/project` for a read-only inventory.
+2. Honor an explicit choice already made in this conversation or project.
+   Existing `gpui-kit` usage is an established choice; do not ask repeatedly.
+   An explicit request for upstream GPUI is also a choice to respect.
+3. For a new app with no established choice, or a proposed migration from
+   upstream GPUI or separately wired components, ask before changing dependencies
+   or writing the new framework-specific implementation:
+
+   > I recommend GPUI Kit: it exposes GPUI through `gpui_kit` and includes
+   > components, themes, assets, and shared behavior. Use GPUI Kit
+   > (recommended), or keep direct upstream GPUI?
+
+   For an existing app, make the proposal concrete: identify the dependencies,
+   import paths, bootstrap, and tests the migration would affect. Wait for an
+   answer before adopting it; silence is not agreement. Continue inspection
+   and independent planning while waiting. A scoped fix in an existing direct
+   GPUI app does not require a migration or a new framework decision.
+4. After Kit is selected, use `gpui-kit` as the **UI stack dependency** and
+   `gpui_kit` as the import root. Do not add direct `gpui`, `gpui-pre`,
+   `gpui_platform`, `gpui-component`, or `gpui-base` dependencies merely to
+   copy an older example. Other application dependencies remain normal;
+   `gpui-shell` is separate when hosting JavaScript extensions.
+5. If upstream GPUI is selected, use the existing pinned upstream APIs and
+   [versioning path](references/project-versioning.md#direct-upstream-gpui).
+   Do not silently migrate it or mix incompatible GPUI type universes.
+
+The choice above applies to app creation/adoption, not to asking permission
+for each ordinary edit. Respect prior authorization and the requested scope.
 
 ## Core contract
 
-1. Inspect the target checkout before changing it: branch, dirty state,
-   manifests, lockfile, pinned GPUI source, app entrypoint, root view, theme,
-   components, assets, tests, and platform code.
-2. Treat the target checkout as the API authority. GPUI is pre-1.0; examples
-   from `gpui.rs`, Zed main, crates.io, or this skill can differ from the pinned
-   revision.
-3. Preserve working state ownership, commands, shortcuts, persistence, window
-   behavior, and platform integration. A visual request is not permission to
-   replace the app architecture.
-4. Keep render work deterministic and cheap. Move blocking I/O and CPU-heavy
-   work off the application thread, then update a live entity through the
-   appropriate async context.
-5. Give interactive elements stable IDs, semantic roles, keyboard access,
-   visible focus, disabled behavior, and immediate input feedback.
-6. Use glass as a functional navigation or control layer, not as decoration on
-   every surface. Never describe a flat translucent rectangle as native Liquid
-   Glass.
-7. Respect reduced motion, reduced transparency, increased contrast, and
-   differentiate-without-color. Provide an opaque fallback.
-8. Validate compilation, behavior, launch, and visuals. `cargo check` alone
-   does not prove focus, fonts, window chrome, scale factor, clipping, motion,
-   or material behavior.
-9. Do not rasterize text, controls, panels, or whole screens to fake fidelity.
-10. Preserve unrelated changes and report every unverified platform or runtime
-    path plainly.
-11. Treat text input, clipboard, menus, drag/drop, and window lifecycle as OS
-    contracts. Preserve Unicode range units, composition, focus, command state,
-    and stable ownership.
-12. For a new application, establish product identity, a pinned toolchain and
-    GPUI revision, observable startup, storage policy, CI, and packaging gates
-    before calling the starter production-ready.
+- The target lockfile and source are the API authority. Never invent methods
+  from React, CSS, old GPUI, or another release's examples. Verify constructors,
+  extension traits, feature gates, callbacks, and re-exports before use.
+- Preserve existing commands, shortcuts, state, persistence, window behavior,
+  and unrelated work. A visual request does not authorize an architecture rewrite.
+- Read the actual normative guides before making the relevant decisions;
+  summaries and component catalogs do not replace them.
+- Keep retained state, tasks, subscriptions, focus, and identities in lasting
+  owners. Keep rendering deterministic, inexpensive, and free of blocking I/O.
+- Use domain-derived IDs for repeated controls, theme tokens for presentation,
+  keyboard access and visible focus, and explicit loading/error/disabled states.
+- Prefer Kit components and Base behavior before inventing controls, motion,
+  virtual lists, overlays, or native bridges. Verify the capability exists.
+- Validate build, interaction, launch, and visuals separately. Report every
+  unverified platform or runtime path. Never rasterize UI to fake fidelity.
+- Packaging and update installation are application/distribution responsibilities;
+  documentation is not a built-in installer or updater API.
+
+## Read the guides first
+
+| Guide | When to read |
+| --- | --- |
+| [Design Guides](references/gpui-kit/upstream/docs/design-guides.md) | Before visible changes: component choice, layout, spacing, hierarchy, color, density, states, overlays, motion, or copy. Read in full for a new screen/redesign; otherwise read “Design thesis”, “Start from the task”, and the affected sections. |
+| [Coding Guides](references/gpui-kit/upstream/docs/coding-guides.md) | Before architecture, ownership, public API, naming, or testing decisions. Read in full for a new crate/module/feature; otherwise read “Architecture at a glance”, “Rules for coding agents”, and the affected sections. |
+| [Design section map and non-negotiables](references/gpui-kit/design.md) | Navigate the merged design skill and its review checklists. |
+| [Component families](references/gpui-kit/conventions.md) | Choose the constructor, state owner, callback, and layout contract; then read the particular component page. |
+| [Components and GPUI mechanisms](references/gpui-kit/guide.md) | Navigate the merged component catalog, coding section map, and deeper entity/element/test references. |
+
+Read Design before Coding for a visible feature. Finish with both relevant
+review checklists. Use a `Button` for in-app commands and `Link` for external
+URLs/email; use semantic theme tokens and rem-based spacing; make states
+visible; define overlay dismissal/focus restoration; name the object and verb
+in confirmation copy. These are a floor, not a substitute for the guides.
 
 ## Route the task
 
+All links below are bundled references. The
+[complete index](references/gpui-kit/upstream/index.md) covers every page,
+including components and primitives not listed in this compact router.
+
 | Task | Read first | Also read when relevant |
-|---|---|---|
-| Set up or harden a production-ready starter app | [production-starter.md](references/production-starter.md) | [project-versioning.md](references/project-versioning.md), [testing-qa.md](references/testing-qa.md) |
-| Orient a GPUI checkout or choose dependency features | [project-versioning.md](references/project-versioning.md) | [testing-qa.md](references/testing-qa.md) |
-| Design state, events, actions, or component boundaries | [architecture-state.md](references/architecture-state.md) | [async-performance.md](references/async-performance.md) |
-| Build views, controls, layout, themes, overlays, or lists | [components-layout.md](references/components-layout.md) | [worked-patterns.md](references/worked-patterns.md) |
-| Add Apple-like glass, translucency, depth, or macOS material | [apple-glass.md](references/apple-glass.md) | [accessibility-platform.md](references/accessibility-platform.md) |
-| Add animation, drag, momentum, springs, or gesture behavior | [motion-input.md](references/motion-input.md) | [accessibility-platform.md](references/accessibility-platform.md) |
-| Add focus, keyboard, screen-reader, typography, or platform behavior | [accessibility-platform.md](references/accessibility-platform.md) | [components-layout.md](references/components-layout.md) |
-| Add editable text, IME, clipboard, drag/drop, menus, multi-window behavior, or restoration | [input-windows.md](references/input-windows.md) | [accessibility-platform.md](references/accessibility-platform.md), [testing-qa.md](references/testing-qa.md) |
-| Add async loading, background work, virtualization, or performance fixes | [async-performance.md](references/async-performance.md) | [architecture-state.md](references/architecture-state.md) |
-| Add or review tests, launch checks, screenshots, or release gates | [testing-qa.md](references/testing-qa.md) | [visual-validation.md](references/visual-validation.md) |
-| Use Paper.design inside broader GPUI app or architecture work | [paper-to-gpui.md](references/paper-to-gpui.md) | [paper-mcp.md](references/paper-mcp.md), [visual-validation.md](references/visual-validation.md) |
-| Faithfully translate a selected Paper.design frame as the primary task | Use the standalone `paper-to-gpui` skill | Return here only for broader app architecture or production work |
-| Need complete, copyable patterns | [worked-patterns.md](references/worked-patterns.md) | The domain reference for the pattern |
-| Verify why a rule exists or refresh time-sensitive claims | [sources.md](references/sources.md) | Current target source and official docs |
+| --- | --- | --- |
+| Set up, choose features, or migrate imports | [Installation](references/gpui-kit/upstream/docs/installation.md), [Getting Started](references/gpui-kit/upstream/docs/getting-started.md), [project versioning](references/project-versioning.md) | [Usage](references/gpui-kit/usage.md), [production starter](references/production-starter.md) |
+| State, architecture, contexts, events, actions, focus, tasks | [Coding Guides](references/gpui-kit/upstream/docs/coding-guides.md), [mechanism map](references/gpui-kit/guide.md#gpui-references) | [Entity](references/gpui-kit/upstream/docs/entity.md), [Context](references/gpui-kit/upstream/docs/context.md), [Action](references/gpui-kit/upstream/docs/action.md), [Task](references/gpui-kit/upstream/docs/task.md) |
+| Controls, forms, data, navigation, chat, charts, editor, dock | [Component catalog](references/gpui-kit/upstream/component.md), [family conventions](references/gpui-kit/conventions.md) | Specific [component page](references/gpui-kit/upstream/index.md#styled-components), [application recipe](references/gpui-kit/recipes.md) |
+| Custom design system or reusable behavior | [Base](references/gpui-kit/upstream/base.md), [Base primitives and infrastructure](references/gpui-kit/upstream/index.md#base-behavior-and-primitives) | [Coding Guides](references/gpui-kit/upstream/docs/coding-guides.md), [Design Guides](references/gpui-kit/upstream/docs/design-guides.md) |
+| Layout, style, themes, typography, icons, images, localization | [Style](references/gpui-kit/upstream/docs/style.md), [Theme](references/gpui-kit/upstream/component/theme.md) | [Fonts](references/gpui-kit/upstream/docs/fonts.md), [Assets](references/gpui-kit/upstream/docs/assets.md), [Images](references/gpui-kit/upstream/docs/image.md), [I18N](references/gpui-kit/upstream/docs/i18n.md) |
+| Windows, overlays, persistence, text/IME, clipboard, menus, drag/drop | [Window](references/gpui-kit/upstream/docs/window.md), [Multi Window](references/gpui-kit/upstream/docs/multi-window.md) | [Input and window contracts](references/input-windows.md), specific Input/Dialog/Sheet/Menu docs |
+| Accessibility, focus, shortcuts, platform conventions | [Accessibility](references/gpui-kit/upstream/docs/accessibility.md), [Focus](references/gpui-kit/upstream/docs/focus.md), [KeyBinding](references/gpui-kit/upstream/docs/keybinding.md) | [Platform acceptance](references/accessibility-platform.md) |
+| Animation, springs, presence, transitions, gestures | [Animation](references/gpui-kit/upstream/docs/animation.md), [Base motion](references/gpui-kit/upstream/base/motion.md) | [Motion and input contracts](references/motion-input.md) |
+| Virtualization, cache, rendering, measurement, performance | [View Cache](references/gpui-kit/upstream/docs/view-cache.md), [FPS](references/gpui-kit/upstream/docs/fps.md), [VirtualList](references/gpui-kit/upstream/component/virtual-list.md) | [Async/performance contracts](references/async-performance.md), [Element](references/gpui-kit/upstream/docs/element.md), [Paint](references/gpui-kit/upstream/docs/paint.md), [Geometry](references/gpui-kit/upstream/docs/geometry.md) |
+| Native notifications, OS extensions, embedded browser | [System Notifications](references/gpui-kit/upstream/docs/system-notification.md), [Native Extensions](references/gpui-kit/upstream/docs/native-extension.md), [WebView](references/gpui-kit/upstream/docs/webview.md) | [Apple materials](references/apple-glass.md); check platform limits before promising behavior |
+| JavaScript extensions, permissions, dependencies, host APIs | [Shell](references/gpui-kit/upstream/shell.md), [Shell guide index](references/gpui-kit/upstream/index.md#shell-and-extensions) | Separate `gpui-shell` dependency, capability and sandbox limits |
+| Package, sign, distribute, update, restart, recover | [Packaging](references/gpui-kit/upstream/docs/packaging.md), [Auto Update](references/gpui-kit/upstream/docs/auto-update.md) | [Production acceptance](references/production-starter.md), platform signing and package-owner rules |
+| WebAssembly or mobile targets | [WebAssembly](references/gpui-kit/upstream/docs/webassembly.md), [Mobile](references/gpui-kit/upstream/docs/mobile.md) | Preserve the documented maturity and platform limits; do not infer desktop parity |
+| Unit, context, or UI integration testing | [Testing](references/gpui-kit/upstream/docs/test.md), [test mechanics](references/gpui-kit/gpui/test.md) | [Testing/QA](references/testing-qa.md), [visual validation](references/visual-validation.md) |
+| Paper as input to broader app work | [Paper workflow](references/paper-to-gpui.md), [Paper MCP](references/paper-mcp.md) | [Visual validation](references/visual-validation.md) |
+| Faithful translation of one Paper frame as the primary task | Use the standalone `paper-to-gpui` skill | Preserve this project's chosen import root and state ownership |
+| Direct upstream GPUI, explicitly selected | [Project versioning](references/project-versioning.md#direct-upstream-gpui), [architecture](references/architecture-state.md), [components/layout](references/components-layout.md) | [Worked patterns](references/worked-patterns.md); these examples target the older pinned upstream fixture |
 
-## Workflow
+## GPUI Kit application path
 
-### 1. Establish scope and current truth
+After the framework choice is settled:
 
-Run the read-only inspector:
+1. Record the exact Kit version, its matching GPUI snapshot, toolchain, features,
+   and platforms. The bundled installation page uses `gpui-kit = "0.7.0"`;
+   it is a dated snapshot, not an instruction to upgrade an existing app.
+2. Import GPUI APIs with `use gpui_kit::*;`. Import components from
+   `gpui_kit::component`, behavior from `gpui_kit::base`, assets from
+   `gpui_kit::assets`, and platform APIs from `gpui_kit::platform`.
+   Some preserved upstream docs show internal `gpui`, `gpui_component`, or
+   `gpui_base` imports. Adapt those to the verified Kit re-exports in application
+   code; do not copy internal dependency declarations into the app.
+3. Register assets, call `gpui_kit::init(cx)` once before constructing components
+   or windows, and follow the pinned window helper contract. Current
+   `gpui_kit::open_window` takes a content-entity closure and supplies `Root`;
+   current `Root` renders overlays. Do not double-wrap or render overlay layers
+   again. Older versions require source verification before migration.
+4. Use the [complete current bootstrap](references/gpui-kit/upstream/docs/getting-started.md)
+   and [retained-state recipe](references/gpui-kit/recipes.md). Keep input/select
+   state entities and subscriptions on their owner; never recreate them in render.
+5. Import actual extension traits such as `ButtonVariants`, `ActiveTheme`,
+   `Sizable`, or `WindowExt` when their methods are used. A component does not
+   automatically support every trait.
+6. Prefer the smallest correct unit: ordinary element composition,
+   `RenderOnce` for reusable value components, `Entity<T>` for retained
+   independent state, and custom `Element`/canvas or native bridges only when
+   the existing layers cannot provide the behavior.
+7. Implement one vertical slice: domain operation → action/event → entity
+   update → notification → rendered states → pointer/keyboard/focus behavior
+   → error/cancellation handling → meaningful tests.
+8. Keep `Task` and `Subscription` handles for their intended lifetimes. Use
+   weak entity captures where appropriate, background workers for blocking
+   work, and foreground orchestration for UI updates. Reject stale results.
+9. Use existing tokens/components and documented motion before custom paint or
+   springs. Preserve reduced motion, reduced transparency, contrast, and
+   differentiate-without-color preferences, with opaque material fallbacks.
 
-```sh
-scripts/inspect_gpui_project.sh /path/to/project
-```
+## Production and platform work
 
-Then inspect directly:
+For a starter, use [production-starter.md](references/production-starter.md)
+and the Kit Packaging/Auto Update guides together. Establish product identity,
+application/package IDs, supported OS/architectures, toolchain, lockfile,
+observable startup, storage/migrations, secrets, CI, distribution, and update
+ownership as required by the product. Keep a small app small; split complex
+features by capability when their ownership warrants it.
 
-- Read repository instructions and determine whether the request authorizes
-  edits or only diagnosis/review.
-- Confirm the owning crate and the smallest surface that can satisfy the task.
-- Record the GPUI declaration and exact lockfile version or Git revision.
-- Find a similar component that compiles in this checkout.
-- Identify current theme access, asset loading, focus conventions, actions,
-  overlay system, async patterns, and test support.
-- Note the platform and minimum OS versions. Do not silently make a
-  cross-platform component macOS-only.
+A direct-GPUI starter is reference material, not a dependency template for a
+Kit app. Do not copy its `gpui` or `gpui_platform` declarations into the Kit path.
 
-Read [project-versioning.md](references/project-versioning.md) before creating a
-new app, changing startup, changing GPUI versions, or copying an upstream API.
+For Apple materials, choose an existing component first, then a supported
+native material, a truthful cross-platform approximation, and an opaque
+fallback. Guard OS availability and keep the bridge narrow. Never describe
+whole-window blur or a translucent rectangle as native per-control Liquid Glass.
 
-For a greenfield or starter-hardening request, read
-[production-starter.md](references/production-starter.md) before choosing the
-crate layout. It uses
-[lassejlv/gpui-starter](https://github.com/lassejlv/gpui-starter) as a concrete
-minimal example, then adds the missing production contracts without pretending
-every app needs every subsystem.
+For updates, match the installer owner: whole signed macOS bundle, Windows
+installer, Linux package manager, or an explicitly portable installation.
+Verify the selected version, target, full payload, authenticity, restart,
+and recovery behavior. Never treat single-binary replacement as an update
+strategy for every package format.
 
-### 2. Write the behavioral contract
+For Paper input within broader work, confirm the exact live file/frame,
+capture screenshot/tree/styles/fonts/assets, then implement geometry,
+typography, paint, and interactions while preserving ownership. Compare at
+matching logical bounds. If Paper is unavailable, report the extraction
+limit and continue independent work; do not invent the missing design.
 
-Before implementation, state:
+## Validate and report
 
-- source of truth for state;
-- user actions and resulting events/state transitions;
-- loading, empty, disabled, error, and cancellation states;
-- focus owner, tab order, shortcuts, pointer and touch behavior;
-- text index units, composition, clipboard, menu, and window ownership when in
-  scope;
-- resize and scrolling behavior;
-- material tier and fallbacks;
-- reduced-motion, opaque, and high-contrast behavior;
-- target platforms and what must be verified on each.
-
-For a visual translation, add the exact source frame, viewport, theme, fonts,
-assets, and screenshot evidence.
-
-### 3. Choose the smallest correct GPUI register
-
-Use:
-
-- an ordinary element tree for normal layout and styling;
-- `RenderOnce` for stateless, value-like reusable components;
-- an `Entity<T>` implementing `Render` for independently changing state;
-- a project model entity for shared domain state;
-- `canvas` or a custom `Element` only when ordinary layout or painting cannot
-  meet the requirement;
-- a narrow platform bridge only for behavior GPUI cannot supply.
-
-Do not create an entity for every wrapper. Do not keep meaningful state in
-ephemeral render-local values. Read
-[architecture-state.md](references/architecture-state.md) and
-[components-layout.md](references/components-layout.md).
-
-### 4. Implement one vertical slice
-
-Build one end-to-end path before broad extraction:
-
-1. Domain state or model operation
-2. Typed action or event
-3. Entity update
-4. `cx.notify()` or emitted event
-5. Rendered default state
-6. Pointer, keyboard, focus, and accessibility behavior
-7. Error/cancellation state
-8. Targeted test
-
-Only extract a reusable component or token after a repeated semantic or visual
-pattern is proven. Keep public APIs narrow and predictable.
-
-### 5. Apply Apple design without lying about capability
-
-Select the material tier in this order:
-
-1. Existing system or project component
-2. Native macOS 26+ `NSGlassEffectView` behind an availability boundary
-3. `NSVisualEffectView` or GPUI whole-window blur when that is the actual need
-4. Cross-platform GPUI approximation using semantic tint, border, highlight,
-   shadow, and opacity
-5. Opaque/high-contrast fallback
-
-Do not stack glass on glass. Keep content surfaces mostly solid. Use concentric
-geometry, restrained tint, adaptive light/dark tokens, and clear elevation.
-Read [apple-glass.md](references/apple-glass.md).
-
-### 6. Make interaction physical and interruptible
-
-- Respond on press/down, then commit on release/click.
-- Keep direct manipulation 1:1 and preserve the grab offset.
-- Carry velocity from gesture to settling motion.
-- Retarget from current presentation state and velocity.
-- Keep input active while motion runs.
-- Use symmetric enter/exit paths and anchor presentations to their source.
-- Prefer `AnimationExt::with_animation` for decorative finite motion when the
-  pinned version supports it; it integrates with GPUI reduced-motion state.
-- Use explicit state plus frame requests for interactive springs. The bundled
-  [spring.rs](assets/spring.rs) is a pure-Rust starting point, not a substitute
-  for target-version integration.
-
-Read [motion-input.md](references/motion-input.md) before implementing custom
-animation or gestures.
-
-For editable text, native command surfaces, drag/drop, or more than one window,
-read [input-windows.md](references/input-windows.md). Prefer a maintained editor
-component over implementing the platform input contract from scratch.
-
-### 7. Protect lifecycle and performance
-
-- Hold a returned `Task` when dropping it should cancel work; detach only when
-  app-lifetime completion is deliberate and errors are observed.
-- Hold a `Subscription` when the observer has an owner; detach only when entity
-  lifetime semantics are correct.
-- Capture `WeakEntity` in long-running work.
-- Use `background_spawn` for blocking/CPU work and `cx.spawn` or
-  `cx.spawn_in` for application-thread orchestration.
-- Virtualize large collections with `list` or `uniform_list`.
-- Avoid filesystem, network, sleep, parsing, and unbounded allocation in
-  `render`.
-- Request animation frames only while something is changing.
-
-Read [async-performance.md](references/async-performance.md).
-
-### 8. Validate in widening rings
-
-Run repository-native checks first, then adapt this baseline:
+Run repository-native checks; adapt this baseline to the owning crate:
 
 ```sh
 cargo fmt --check
-cargo check -p <owning-crate>
-cargo test -p <owning-crate>
+cargo check -p <owning-crate> --locked
+cargo test -p <owning-crate> --locked
 cargo clippy -p <owning-crate> --all-targets -- -D warnings
 ```
 
-Also:
+For Kit UI behavior, use `#[gpui_kit::test]` and `gpui_kit::test` with the
+feature setup from [Testing](references/gpui-kit/upstream/docs/test.md).
+UI integration testing renders real components in headless windows,
+simulates input, and asserts outcomes, focus, state, and layout. Use the
+production view; invoking a private method alone does not test the UI flow.
+For direct upstream GPUI, use that pinned version's `#[gpui::test]` setup.
 
-- launch the real app;
-- exercise mouse, keyboard, focus, resize, scroll, and relevant touch paths;
-- verify light, dark, inactive-window, reduced-motion, opaque, and
-  high-contrast states where supported;
-- capture matching screenshots for visual work;
-- check at 1x and a high-DPI scale;
-- inspect logs and task/error states;
-- run at least one targeted `#[gpui::test]` when behavior uses GPUI input,
-  focus, actions, timing, or windows.
+Launch the real app and exercise the changed interaction paths, resize,
+scroll, focus, light/dark, inactive-window, scale factor, and accessibility
+preferences relevant to the task. Verify text/IME, clipboard, menu, window,
+or updater paths when touched. Screenshots and headless tests complement
+native runtime checks. Install and upgrade real artifacts on claimed release
+platforms; cross-compilation alone does not establish that evidence.
 
-Read [testing-qa.md](references/testing-qa.md) and
-[visual-validation.md](references/visual-validation.md).
+Report the chosen stack/version, changed boundaries, checks actually run,
+visible/interaction outcomes, and unresolved platform or release limits.
+Rank review findings by user impact and evidence; do not present style
+preferences as correctness defects.
 
-This skill includes a compile-checked, exact-revision fixture at
-`assets/reference-app`. It demonstrates startup, actions, entity events,
-owned async work, accessibility, menus, multiple windows, virtualization,
-preference-aware material fallbacks, and spring orchestration. It is a pattern
-fixture, not a production component framework. Validate it with:
+The existing `assets/reference-app` is a compile-checked **direct upstream
+GPUI** fixture at its recorded Zed revision, retained for that selected path.
+`scripts/validate_reference_app.sh` validates that fixture, not Kit. Do not
+copy its manifest into a Kit app or claim it validates the bundled Kit docs.
+
+## Maintain this skill
+
+The [source ledger](references/sources.md) distinguishes the current Kit
+snapshot, the merged skills, and the older upstream fixture. Preserve source
+attribution and license notices when refreshing the documentation.
 
 ```sh
-scripts/validate_reference_app.sh
+python3 scripts/sync_gpui_kit_docs.py          # refresh all indexed English pages
+python3 scripts/sync_gpui_kit_docs.py --check  # offline coverage and hash check
 ```
 
-## Production starter path
+The source index retains translation links; images remain remote. Check the
+current official page and locked source when APIs differ. Where repository
+instructions require Context7, resolve the official library with `library`
+first, then fetch the specific concept with `docs`; keep each lookup focused.
 
-For “create a GPUI app,” “set up a starter,” or “make this starter
-production-ready”:
-
-1. Gather the product name, package/binary slug, owned application ID,
-   supported platforms, minimum OS versions, distribution route, durable data,
-   and update owner.
-2. Inspect the target and the exact starter/example commit. Never copy over an
-   existing checkout or delete its Git history without authorization.
-3. Keep the minimal `desktop`/`ui` split until domain code proves a separate
-   headless crate.
-4. Pin the Rust toolchain and GPUI Git revision, commit `Cargo.lock`, and make
-   the first clean CI baseline reproducible.
-5. Rename identity across crates, binary, action namespace, app ID, menus,
-   storage, icons, packaging, and update metadata.
-6. Add observable startup, configuration/migrations, secret storage,
-   lifecycle-owned async work, accessible controls, diagnostics, and recovery
-   only where the product requires them.
-7. Replace the demo with one real vertical slice and test it from domain state
-   through action, GPUI update, persistence/error state, restart, and release
-   launch.
-8. Build, sign, install, upgrade, and exercise real artifacts on every claimed
-   platform. Report cross-compilation separately.
-
-Do not call a raw release binary, a green `cargo check`, or the unmodified
-minimal example production-ready. Use the complete acceptance matrix in
-[production-starter.md](references/production-starter.md).
-
-## Paper.design path
-
-Use this path when Paper is one input to broader GPUI app, architecture, or
-production work. When faithful translation of a selected Paper frame is the
-primary task, route to the standalone `paper-to-gpui` skill instead.
-
-For Paper input within broader work:
-
-1. Require a live Paper MCP connection and one exact selected frame or node ID.
-2. Verify the open file with `get_basic_info` and intent with `get_selection`.
-3. Capture a 2x screenshot, hierarchy, JSX as structural evidence, computed
-   styles, fonts, tokens, and actual exportable assets.
-4. Preserve the GPUI app architecture and translate layout semantics, not DOM
-   wrapper count.
-5. Implement geometry, typography, paint, assets, and interactions in that
-   order.
-6. Compare Paper and native screenshots at matching logical bounds.
-
-If Paper is unavailable, stop the design extraction path and explain how to
-connect it. Do not recreate the design from memory. Read
-[paper-to-gpui.md](references/paper-to-gpui.md) and
-[paper-mcp.md](references/paper-mcp.md).
-
-## Review standard
-
-Rank findings by user impact and confidence. Require evidence for claims about:
-
-- stale or dropped tasks/subscriptions;
-- missed `cx.notify()` calls;
-- unstable or duplicate element IDs;
-- focus traps or pointer-only controls;
-- blocking application-thread work;
-- unbounded render allocation;
-- incorrect fixed sizing or clipping;
-- unsupported blur/material claims;
-- missing accessibility role, label, state, or action;
-- animation that ignores reduced motion;
-- platform API use without availability guards;
-- green compilation presented as visual or runtime proof.
-
-Do not turn style preferences into correctness findings.
-
-## Completion report
-
-Report:
-
-- GPUI version/revision and target platforms;
-- files and architectural boundaries changed;
-- material tier and fallback behavior;
-- interaction, focus, accessibility, async, and performance behavior;
-- text/IME, command, window lifecycle, and restoration behavior when relevant;
-- tests, builds, launch, and visual comparisons actually performed;
-- remaining deltas, unverified platforms, and version-sensitive assumptions.
-
-For the research snapshot behind this skill, read
-[sources.md](references/sources.md). Refresh upstream APIs when the target
-revision differs or the snapshot is no longer current.
-
-After substantial suite changes, run the realistic prompts and reviewer-only
-rubrics in [forward-tests.md](tests/forward-tests.md) with fresh agents. Fix
-routing or instruction gaps before publishing.
+After substantial changes, run the prompts in
+[forward-tests.md](tests/forward-tests.md) with fresh agents and review the
+rubrics separately. Also run the repository skill/link validator, documentation
+coverage check, and script smoke tests before calling the merge complete.

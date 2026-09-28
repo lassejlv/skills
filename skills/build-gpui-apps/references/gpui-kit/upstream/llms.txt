@@ -1,0 +1,374 @@
+# GPUI Kit
+
+> A comprehensive Rust framework for building fantastic, high-performance desktop apps with GPUI.
+
+Documentation license: original prose and illustrations for which GPUI Kit holds licensing rights are also offered under CC BY 4.0. When copying or adapting, credit GPUI Kit, link the source (https://gpui-kit.com) and https://creativecommons.org/licenses/by/4.0/, and indicate changes. Code examples and software source use Apache-2.0; third-party material retains its terms; existing Apache-2.0 permissions remain.
+
+## Table of Contents
+
+- [Accessibility](/docs/accessibility.md): Build and test accessible GPUI Kit interfaces with AccessKit semantics and actions.
+- [Accessibility](/zh-CN/docs/accessibility.md): 使用 AccessKit 语义与操作构建、测试 GPUI Kit 无障碍界面。
+- [Accordion](/base/primitives/accordion.md): A disclosure group composed from independently styleable header, trigger, and panel parts.
+- [Accordion](/component/accordion.md): The accordion uses collapse internally to make it collapsible.
+- [Accordion](/zh-CN/base/primitives/accordion.md): 由可独立设置样式的标题、触发器和面板组成的折叠组。
+- [Accordion](/zh-CN/component/accordion.md): 内部基于 collapse 实现的可折叠面板组件。
+- [Action](/docs/action.md): Define typed commands and route them through focus, key contexts, and GPUI's dispatch path.
+- [Action](/zh-CN/docs/action.md): 定义有类型的命令，并通过 Focus、Key Context 和 GPUI Dispatch Path 路由。
+- [Alert](/component/alert.md): Displays a callout for user attention.
+- [Alert](/zh-CN/component/alert.md): 用于吸引用户注意的重要提示组件。
+- [Alert Dialog](/base/primitives/alert-dialog.md): A modal confirmation surface for actions that need an explicit decision.
+- [Alert Dialog](/zh-CN/base/primitives/alert-dialog.md): 用于需要用户明确决定之操作的模态确认界面。
+- [AlertDialog](/component/alert-dialog.md): A modal dialog that interrupts the user with important content and expects a response.
+- [AlertDialog](/zh-CN/component/alert-dialog.md): 使用于重要确认场景的模态对话框组件。
+- [Animation](/docs/animation.md): Choose GPUI element animation, GPUI Base motion, and GPUI Component motion with correct identity, interruption, and reduced-motion behavior.
+- [Animation](/zh-CN/docs/animation.md): 正确选用 GPUI 元素动画、GPUI Base Motion 与 GPUI Component 动效，并处理标识、中断和减弱动态效果。
+- [API Reference](/shell/api.md): Every name a script can import or reach — the four built-in modules, the cx and window globals, and the element methods that are not styles.
+- [API Reference](/zh-CN/shell/api.md): 脚本能 import 或触及的每个名字——四个内置模块、cx 与 window 全局对象，以及那些不是样式的元素方法。
+- [Attachment](/component/attachment.md): A composable file and media attachment surface with lifecycle states, previews, and actions.
+- [Attachment](/zh-CN/component/attachment.md): 支持上传状态、预览和操作的可组合文件与媒体附件表面。
+- [Auto Update](/docs/auto-update.md): Plan safe update checks, verified downloads, installation, and restart for GPUI Kit desktop apps.
+- [Auto Update](/zh-CN/docs/auto-update.md): 为 GPUI Kit 应用设计版本检查、可信下载、安装与重启流程，并处理不同平台的分发边界。
+- [Avatar](/base/primitives/avatar.md): An image with composable fallback content for a person or entity.
+- [Avatar](/component/avatar.md): Displays a user avatar image with fallback options.
+- [Avatar](/zh-CN/base/primitives/avatar.md): 带可组合后备内容的人物或实体图像。
+- [Avatar](/zh-CN/component/avatar.md): 支持图片、姓名首字母和占位图标的头像组件。
+- [Badge](/component/badge.md): A red dot that indicates the number of unread messages, status, or other notifications.
+- [Badge](/zh-CN/component/badge.md): 用于显示未读数、状态点或图标提示的小徽标组件。
+- [Bubble](/component/bubble.md): A composable chat surface for text, rich content, and reaction controls.
+- [Bubble](/zh-CN/component/bubble.md): 可承载文本、富内容和 reaction 控件的聊天消息表面。
+- [Button](/base/primitives/button.md): An unstyled, accessible pressable with semantic state and keyboard activation.
+- [Button](/component/button.md): Displays a button or a component that looks like a button.
+- [Button](/zh-CN/base/primitives/button.md): 无样式、可访问且支持语义状态和键盘激活的按钮。
+- [Button](/zh-CN/component/button.md): 显示一个按钮，或外观表现为按钮的组件。
+- [Calendar](/base/primitives/calendar.md): A state-driven date grid with selection matchers and custom item rendering.
+- [Calendar](/component/calendar.md): A flexible calendar component for displaying months, navigating dates, and selecting single dates or date ranges.
+- [Calendar](/zh-CN/base/primitives/calendar.md): 支持选择匹配器和自定义日期项渲染的状态驱动日期网格。
+- [Calendar](/zh-CN/component/calendar.md): 用于展示月份、浏览日期和选择单日或区间的灵活日历组件。
+- [Capabilities](/shell/capabilities.md): The default-deny model, the fs / storage / clipboard / process surface, where storage lives, and what the sandbox withholds.
+- [Capabilities](/zh-CN/shell/capabilities.md): 默认全部拒绝的模型，fs / storage / clipboard / process 接口，存储位置，以及沙箱裁掉了什么。
+- [Carousel](/component/carousel.md): A composable carousel for browsing related content.
+- [Carousel](/zh-CN/component/carousel.md): 用于浏览相关内容的可组合 Carousel 组件。
+- [Chart](/component/chart.md): Beautiful charts and graphs for data visualization including line, bar, area, pie, radar, candlestick, and sankey charts.
+- [Chart](/zh-CN/component/chart.md): 支持折线图、柱状图、面积图、饼图、雷达图、K 线图和桑基图的数据可视化组件。
+- [Checkbox](/base/primitives/checkbox.md): A controlled tri-state check control with a separately styled indicator.
+- [Checkbox](/component/checkbox.md): A control that allows the user to toggle between checked and not checked.
+- [Checkbox](/zh-CN/base/primitives/checkbox.md): 指示器可独立设置样式的受控三态复选框。
+- [Checkbox](/zh-CN/component/checkbox.md): 用于切换选中与未选中状态的复选框组件。
+- [Clipboard](/component/clipboard.md): A button component that helps you copy text or other content to your clipboard.
+- [Clipboard](/zh-CN/component/clipboard.md): 用于复制文本或其它内容到剪贴板的按钮组件。
+- [Coding Guides](/docs/coding-guides.md): Architecture and coding conventions for maintainable GPUI Kit applications
+- [Coding Guides](/zh-CN/docs/coding-guides.md): 构建可维护 GPUI Kit 应用的架构、代码风格与命名规范
+- [Collapsible](/base/primitives/collapsible.md): A composable region that shows or hides content without prescribing its trigger styling.
+- [Collapsible](/component/collapsible.md): An interactive element which expands/collapses.
+- [Collapsible](/zh-CN/base/primitives/collapsible.md): 不规定触发器样式的可组合显隐区域。
+- [Collapsible](/zh-CN/component/collapsible.md): 可展开和收起内容的交互式组件。
+- [Color Picker](/base/primitives/color-picker.md): State and interaction foundations for selecting colors in a custom picker UI.
+- [Color Picker](/zh-CN/base/primitives/color-picker.md): 为自定义颜色选择器提供状态与交互基础。
+- [ColorPicker](/component/color-picker.md): A comprehensive color selection interface with support for multiple color formats, presets, and alpha channel.
+- [ColorPicker](/zh-CN/component/color-picker.md): 支持多种颜色格式、预设色和透明通道的颜色选择组件。
+- [Combobox](/base/primitives/combobox.md): A text input paired with keyboard-navigable suggestions and selection behavior.
+- [Combobox](/component/combobox.md): An autocomplete input paired with a searchable dropdown list.
+- [Combobox](/zh-CN/base/primitives/combobox.md): 结合文本输入、键盘导航建议和选择行为的组合框。
+- [Combobox](/zh-CN/component/combobox.md): 带有可搜索下拉列表的自动补全输入组件。
+- [Command](/component/command.md): A command palette — a filtered list of commands and quick actions.
+- [Command](/zh-CN/component/command.md): 命令面板 —— 经过过滤的命令与快捷操作列表。
+- [Comparison](/docs/comparison.md): Compare GPUI Kit, Iced, egui, Qt 6, and Slint for desktop application architecture and capabilities.
+- [Comparison](/zh-CN/docs/comparison.md): 从桌面应用的架构与能力出发，比较 GPUI Kit、Iced、egui、Qt 6 和 Slint。
+- [Components](/component.md): Browse 75+ production-ready Rust UI components and primitives for forms, navigation, data, feedback, editing, and application layouts.
+- [Components](/zh-CN/component.md): 浏览 75+ 个生产就绪的 Rust UI 组件与原语，覆盖表单、导航、数据、反馈、编辑与应用布局。
+- [Context](/docs/context.md): Understand how GPUI provides application, Entity, Window, and async access.
+- [Context](/zh-CN/docs/context.md): 了解 GPUI 如何提供应用、Entity、Window 与异步访问能力。
+- [DataTable](/component/data-table.md): High-performance data table with virtual scrolling, sorting, filtering, and column management.
+- [DataTable](/zh-CN/component/data-table.md): 支持虚拟滚动、排序、筛选和列管理的高性能数据表格。
+- [Date Picker](/base/primitives/date-picker.md): A focus-aware date input that composes calendar behavior with a popup.
+- [Date Picker](/zh-CN/base/primitives/date-picker.md): 将日历行为与弹出层组合的焦点感知日期输入。
+- [DatePicker](/component/date-picker.md): A date picker component for selecting single dates or date ranges with calendar interface.
+- [DatePicker](/zh-CN/component/date-picker.md): 支持单日期和日期范围选择的日历选择器组件。
+- [Dependencies](/shell/dependencies.md): Shell packages — what makes a Git repository one, and how a manifest names, selects, fetches and imports it, down to what an editor sees.
+- [Dependencies](/zh-CN/shell/dependencies.md): shell package——什么样的 Git 仓库算一个，以及 manifest 如何命名、选择版本、抓取与导入它，直到编辑器看见它。
+- [DescriptionList](/component/description-list.md): Use to display details with a tidy layout for key-value pairs.
+- [DescriptionList](/zh-CN/component/description-list.md): 用于以整齐布局展示键值对详情信息的组件。
+- [Design Guides](/docs/design-guides.md): Product and interaction design guidance for GPUI Kit applications
+- [Design Guides](/zh-CN/docs/design-guides.md): 面向 GPUI Kit 客户端应用的产品、视觉与交互设计规范
+- [Dialog](/base/primitives/dialog.md): A composable modal surface with focus management, backdrop, title, and close parts.
+- [Dialog](/component/dialog.md): A dialog dialog for displaying content in a layer above the app.
+- [Dialog](/zh-CN/base/primitives/dialog.md): 带焦点管理、遮罩、标题和关闭部件的可组合模态界面。
+- [Dialog](/zh-CN/component/dialog.md): 在应用内容上方显示浮层内容的对话框组件。
+- [Dock](/base/dock.md): A dockable workspace — splits, tab groups, and edge docks — whose layout is pure data and whose appearance is entirely yours.
+- [Dock](/component/dock.md): Production-ready dock layouts with styled tabs, split panes, edge docks, and persistent state.
+- [Dock](/zh-CN/base/dock.md): 用持久布局树、面板生命周期和可替换渲染器构建停靠工作区。
+- [Dock](/zh-CN/component/dock.md): 支持标签页、分割面板、边缘 Dock 与状态持久化的生产级工作区布局。
+- [Dock and Panels](/shell/dock.md): A dockable layout drawn entirely by script — panels that survive a restart, chrome you draw yourself, and commands instead of callbacks.
+- [Dock and Panels](/zh-CN/shell/dock.md): 完全由脚本绘制的可停靠布局——重启后仍在原处的面板、自己画的 chrome，以及用命令代替回调。
+- [DropdownButton](/component/dropdown_button.md): A DropdownButton is a combination of a button and a trigger button. It allows us to display a dropdown menu when the trigger is clicked, but the left Button can still respond to independent events.
+- [DropdownButton](/zh-CN/component/dropdown_button.md): DropdownButton 由一个主按钮和一个触发下拉菜单的按钮组合而成。
+- [Editor](/base/primitives/editor.md): An unstyled source-code editor with language, gutter, folding, and decoration support.
+- [Editor](/component/editor.md): Source-code editor with syntax highlighting, gutter, folding, and decorations.
+- [Editor](/zh-CN/base/primitives/editor.md): 支持语言、行号槽、折叠和装饰的无样式源代码编辑器。
+- [Editor](/zh-CN/component/editor.md): 支持语法高亮、行号、折叠和文本装饰的源代码编辑器。
+- [Element](/docs/element.md): Understand GPUI's element tree and low-level rendering lifecycle.
+- [Element](/zh-CN/docs/element.md): 了解 GPUI 的 Element 树与底层渲染生命周期。
+- [ElementId](/docs/element_id.md): Give GPUI elements stable identity and understand how keyed state survives frames.
+- [ElementId](/zh-CN/docs/element_id.md): 为 GPUI 元素提供稳定标识，并理解带 key 的状态如何跨帧保留。
+- [Elements](/shell/elements.md): Constructors, composition with child / children / when, and why an element description can only be used once.
+- [Elements](/zh-CN/shell/elements.md): 构造器、用 child / children / when 组合，以及元素描述为什么只能使用一次。
+- [Empty](/component/empty.md): Composable empty states with media, text, actions, and custom content.
+- [Empty](/zh-CN/component/empty.md): 用媒体、文字、操作和自定义内容组合空状态。
+- [Entity](/docs/entity.md): Create, share, read, update, and observe state with GPUI Entity.
+- [Entity](/zh-CN/docs/entity.md): 使用 GPUI Entity 创建、共享、读取、更新和观察状态。
+- [Event](/docs/event.md): Use GPUI Events for typed notifications and connect them to Actions.
+- [Event](/zh-CN/docs/event.md): 使用 GPUI Event 发送类型化通知，并理解它与 Action 的关系。
+- [Examples](/shell/examples.md): Complete standalone and embedded applications, including retained state, HostModule registrations, and native motion.
+- [Examples](/zh-CN/shell/examples.md): 独立与嵌入式完整应用，包括留存状态、 HostModule 与原生动画。
+- [Focus](/docs/focus.md): Build keyboard reachable GPUI views with stable focus handles, focus events, and safe focus traps.
+- [Focus](/zh-CN/docs/focus.md): 从零学习 GPUI 的焦点句柄、键盘导航、焦点事件与焦点约束。
+- [Focus Trap](/component/focus-trap.md): A utility element that traps keyboard focus within a container, preventing Tab navigation from escaping.
+- [Focus Trap](/zh-CN/component/focus-trap.md): 将键盘焦点限制在指定容器内的工具元素。
+- [Fonts](/docs/fonts.md): System fonts, theme fonts, per-element overrides, and bundling custom fonts.
+- [Fonts](/zh-CN/docs/fonts.md): 系统字体、主题字体、元素级覆盖与自定义字体打包。
+- [Form](/component/form.md): Flexible form container with support for field layout, validation, and multi-column layouts.
+- [Form](/zh-CN/component/form.md): 支持字段布局、校验和多列排布的灵活表单容器。
+- [FPS Monitor](/docs/fps.md): Read the gpui-fps HUD — what MAX FPS is, why it is derived rather than counted, and what each row measures.
+- [FPS Monitor](/zh-CN/docs/fps.md): 读懂 gpui-fps 的 HUD —— MAX FPS 是什么、为什么是推导而非计数，以及每一行在测什么。
+- [Geometry](/docs/geometry.md): Work with GPUI's typed coordinates, layout lengths, and colors in practical UI code.
+- [Geometry](/zh-CN/docs/geometry.md): 在 GPUI 中使用带单位的坐标、布局长度与颜色。
+- [Getting Started](/base/getting-started.md): Install, initialize, and render your first gpui-base control.
+- [Getting Started](/docs/getting-started.md): Build your first GPUI Kit desktop application with one dependency and one view.
+- [Getting Started](/shell/getting-started.md): Add the runtime to a Rust application, write the script it loads, and check that script without opening a window.
+- [Getting Started](/zh-CN/base/getting-started.md): 安装、初始化并渲染第一个 gpui-base 控件。
+- [Getting Started](/zh-CN/docs/getting-started.md): 通过一个依赖和一个视图构建首个 GPUI Kit 桌面应用。
+- [Getting Started](/zh-CN/shell/getting-started.md): 把运行时接进一个 Rust 应用、写它要加载的脚本，并在不开窗口的情况下检查这个脚本。
+- [Global](/docs/global.md): Share application-wide state with GPUI Global, and connect changes to Views and windows.
+- [Global](/zh-CN/docs/global.md): 使用 GPUI Global 共享应用级状态，并将变化传递给 View 和窗口。
+- [GPUI Base](/base.md): The unstyled behavior and infrastructure foundation of GPUI Kit, the Rust desktop framework.
+- [GPUI Base](/zh-CN/base.md): GPUI Kit Rust 桌面框架中无样式的行为与基础设施层。
+- [GPUI Kit](/docs.md): A comprehensive Rust framework for building fantastic, high-performance desktop applications with GPUI.
+- [GPUI Kit](/zh-CN/docs.md): 基于 GPUI 构建出色高性能桌面应用的综合性 Rust 开发框架。
+- [GPUI Shell](/shell.md): Makes a Rust GPUI application extensible in JavaScript, rendered by GPUI itself — no WebView, no DOM. Plugins first, standalone script applications second.
+- [GPUI Shell](/zh-CN/shell.md): 让 Rust 的 GPUI 应用可以用 JavaScript 扩展，界面仍由 GPUI 自己渲染——没有 WebView，也没有 DOM。首要目标是插件，其次才是纯脚本应用。
+- [GroupBox](/component/group-box.md): A styled container element with an optional title to group related content together.
+- [GroupBox](/zh-CN/component/group-box.md): 带可选标题的分组容器组件，用于组织相关内容。
+- [History](/base/history.md): Browser-style navigation trails and grouped undo/redo transactions for application state.
+- [History](/zh-CN/base/history.md): 用于应用状态的浏览器式导航轨迹和分组 undo/redo 事务。
+- [Hosting](/shell/hosting.md): The Rust side in full — runtime lifetime, mounting script Views, refreshing them from host state, metrics, exit requests and hot-reload.
+- [Hosting](/zh-CN/shell/hosting.md): Rust 这一侧的全貌——运行时的生命周期、挂载脚本 View、从 Host 状态刷新它、指标、退出请求与 hot-reload。
+- [HostModule](/shell/host-module.md): How a host lends its own Rust to a script — registration, the import that reaches it, the plain-data boundary, and the rules a Host function runs under.
+- [HostModule](/zh-CN/shell/host-module.md): Host 如何把自己的 Rust 借给脚本——注册、脚本侧的 import、纯数据边界，以及 Host function 运行时受到的约束。
+- [Hover Card](/base/primitives/hover-card.md): A delayed floating card associated with a pointer or keyboard trigger.
+- [Hover Card](/zh-CN/base/primitives/hover-card.md): 与指针或键盘触发器关联的延迟浮动卡片。
+- [HoverCard](/component/hover-card.md): A floating overlay that displays rich content when hovering over a trigger element.
+- [HoverCard](/zh-CN/component/hover-card.md): 鼠标悬停时显示富内容浮层的组件。
+- [I18N](/docs/i18n.md): Set up translations, switch locales, and check text behavior in GPUI Kit.
+- [I18N](/zh-CN/docs/i18n.md): 配置翻译、切换语言，并检查 GPUI Kit 中的文本表现。
+- [Icon](/component/icon.md): Display SVG icons with various sizes, colors, and transformations.
+- [Icon](/zh-CN/component/icon.md): 以不同尺寸、颜色和变换方式显示 SVG 图标。
+- [Icons & Assets](/docs/assets.md): Configure bundled icons and custom assets for GPUI Kit applications.
+- [Icons & Assets](/zh-CN/docs/assets.md): 为 GPUI Kit 应用配置内置图标、自定义 SVG 与资源加载方式。
+- [Image](/component/image.md): Display embedded, local, and remote images with sizing, loading, and error states.
+- [Image](/zh-CN/component/image.md): 展示嵌入资源、本地文件与远程图片，并处理尺寸、加载和失败状态。
+- [Images](/docs/image.md): How img() and svg() load, decode, size, and cache images, and how to cache remote images over HTTP.
+- [Input](/base/primitives/input.md): An unstyled single-line text input with masking, validation, and number stepping.
+- [Input](/component/input.md): Text input component with validation, masking, and various features.
+- [Input](/zh-CN/base/primitives/input.md): 支持掩码、验证和数字步进的无样式单行文本输入。
+- [Input](/zh-CN/component/input.md): 带校验、掩码和多种扩展能力的文本输入组件。
+- [Input Group](/component/input-group.md): Combine inputs and textareas with text, icons, buttons, and toolbars.
+- [Input Group](/zh-CN/component/input-group.md): 将输入框、文本域与文本、图标、按钮和工具栏组合使用。
+- [Installation](/docs/installation.md): Install GPUI Kit and the platform dependencies required to build Rust desktop applications on macOS, Windows, and Linux.
+- [Kbd](/component/kbd.md): Displays keyboard shortcuts with platform-specific formatting.
+- [Kbd](/zh-CN/component/kbd.md): 以符合平台习惯的方式显示键盘快捷键。
+- [KeyBinding](/docs/keybinding.md): Bind GPUI Actions to keys, chords, and focused Key Contexts.
+- [KeyBinding](/zh-CN/docs/keybinding.md): 在 GPUI 中将 Action 绑定到按键、组合序列与获得 Focus 的 Key Context。
+- [Label](/component/label.md): Text labels for form elements with highlighting and styling options.
+- [Label](/zh-CN/component/label.md): 支持高亮、次要文本和样式定制的文本标签组件。
+- [Link](/base/primitives/link.md): An accessible link-like control with application-defined styling.
+- [Link](/zh-CN/base/primitives/link.md): 样式由应用定义的可访问链接控件。
+- [List](/component/list.md): A flexible list component that displays a series of items with support for sections, search, selection, and infinite scrolling.
+- [List](/zh-CN/component/list.md): 支持分组、搜索、选择和无限滚动的灵活列表组件。
+- [Marker](/component/marker.md): A compact composable row for conversation status, notifications, loading, and separators.
+- [Marker](/zh-CN/component/marker.md): 用于会话状态、通知边界和分隔标记的紧凑组合行。
+- [Menu](/component/menu.md): Context menus and popup menus with support for icons, shortcuts, submenus, and various menu item types.
+- [Menu](/zh-CN/component/menu.md): 支持图标、快捷键、子菜单和多种菜单项类型的上下文菜单与弹出菜单。
+- [Message](/component/message.md): Compose sender identity, metadata, rich content, and actions into an aligned chat message.
+- [Message](/zh-CN/component/message.md): 将发送者身份、元信息、富内容和操作组合成对齐的聊天消息。
+- [MessageScroller](/component/message-scroller.md): A virtualized message list with tail following, history insertion, unread navigation, and customizable jump controls.
+- [MessageScroller](/zh-CN/component/message-scroller.md): 支持尾部跟随、未读定位和稳定 prepend 的虚拟消息列表。
+- [Mobile](/docs/mobile.md): Build an iOS application or embed GPUI Kit in a Swift UIKit container with the experimental gpui-pre-mobile platform.
+- [Mobile](/zh-CN/docs/mobile.md): 使用实验性的 gpui-pre-mobile 平台构建 iOS 应用，或将 GPUI Kit 嵌入 Swift UIKit 容器。
+- [Motion](/base/motion.md): Typed transitions, springs, keyframes, presence, stagger, and reduced-motion behavior in gpui-base.
+- [Motion](/zh-CN/base/motion.md): gpui-base 的类型化 transition、spring、keyframes、presence、stagger 与 reduced-motion 行为。
+- [Multi Window](/docs/multi-window.md): Open multiple GPUI Kit windows, share application state, route work to the right window, and handle closing and restoration.
+- [Multi Window](/zh-CN/docs/multi-window.md): 在 GPUI Kit 中打开多个窗口，划分共享与窗口局部状态，并处理路由、关闭和窗口位置恢复。
+- [Native Extensions](/docs/native-extension.md): Integrate native menus and child views with GPUI Kit, including handles, layout, input, lifetime, and platform limits.
+- [Native Extensions](/zh-CN/docs/native-extension.md): 说明如何将系统菜单和原生子视图接入 GPUI Kit，包括 handle、布局、输入、生命周期与平台限制。
+- [Nav Stack](/base/primitives/nav-stack.md): A navigation stack of views with push, pop, forward, and replace, and an animatable transition lifecycle.
+- [Nav Stack](/zh-CN/base/primitives/nav-stack.md): 支持 push、pop、forward 与 replace 的视图导航栈，过渡生命周期可动画。
+- [Notification](/component/notification.md): Display toast notifications that appear at the top right of the window with auto-dismiss functionality.
+- [Notification](/zh-CN/component/notification.md): 在窗口右上角显示支持自动消失的 toast 通知。
+- [Number Input](/base/primitives/number-input.md): A numeric input with reusable increment, decrement, and step behavior.
+- [Number Input](/zh-CN/base/primitives/number-input.md): 带可复用递增、递减和步进行为的数字输入。
+- [NumberInput](/component/number-input.md): Number input component with increment/decrement controls and numeric formatting.
+- [NumberInput](/zh-CN/component/number-input.md): 带增减按钮与数字格式化能力的数值输入组件。
+- [OTP Input](/base/primitives/otp-input.md): A multi-cell one-time-code input driven by a shared text state.
+- [OTP Input](/zh-CN/base/primitives/otp-input.md): 由共享文本状态驱动的多单元格一次性验证码输入。
+- [OtpInput](/component/otp-input.md): One-time password input component with multiple fields, auto-focus, and paste handling.
+- [OtpInput](/zh-CN/component/otp-input.md): 带多输入框、自动聚焦和粘贴处理的一次性验证码输入组件。
+- [Overlays](/shell/overlays.md): Dialogs, the sheet and toasts, their stacking and dismissal order, and why they may only be opened from an event.
+- [Overlays](/zh-CN/shell/overlays.md): dialog、sheet 与 toast，它们的层叠与关闭顺序，以及为什么只能从事件中打开。
+- [Packaging](/docs/packaging.md): Turn a GPUI Kit release build into a macOS app and DMG, a Windows installer, or a Linux tarball and DEB.
+- [Packaging](/zh-CN/docs/packaging.md): 将 GPUI Kit 应用制作成 macOS、Windows 和 Linux 上可安装、可验证的发布产物。
+- [Pagination](/base/primitives/pagination.md): A controlled page navigator with explicit current and total page state.
+- [Pagination](/component/pagination.md): Pagination with page navigation, next and previous links.
+- [Pagination](/zh-CN/base/primitives/pagination.md): 显式管理当前页和总页数的受控分页导航。
+- [Pagination](/zh-CN/component/pagination.md): 提供页码、上一页和下一页导航的分页组件。
+- [Paint](/docs/paint.md): Draw custom geometry in GPUI and understand the boundary between layout, hit testing, and painting.
+- [Paint](/zh-CN/docs/paint.md): 理解 GPUI 的自定义图形绘制，以及布局、命中和绘制之间的边界。
+- [Performance](/shell/performance.md): What a script costs once frame rate stops being the variable — invalidation against description size, the View as the boundary that bounds both, and the two failures FPS cannot tell apart.
+- [Performance](/zh-CN/shell/performance.md): 当帧率不再是变量之后，JavaScript 真正的开销——失效频率乘以描述规模、每个 View 各自的 Snapshot，以及 FPS 分辨不出来的那两类问题。
+- [Plot](/base/plot.md): Unstyled plotting in gpui-base — scales, shapes, axes, the Plot element, and hover tracking — for building charts in any design system.
+- [Plot](/component/plot.md): A low-level plotting library for creating custom charts and data visualizations.
+- [Plot](/zh-CN/base/plot.md): gpui-base 中的无样式绘图能力：比例尺、图形、坐标轴、Plot element 与 hover 跟踪，可在任意设计系统中构建图表。
+- [Plot](/zh-CN/component/plot.md): 用于构建自定义图表和数据可视化的底层绘图库。
+- [Popover](/base/primitives/popover.md): An anchored floating surface with controlled or internally managed open state.
+- [Popover](/component/popover.md): A floating overlay that displays rich content relative to a trigger element.
+- [Popover](/zh-CN/base/primitives/popover.md): 支持受控或内部开关状态的锚定浮层。
+- [Popover](/zh-CN/component/popover.md): 相对于触发元素显示富内容的浮动层组件。
+- [Popup](/base/primitives/popup.md): A low-level trigger and anchored floating-content host.
+- [Popup](/zh-CN/base/primitives/popup.md): 底层触发器与锚定浮动内容宿主。
+- [Primitives](/base/primitives.md): The complete catalog of user-facing gpui-base primitives.
+- [Primitives](/zh-CN/base/primitives.md): gpui-base 面向用户的完整原语目录。
+- [Progress](/base/primitives/progress.md): Composable track and indicator parts for reporting task completion.
+- [Progress](/component/progress.md): Displays an indicator showing the completion progress of a task, typically displayed as a progress bar or circular indicator.
+- [Progress](/zh-CN/base/primitives/progress.md): 用于报告任务完成度的可组合轨道与指示器。
+- [Progress](/zh-CN/component/progress.md): 用于显示任务完成进度的线性或环形指示器。
+- [Questionnaire](/component/questionnaire.md): A composable multi-step questionnaire with choice, freeform, validation, and navigation support.
+- [Questionnaire](/zh-CN/component/questionnaire.md): 支持单选、多选、自由输入、校验和导航的可组合多步骤问卷。
+- [Radio](/base/primitives/radio.md): A controlled single-choice item with selectable and disabled semantics.
+- [Radio](/component/radio.md): A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+- [Radio](/zh-CN/base/primitives/radio.md): 具有选中和禁用语义的受控单选项。
+- [Radio](/zh-CN/component/radio.md): 一组互斥的单选按钮，同一时间只能选中一个选项。
+- [Radio Group](/base/primitives/radio-group.md): Groups radio items and provides keyboard navigation for a single selection.
+- [Radio Group](/zh-CN/base/primitives/radio-group.md): 将单选项分组，并为单项选择提供键盘导航。
+- [Rating](/component/rating.md): A simple interactive star rating component.
+- [Rating](/zh-CN/component/rating.md): 简单的交互式星级评分组件。
+- [Render](/docs/render.md): Turn Entity state into an element tree and understand when GPUI rebuilds a View.
+- [Render](/zh-CN/docs/render.md): 从 Entity 状态构建元素树，并理解 GPUI 何时重建 View。
+- [RenderOnce](/docs/render-once.md): Build reusable, declarative GPUI components from owned data.
+- [RenderOnce](/zh-CN/docs/render-once.md): 使用持有数据的方式构建可复用、声明式的 GPUI 组件。
+- [Resizable](/base/primitives/resizable.md): Panel groups and resize handles for user-adjustable split layouts.
+- [Resizable](/component/resizable.md): A flexible panel layout system with draggable resize handles and adjustable panels.
+- [Resizable](/zh-CN/base/primitives/resizable.md): 用于用户可调分栏布局的面板组和调整手柄。
+- [Resizable](/zh-CN/component/resizable.md): 具有拖拽分隔条与尺寸约束的可调整面板布局系统。
+- [Root View](/component/root.md): Use the Root view to enable themes, notifications, dialogs, and other GPUI Component features in a window.
+- [Root View](/zh-CN/component/root.md): 使用 Root 视图为窗口启用主题、通知、对话框及其他 GPUI Component 功能。
+- [Scrollable](/component/scrollable.md): Scrollable container with custom scrollbars, scroll tracking, and virtualization support.
+- [Scrollable](/zh-CN/component/scrollable.md): 支持自定义滚动条、滚动跟踪与虚拟列表的可滚动容器。
+- [Scrollbar](/base/primitives/scrollbar.md): Add a styled, animated scrollbar to GPUI scroll views, lists, and custom viewports.
+- [Scrollbar](/zh-CN/base/primitives/scrollbar.md): 为 GPUI 滚动视图、列表和自定义视口添加带动画的可定制滚动条。
+- [Select](/base/primitives/select.md): A button-like selection control backed by an anchored, keyboard-navigable popup.
+- [Select](/component/select.md): Displays a list of options for the user to pick from—triggered by a button.
+- [Select](/zh-CN/base/primitives/select.md): 由锚定、支持键盘导航的弹层驱动的选择控件。
+- [Select](/zh-CN/component/select.md): 通过按钮触发的选项选择组件。
+- [Settings](/component/settings.md): A settings UI with grouped setting items and pages.
+- [Settings](/zh-CN/component/settings.md): 用于构建设置页、设置分组和设置项的界面组件。
+- [SharedString](/docs/shared-string.md): Choose and use GPUI's immutable, cheaply cloned text for UI state and components.
+- [SharedString](/zh-CN/docs/shared-string.md): 了解如何选择并使用 GPUI 中不可变、易于 clone 的 UI 文本。
+- [Sheet](/base/primitives/sheet.md): A modal surface that enters from an edge while managing dismissal and focus.
+- [Sheet](/component/sheet.md): A sliding panel that appears from the edges of the screen for displaying content.
+- [Sheet](/zh-CN/base/primitives/sheet.md): 从边缘进入并管理关闭与焦点的模态界面。
+- [Sheet](/zh-CN/component/sheet.md): 从屏幕边缘滑出的内容面板组件。
+- [Shimmer](/component/shimmer.md): Theme-aware loading text with configurable sweep timing, spread, direction, and reduced-motion behavior.
+- [Shimmer](/zh-CN/component/shimmer.md): 可复用、遵循主题和 reduced motion 的文字 loading 高光。
+- [Sidebar](/component/sidebar.md): A composable, themeable and customizable sidebar component for navigation and content organization.
+- [Sidebar](/zh-CN/component/sidebar.md): 一个可组合、可主题化、可自定义的侧边栏组件。
+- [Skeleton](/component/skeleton.md): Use to show a placeholder while content is loading.
+- [Skeleton](/zh-CN/component/skeleton.md): 在内容加载时显示占位骨架。
+- [Slider](/base/primitives/slider.md): A state-driven range input with independently styleable track, indicator, and thumb.
+- [Slider](/component/slider.md): A control that allows the user to select values from a range using a draggable thumb.
+- [Slider](/zh-CN/base/primitives/slider.md): 轨道、已选区和滑块可独立设置样式的状态驱动范围输入。
+- [Slider](/zh-CN/component/slider.md): 通过拖动滑块在区间内选择数值的控件。
+- [Spinner](/component/spinner.md): Displays an animated loading showing the completion progress of a task.
+- [Spinner](/zh-CN/component/spinner.md): 显示旋转加载动画，用于反馈任务或异步操作的进行中状态。
+- [State and Views](/shell/state.md): Views, init and render, cx.notify(), retained input state, and asynchronous work.
+- [State and Views](/zh-CN/shell/state.md): View、init 与 render、cx.notify()、留存的输入状态，以及异步工作。
+- [StatusBar](/component/status-bar.md): A horizontal status bar with left, center, and right regions, usually placed at the bottom of a window or pane.
+- [StatusBar](/zh-CN/component/status-bar.md): 一个分为左、中、右三个区域的水平状态栏，通常放置在窗口或面板底部。
+- [Stepper](/component/stepper.md): A step-by-step progress for users to navigate through a series of steps or stages.
+- [Stepper](/zh-CN/component/stepper.md): 用于引导用户按步骤完成流程的进度组件。
+- [Style](/docs/style.md): Style GPUI elements with Tailwind CSS–familiar utilities, typed values, and fluent Rust builders.
+- [Style](/zh-CN/docs/style.md): 使用与 Tailwind CSS 相近的 utility、带类型的值和 Rust 链式构造器设置 GPUI 元素样式。
+- [Styling](/shell/styling.md): The fluent style surface, length and colour grammars, semantic theme tokens, and hover / active / focus styles.
+- [Styling](/zh-CN/shell/styling.md): 流式样式接口、长度与颜色语法、语义主题 token，以及 hover / active / focus 状态样式。
+- [Switch](/base/primitives/switch.md): A controlled on/off control with separately styleable track and thumb.
+- [Switch](/component/switch.md): A control that allows the user to toggle between checked and not checked.
+- [Switch](/zh-CN/base/primitives/switch.md): 轨道和滑块可分别设置样式的受控开关。
+- [Switch](/zh-CN/component/switch.md): 用于在选中和未选中之间切换的开关控件。
+- [SystemNotification](/docs/system-notification.md): Send OS notifications with GPUI, handle activation, and understand GPUI Kit's Notification integration and platform limits.
+- [SystemNotification](/zh-CN/docs/system-notification.md): 使用 GPUI 发送系统通知、处理点击，并了解 GPUI Kit Notification 的集成方式和平台限制。
+- [Table](/base/primitives/table.md): Semantic table primitives for composing headers, bodies, rows, and cells.
+- [Table](/component/table.md): A basic table component for directly rendering tabular data.
+- [Table](/zh-CN/base/primitives/table.md): 用于组合表头、表体、行和单元格的语义表格原语。
+- [Table](/zh-CN/component/table.md): 一个用于直接渲染表格数据的基础表格组件。
+- [Tabs](/base/primitives/tabs.md): A tab list and accessible tab controls with controlled selection.
+- [Tabs](/component/tabs.md): A set of layered sections of content—known as tab panels—that are displayed one at a time.
+- [Tabs](/zh-CN/base/primitives/tabs.md): 带受控选择的标签列表和可访问标签控件。
+- [Tabs](/zh-CN/component/tabs.md): 将内容拆分为多个标签面板并逐个切换显示的组件。
+- [Tag](/component/tag.md): A short item that can be used to categorize or label content.
+- [Tag](/zh-CN/component/tag.md): 用于分类、标记和显示元数据的紧凑标签组件。
+- [Task](/docs/task.md): Run asynchronous work with GPUI Task, control its lifetime, and return results to the UI.
+- [Task](/zh-CN/docs/task.md): 使用 GPUI Task 执行异步工作、控制生命周期，并将结果更新到界面。
+- [Testing](/docs/test.md): Test GPUI Kit applications and GPUI behavior with Rust unit tests, TestAppContext, native UI interactions, layout assertions and CI.
+- [Testing](/zh-CN/docs/test.md): 通过 Rust 单元测试、TestAppContext、真实 UI 交互和布局断言测试 GPUI Kit 应用与 GPUI 行为。
+- [Text Selection](/base/text-selection.md): Add native window-level text selection to plain text and custom GPUI participants.
+- [Text Selection](/zh-CN/base/text-selection.md): 在多个自绘文本参与者之间实现窗口级文本选择。
+- [Textarea](/base/primitives/textarea.md): An unstyled multi-line text field with fixed rows or auto-grow behavior.
+- [Textarea](/component/textarea.md): Multi-line text input with fixed rows, soft wrapping, and auto-grow.
+- [Textarea](/zh-CN/base/primitives/textarea.md): 支持固定行数或自动增高的无样式多行文本框。
+- [Textarea](/zh-CN/component/textarea.md): 支持固定行数、软换行和自动增高的多行文本输入组件。
+- [TextSystem](/docs/text-system.md): Shape, measure, lay out, and paint text through GPUI's text system and GPUI Kit components.
+- [TextSystem](/zh-CN/docs/text-system.md): 通过 GPUI 文本系统和 GPUI Kit 组件完成字体解析、字形塑形、测量、排版与绘制。
+- [TextView](/base/text-view.md): Render selectable Markdown and HTML directly with gpui-base.
+- [TextView](/component/text-view.md): Renders Markdown and HTML text with optional custom Markdown plugins.
+- [TextView](/zh-CN/base/text-view.md): 直接使用 gpui-base 渲染可选择的 Markdown 与 HTML。
+- [TextView](/zh-CN/component/text-view.md): 渲染 Markdown 与 HTML 文本，并支持自定义 Markdown 插件。
+- [The Engine Seam](/shell/engine.md): QuickJS behind one internal interface, why the seam exists, and the three measurements that tell script cost apart from frame cost.
+- [The Engine Seam](/zh-CN/shell/engine.md): QuickJS 位于一条内部接口之后、这条分界线存在的理由，以及把脚本成本与帧成本分开的三项实测。
+- [Theme](/component/theme.md): Customize colors, typography, radii, and light or dark appearance with the GPUI Component theme system.
+- [Theme](/zh-CN/component/theme.md): 使用 GPUI Component 主题系统定制颜色、字体、圆角以及明暗外观。
+- [Time Field](/base/primitives/time-field.md): A segmented time-of-day editor with a complete keyboard model and 24- or 12-hour clocks.
+- [Time Field](/zh-CN/base/primitives/time-field.md): 分段编辑一天中的时间，提供完整的键盘模型，支持 24 或 12 小时制。
+- [TimeField](/component/time-field.md): A segmented input for a time of day, on a 24-hour or 12-hour clock.
+- [TimeField](/zh-CN/component/time-field.md): 分段输入一天中的时间，支持 24 小时制和 12 小时制。
+- [TitleBar](/component/title-bar.md): A custom window title bar component with window controls and custom content support.
+- [TitleBar](/zh-CN/component/title-bar.md): 支持窗口控制和自定义内容的自定义标题栏组件。
+- [Toast](/base/primitives/toast.md): A managed, animated stack of temporary status messages.
+- [Toast](/zh-CN/base/primitives/toast.md): 受管理、带动画的临时状态消息栈。
+- [Toggle](/base/primitives/toggle.md): A controlled two-state pressable for persistent choices such as formatting.
+- [Toggle](/component/toggle.md): A button-style toggle component for binary on/off or selected states.
+- [Toggle](/zh-CN/base/primitives/toggle.md): 用于格式等持久选择的受控双态按钮。
+- [Toggle](/zh-CN/component/toggle.md): 以按钮形态表示开关或选中状态的切换组件。
+- [Toggle Group](/base/primitives/toggle-group.md): Coordinates a set of toggle controls as a single- or multiple-selection group.
+- [Toggle Group](/zh-CN/base/primitives/toggle-group.md): 将多个 Toggle 协调为单选或多选组。
+- [Toolbar](/component/toolbar.md): A transparent, sizable container for commands in headers, tab panels, and custom surfaces.
+- [Toolbar](/zh-CN/component/toolbar.md): 用于标题栏、标签面板和自定义表面的透明、可调尺寸命令容器。
+- [Tooltip](/base/primitives/tooltip.md): A delayed, positioned description associated with a trigger element.
+- [Tooltip](/component/tooltip.md): Display helpful information on hover or focus, with support for keyboard shortcuts and custom content.
+- [Tooltip](/zh-CN/base/primitives/tooltip.md): 与触发元素关联、延迟显示且可定位的说明。
+- [Tooltip](/zh-CN/component/tooltip.md): 在悬停或聚焦时显示提示信息，支持快捷键和自定义内容。
+- [Tree](/base/primitives/tree.md): A virtualized hierarchical list with explicit expansion and selection state.
+- [Tree](/component/tree.md): A hierarchical tree view component for displaying and navigating tree-structured data.
+- [Tree](/zh-CN/base/primitives/tree.md): 显式管理展开与选择状态的虚拟化层级列表。
+- [Tree](/zh-CN/component/tree.md): 用于显示和导航树形结构数据的层级树组件。
+- [View Cache](/docs/view-cache.md): Reuse clean GPUI view subtrees and distinguish view caching from element state, geometry caching, and virtualization.
+- [View Cache](/zh-CN/docs/view-cache.md): 复用未变化的 GPUI View 子树，并区分 View 缓存、元素状态、绘图缓存与虚拟列表。
+- [VirtualList](/base/virtual-list.md): Render a hundred thousand differently sized rows by drawing only the ones on screen.
+- [VirtualList](/component/virtual-list.md): High-performance virtualized list component for rendering large datasets with variable item sizes.
+- [VirtualList](/zh-CN/base/virtual-list.md): 只绘制屏幕内项目，流畅呈现十万条不同尺寸的行。
+- [VirtualList](/zh-CN/component/virtual-list.md): 用于大数据集渲染的高性能虚拟列表组件，支持可变尺寸项。
+- [WebAssembly](/docs/webassembly.md): Build and run GPUI Kit applications in a browser with the repository's WebAssembly examples.
+- [WebAssembly](/zh-CN/docs/webassembly.md): 使用仓库中的 WebAssembly 示例，在浏览器中构建和运行 GPUI Kit 应用。
+- [WebView](/docs/webview.md): Embed a native Wry WebView in a GPUI Kit window, with the current platform and overlay limitations.
+- [WebView](/zh-CN/docs/webview.md): 在 GPUI Kit 窗口中嵌入 Wry 原生 WebView，并了解当前的平台与 overlay 限制。
+- [Window](/docs/window.md): Use GPUI Window for window-local input, focus, rendering, and asynchronous work.
+- [Window](/zh-CN/docs/window.md): 使用 GPUI Window 处理窗口内的输入、Focus、绘制与异步任务。
+- [图片](/zh-CN/docs/image.md): img() 与 svg() 如何加载、解码、布局和缓存图片，以及如何在 HTTP 层缓存远程图片。
+- [安装](/zh-CN/docs/installation.md): 安装 GPUI Kit，并准备在 macOS、Windows 和 Linux 上构建 Rust 桌面应用所需的平台依赖。

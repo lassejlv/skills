@@ -1,5 +1,14 @@
 # Components and layout reference
 
+> Stack boundary: follow the [framework choice](../SKILL.md#choose-the-framework-first).
+> For Kit apps, read the relevant [current Kit guide](gpui-kit/upstream/index.md)
+> first and import through `gpui_kit`. The direct `gpui`/`gpui_platform` code and
+> pinned-source claims below belong to the retained upstream fixture; they do
+> not override Kit components, tokens, Root/overlay ownership, motion, or tests.
+> Preserve the product and platform contracts here, checking exact APIs in the
+> chosen stack before use.
+
+
 Use this layer for view trees, reusable controls, themes, typography, overlays,
 responsive behavior, collections, and the decision to use custom drawing.
 

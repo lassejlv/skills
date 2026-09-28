@@ -13,6 +13,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 try:
     import yaml
@@ -97,7 +98,7 @@ def validate_links(path: Path, text: str, errors: list[str]) -> None:
     for line_number, line in enumerate(text.splitlines(), 1):
         for match in LINK_RE.finditer(line):
             target = normalize_link_target(match.group(1))
-            if not target or target.startswith(("#", "http://", "https://", "mailto:")):
+            if not target or target.startswith("#") or urlsplit(target).scheme:
                 continue
             file_target = target.split("#", 1)[0]
             if not file_target:

@@ -1,5 +1,11 @@
 # GPUI reference app
 
+This is the retained **direct upstream GPUI** fixture, not a GPUI Kit starter.
+For the recommended Kit path, follow the [framework choice policy](../../SKILL.md#choose-the-framework-first)
+and [Getting Started](../../references/gpui-kit/upstream/docs/getting-started.md).
+Its pinned dependencies and compile results do not validate Kit examples.
+
+
 This is the compile-checked companion to the `build-gpui-apps` skill. It pins
 Zed/GPUI commit `7733b9922665f103abda7c6a3fde6b9dfdc8eba9` and Rust 1.97 so
 the higher-level examples have one executable API baseline.

@@ -1,225 +1,148 @@
-# Project and versioning reference
+# Project and versioning
 
-Use this layer before creating a GPUI app, changing a dependency, copying an
-upstream example, or touching startup and platform features. GPUI is pre-1.0:
-the target checkout is always more authoritative than this research snapshot.
-
-## Contents
-
-- [Research baseline](#research-baseline)
-- [Identify the dependency shape](#identify-the-dependency-shape)
-- [Choose application startup](#choose-application-startup)
-- [Select platform features](#select-platform-features)
-- [Create a stable project baseline](#create-a-stable-project-baseline)
-- [Shield version-sensitive APIs](#shield-version-sensitive-apis)
-- [Upgrade deliberately](#upgrade-deliberately)
-- [Review checklist](#review-checklist)
-
-## Research baseline
-
-This suite was refreshed on 2026-08-13 against:
-
-- published GPUI `0.2.2` documentation;
-- Zed main at commit `7733b9922665f103abda7c6a3fde6b9dfdc8eba9`;
-- the current `gpui`, `gpui_platform`, `gpui_macros`, examples, test support,
-  and platform sources at that commit.
-
-Treat these as orientation, not a floating dependency recommendation. A target
-using a Git revision from yesterday, an older crates.io release, a workspace
-path, or a fork can have materially different startup, rendering, element,
-platform, and test APIs.
-
-The compile-checked fixture at `../assets/reference-app` pins this exact Git
-revision and commits its lockfile. Use it to verify the suite's example shapes,
-not as authority over a target checkout with a different lockfile.
+Read the [framework choice policy](../SKILL.md#choose-the-framework-first)
+before adopting a dependency. Recommend Kit and ask once when no choice has
+been established. The target lockfile and source remain the API authority.
 
 ## Identify the dependency shape
 
-Inspect all workspace manifests and the lockfile. Classify the project:
+Inspect workspace and member manifests, patches, aliases, features, lockfile,
+source imports, toolchain, entrypoint, and a nearby compiling component.
 
 | Shape | Evidence | Working rule |
-|---|---|---|
-| Published crate | `gpui = "x.y.z"` and registry source in `Cargo.lock` | Read docs for that exact version |
-| Git dependency | `git` plus optional `rev`, `tag`, or `branch` | Resolve and record the locked commit |
-| Zed workspace | `workspace = true` or a local `path` | Search the checked-out source and examples |
-| Fork | Non-Zed repository URL or patched crate | Treat fork source and local wrappers as authoritative |
-| Wrapper library | UI crate re-exports GPUI and project components | Use its prelude, theme, and conventions first |
-
-Run:
+| --- | --- | --- |
+| GPUI Kit | `gpui-kit` package and `gpui_kit` imports | Use the Kit facade and matching locked GPUI snapshot |
+| Direct published GPUI | `gpui`/`gpui-pre` dependency | Preserve it for scoped work; obtain a choice before migrating |
+| Direct Git GPUI | Zed/fork Git dependency with a locked commit | Follow that exact source; do not substitute Kit silently |
+| Workspace/path wrapper | Workspace inheritance, path dependency, re-export crate | Inspect the wrapper and actual resolved packages |
+| Separately wired Component/Base | Direct `gpui-component`/`gpui-base` plus GPUI | Treat consolidation into Kit as a dependency migration |
 
 ```sh
-rg -n 'gpui(_platform)?\s*=' --glob 'Cargo.toml'
-rg -n '^name = "gpui"$|^source = |^version = ' Cargo.lock
-cargo tree -i gpui
+rg -n 'gpui([-_][[:alnum:]_]+)*' --glob 'Cargo.toml'
+rg -n '^name = "gpui[^" ]*"$' Cargo.lock
+rg -n 'gpui_kit::|gpui::|gpui_component::|gpui_base::|gpui_platform::' --glob '*.rs'
+cargo tree -d
 ```
 
-For Git dependencies, use the `Cargo.lock` source hash or `git rev-parse` in the
-dependency checkout. Do not report only a branch name: branches move.
+Use `cargo metadata` or the relevant `cargo tree -i <resolved-package>` when
+aliases/workspace inheritance hide the real source. Record an exact lockfile
+version/commit, not only a moving branch or the facade's semver requirement.
 
-Check the repository toolchain file and minimum supported Rust version before
-adding language or standard-library features.
+## GPUI Kit
 
-## Choose application startup
+Start with [Installation](gpui-kit/upstream/docs/installation.md) and
+[Getting Started](gpui-kit/upstream/docs/getting-started.md). The documentation
+retrieved on 2026-09-28 specifies Kit `0.7.0` with `gpui-pre` `0.3.7` as its
+recorded GPUI snapshot. Treat these as snapshot facts; confirm the chosen
+release and its source before creating or upgrading a project. Some upstream
+pages can lag the release and show an older semver; use the selected release's
+manifest and installation page rather than copying conflicting snippets.
 
-The current standalone upstream shape uses `gpui_platform::application()` to
-construct the platform application, then opens a window whose root is an
-`Entity<V>`. Older examples can use `Application::new()`, project-specific app
-wrappers, or startup helpers.
-
-Choose startup this way:
-
-1. Keep the target project's working entrypoint when startup is outside scope.
-2. For a new app, copy the smallest example from the exact pinned GPUI source.
-3. Register actions, globals, assets, fonts, theme, and platform integration
-   before opening views that depend on them.
-4. Keep window construction in one clear owner.
-5. Make startup failures observable; do not discard errors from initialization.
-6. Do not rewrite startup solely to make a newer example compile.
-
-The shape below is intentionally schematic:
+```toml
+[dependencies]
+gpui-kit = "0.7.0" # snapshot example; commit the resolved Cargo.lock
+```
 
 ```rust
-fn main() {
-    gpui_platform::application().run(|cx| {
-        // Register app-wide state and actions first.
-        cx.open_window(window_options(), |window, cx| {
-            cx.new(|cx| RootView::new(window, cx))
-        })
-        .expect("open main window");
-    });
-}
+use gpui_kit::*;
+use gpui_kit::component::button::{Button, ButtonVariants};
 ```
 
-Confirm the exact return types, result handling, and closure signatures in the
-pinned source before using this.
+The facade covers GPUI, `component`, `base`, `assets`, and `platform`. A
+`gpui-pre` package in the lockfile is expected: it publishes a recorded GPUI
+snapshot, not another renderer. Do not independently override its version or
+add a second direct GPUI dependency. `gpui-shell` is separate for JavaScript
+extension hosts; persistence, networking, updater, and other application
+crates can still be added for actual product needs.
 
-## Select platform features
+### Bootstrap and overlays
 
-The current upstream `gpui_platform` manifest and platform entrypoint expose
-these common feature choices:
+1. Construct `gpui_kit::application()` and register the chosen assets.
+2. Call `gpui_kit::init(cx)` once before components/windows are constructed.
+3. Current `gpui_kit::open_window(options, cx, builder)` wraps the returned
+   content entity in `gpui_kit::base::Root` and returns the window handle plus
+   content entity. Keep whichever handles the application needs.
+4. Current Root renders its overlays. Do not return another Root to the Kit
+   helper or add manual `Root::render_*_layer` children to application content.
+5. If using low-level `cx.open_window` deliberately, construct one Root using
+   the pinned API. Keep window ownership and errors observable.
 
-- macOS: a font backend such as `font-kit` can be selected by the pinned
-  project;
-- Linux: select the intended window-system support, commonly `wayland`,
-  `x11`, or both;
-- Windows: follow the current crate's native dependencies and feature defaults.
+The older merged skills used manual overlay rendering; that recipe has been
+updated in this package. For an older app, inspect its actual Root behavior
+before removing overlay code. Read [Window](gpui-kit/upstream/docs/window.md)
+and [Testing](gpui-kit/upstream/docs/test.md) for exact current signatures.
 
-Feature names and defaults can change. Inspect the pinned
-`crates/gpui_platform/Cargo.toml` and `src/gpui_platform.rs`. Avoid copying a
-feature list from a blog post.
+### Migrate an existing app after agreement
 
-For cross-platform apps:
+- Inventory direct dependencies, patches, wrappers, macros, tests, assets,
+  platform features, theme initialization, windows, and overlay ownership.
+- Replace the UI stack dependency declarations with the selected Kit release
+  and consistent workspace inheritance. Preserve necessary non-UI crates.
+- Change application paths to `gpui_kit`, `gpui_kit::component`,
+  `gpui_kit::base`, `gpui_kit::assets`, and `gpui_kit::platform`. Update test
+  attributes to `#[gpui_kit::test]` and configure Kit's supported test feature.
+- Do not blindly replace namespace text inside dependency source or strings.
+  Verify procedural macros, generated paths, extension traits, and root APIs
+  against the facade; downstream forks may need real adaptation.
+- Review the dependency tree for duplicate incompatible GPUI packages and
+  types. Check assets, platform features, fonts, Root and overlays explicitly.
+- Compile the owning crate, run meaningful tests, launch it, and exercise
+  keyboard/focus, input/IME, theme, resize, overlays, and multiple windows.
+- Keep visual redesign separate unless it is part of the request. Report
+  migrations not completed or platforms not exercised.
 
-- keep shared view/state code in shared modules;
-- isolate AppKit, Win32, or Linux backend work in explicit platform modules;
-- compile unavailable platform code out with narrow `cfg` boundaries;
-- expose a capability-oriented interface to shared code;
-- supply behavior and appearance fallbacks;
-- test that feature combinations do not accidentally compile two backends.
+### Features and platforms
 
-Avoid scattering raw `cfg(target_os = "macos")` through view trees. Put platform
-policy behind a component, theme, window, or material service.
+Use the chosen Kit manifest and the documentation for the feature being
+added. Do not copy upstream `gpui_platform` feature declarations into a Kit
+application. The default Kit setup includes styled components and icon assets;
+custom asset and behavior-only configurations need their documented features.
 
-## Create a stable project baseline
+Preserve platform maturity labels and boundaries for native extensions,
+WebView, mobile, WebAssembly, and Shell. Desktop support does not prove those
+features behave identically on every OS. Keep platform code behind narrow
+capability boundaries with fallbacks.
 
-For a new application, establish:
+## Direct upstream GPUI
 
-```text
-src/
-  main.rs              # process startup only
-  app.rs               # registration and root window ownership
-  state/               # domain models and state machines
-  views/               # stateful screen entities
-  components/          # reusable value-like UI
-  theme/               # semantic tokens and material policy
-  platform/            # narrow OS bridges
-  assets.rs            # asset source and identifiers
-  actions.rs           # typed actions and key contexts
-tests/                 # integration tests where useful
-```
+This path applies when explicitly selected or already used for a scoped task.
+The retained reference fixture at [reference-app](../assets/reference-app/README.md)
+was compiled against Zed commit
+`7733b9922665f103abda7c6a3fde6b9dfdc8eba9`; the original research also examined
+published GPUI `0.2.2` on 2026-08-13. These are historical baselines, not new-app
+dependency recommendations and not Kit compatibility evidence.
 
-Prefer one obvious root entity, one source of truth per domain value, and typed
-actions/events. Add abstractions after a second use case proves them.
+For direct upstream apps:
 
-Pin dependencies through the lockfile. In application repositories:
+- Keep the working entrypoint when startup is outside scope. Depending on the
+  source, it may use `gpui_platform::application()`, `Application::new()`, or a
+  project-specific wrapper. Copy only from the exact pinned revision.
+- Keep related GPUI Git packages on the same commit. Inspect feature defaults
+  and platform prerequisites in that source instead of assuming Kit defaults.
+- Register actions, globals, assets, fonts, and native integration before views
+  that use them. Give window construction and startup errors a clear owner.
+- Use the upstream [worked patterns](worked-patterns.md) and
+  [architecture reference](architecture-state.md) only as revision-scoped
+  examples. Do not mix their imports or fixture lockfile into Kit projects.
+- `scripts/validate_reference_app.sh` checks that upstream fixture and requires
+  its recorded toolchain. It does not validate a Kit consumer.
 
-- commit `Cargo.lock`;
-- use `cargo test --locked` in CI;
-- audit changes to Git revisions and features;
-- avoid an unpinned moving branch for production;
-- document platform toolchains and native prerequisites.
+## Reproducibility and upgrades
 
-Baseline checks:
+For either selected stack:
 
-```sh
-cargo fmt --check
-cargo check --workspace --all-targets
-cargo test --workspace --locked
-cargo clippy --workspace --all-targets -- -D warnings
-```
+1. Record old/new package versions or commits, features, and toolchain.
+2. Read the change history for the APIs actually used.
+3. Commit `Cargo.lock`; use `--locked` in CI and releases.
+4. Update the dependency graph together and inspect duplicate packages.
+5. Build the owning crate and correct real API differences.
+6. Run relevant unit/context/UI integration tests.
+7. Launch and check text metrics, assets, window chrome, overlays, input,
+   accessibility, focus, and async behavior on available supported backends.
+8. Check installed artifacts and upgrade behavior when releasing.
+9. Report unavailable platforms separately; compilation alone is not proof of
+   runtime or packaging compatibility.
 
-Scale these to the owning crate when the workspace is large or has unrelated
-known failures.
-
-For the fixture bundled with this skill:
-
-```sh
-scripts/validate_reference_app.sh
-```
-
-The script requires Rust 1.97.1, matching the pinned Zed toolchain snapshot.
-
-## Shield version-sensitive APIs
-
-Use these shields:
-
-1. Search the target checkout for a compiling sibling before external docs.
-2. Keep GPUI-specific code near its owning component instead of hiding basic
-   APIs behind a speculative framework.
-3. Wrap unstable or platform-specific behavior behind a small semantic adapter:
-   material application, window construction, asset loading, or test harness.
-4. Keep pure logic independent from GPUI where practical.
-5. Put version assumptions in a nearby comment only when the reason is not
-   visible in code.
-6. Do not support multiple GPUI eras unless the product actually builds them.
-
-Good seams include:
-
-- `MaterialPolicy::surface(role, preferences)`;
-- `WindowFactory::open_main`;
-- a pure reducer returning state transitions;
-- a pure spring integrator;
-- a domain command that returns data, with GPUI orchestration outside it.
-
-Avoid a broad “GPUI compatibility layer” that mirrors the whole framework. It
-adds a second API without making upgrades cheaper.
-
-## Upgrade deliberately
-
-When changing GPUI:
-
-1. Record old and new versions or commits.
-2. Read the upstream diff for crates and modules actually used.
-3. Update the dependency and lockfile in isolation.
-4. Compile the smallest owning crate.
-5. Fix startup and type/API changes without mixing visual redesign.
-6. Run targeted interaction and `#[gpui::test]` coverage.
-7. Launch on every supported backend available.
-8. Recheck fonts, window appearance, focus, input, overlays, lists, and
-   screenshots.
-9. Record untested platforms.
-
-Never call an upgrade safe from `cargo check` alone. Backend behavior, renderer
-output, text metrics, accessibility trees, and window APIs are runtime concerns.
-
-## Review checklist
-
-- [ ] Exact dependency source and locked revision recorded
-- [ ] Toolchain and platform features confirmed from the target
-- [ ] Existing startup preserved or current pinned example followed
-- [ ] Shared and platform-specific responsibilities separated
-- [ ] Lockfile and feature changes reviewed
-- [ ] Pure logic kept testable outside GPUI where useful
-- [ ] No invented compatibility abstraction
-- [ ] Targeted build, tests, launch, and platform checks reported
-- [ ] Time-sensitive claims refreshed from [sources.md](sources.md)
+Prefer local source and versioned official docs. Use the full bundled
+[Kit index](gpui-kit/upstream/index.md) for discovery and the
+[source ledger](sources.md) for provenance and refresh instructions.

@@ -1,7 +1,7 @@
 interface:
   display_name: "Build GPUI Apps"
-  short_description: "Production-ready, polished Rust apps with GPUI"
-  default_prompt: "Use $build-gpui-apps to set up, build, or review a production-ready, Apple-polished GPUI app."
+  short_description: "Build native Rust apps with recommended GPUI Kit"
+  default_prompt: "Use $build-gpui-apps to build or review a native Rust desktop app; recommend GPUI Kit and ask before adopting it, then follow the bundled design, coding, and delivery guides."
 
 dependencies:
   tools:
