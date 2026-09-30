@@ -44,6 +44,7 @@ npx skills add lassejlv/skills --skill use-goal
 npx skills add lassejlv/skills --skill codex-image-generation
 npx skills add lassejlv/skills --skill the-cloudflare-stack
 npx skills add lassejlv/skills --skill create-ui-kit-from-website
+npx skills add lassejlv/skills --skill sign-macos-for-github
 ```
 
 You can also install from the full GitHub URL:
@@ -72,6 +73,7 @@ npx skills add https://github.com/lassejlv/skills --skill use-goal
 npx skills add https://github.com/lassejlv/skills --skill codex-image-generation
 npx skills add https://github.com/lassejlv/skills --skill the-cloudflare-stack
 npx skills add https://github.com/lassejlv/skills --skill create-ui-kit-from-website
+npx skills add https://github.com/lassejlv/skills --skill sign-macos-for-github
 ```
 
 For local development from this checkout:
@@ -101,6 +103,7 @@ npx skills add . --skill use-goal
 npx skills add . --skill codex-image-generation
 npx skills add . --skill the-cloudflare-stack
 npx skills add . --skill create-ui-kit-from-website
+npx skills add . --skill sign-macos-for-github
 ```
 
 ## Layout
@@ -213,6 +216,9 @@ skills/
     SKILL.md
     references/
     agents/
+  sign-macos-for-github/
+    SKILL.md
+    agents/
 ```
 
 ## Validate
@@ -302,3 +308,6 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 - `create-ui-kit-from-website`: Inspect websites with available browser tools and
   extract editable components, original SVGs, tokens, states, and motion guides
   into Paper, with an HTML/CSS fallback and evidence-based visual verification.
+- `sign-macos-for-github`: Configure Developer ID signing, generic Apple
+  credentials, runner keychains, and notarized macOS DMG/ZIP downloads, then
+  verify a credentialed GitHub build and its distributed artifacts.

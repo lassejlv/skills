@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sign macOS for GitHub"
+  short_description: "Set up macOS signing and notarization for GitHub"
+  default_prompt: "Use $sign-macos-for-github to configure Developer ID signing, generic Apple credentials, and notarization in this app's GitHub Actions workflows. Verify the Apple team, preserve nested runtime entitlements, fix runner keychain access, and validate a credentialed build and its downloaded DMG and ZIP."
