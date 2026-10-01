@@ -93,6 +93,7 @@ including components and primitives not listed in this compact router.
 | Task | Read first | Also read when relevant |
 | --- | --- | --- |
 | Set up, choose features, or migrate imports | [Installation](references/gpui-kit/upstream/docs/installation.md), [Getting Started](references/gpui-kit/upstream/docs/getting-started.md), [project versioning](references/project-versioning.md) | [Usage](references/gpui-kit/usage.md), [production starter](references/production-starter.md) |
+| Upgrade GPUI Kit to 0.7.0 | [0.7.0 migration and capability guide](references/gpui-kit/v0.7.0.md), [project versioning](references/project-versioning.md) | Read the affected component/Base/Shell pages and verify the selected release's source |
 | State, architecture, contexts, events, actions, focus, tasks | [Coding Guides](references/gpui-kit/upstream/docs/coding-guides.md), [mechanism map](references/gpui-kit/guide.md#gpui-references) | [Entity](references/gpui-kit/upstream/docs/entity.md), [Context](references/gpui-kit/upstream/docs/context.md), [Action](references/gpui-kit/upstream/docs/action.md), [Task](references/gpui-kit/upstream/docs/task.md) |
 | Controls, forms, data, navigation, chat, charts, editor, dock | [Component catalog](references/gpui-kit/upstream/component.md), [family conventions](references/gpui-kit/conventions.md) | Specific [component page](references/gpui-kit/upstream/index.md#styled-components), [application recipe](references/gpui-kit/recipes.md) |
 | Custom design system or reusable behavior | [Base](references/gpui-kit/upstream/base.md), [Base primitives and infrastructure](references/gpui-kit/upstream/index.md#base-behavior-and-primitives) | [Coding Guides](references/gpui-kit/upstream/docs/coding-guides.md), [Design Guides](references/gpui-kit/upstream/docs/design-guides.md) |
@@ -115,8 +116,11 @@ including components and primitives not listed in this compact router.
 After the framework choice is settled:
 
 1. Record the exact Kit version, its matching GPUI snapshot, toolchain, features,
-   and platforms. The bundled installation page uses `gpui-kit = "0.7.0"`;
-   it is a dated snapshot, not an instruction to upgrade an existing app.
+   and platforms. The audited 0.7.0 release pins GPUI to `=0.3.7`; use the
+   [release migration guide](references/gpui-kit/v0.7.0.md) when upgrading.
+   Bundled website dependency examples can lag the release (some still say
+   `0.6`); choose from the release manifest, not those snippets. A snapshot
+   does not authorize upgrading an existing app.
 2. Import GPUI APIs with `use gpui_kit::*;`. Import components from
    `gpui_kit::component`, behavior from `gpui_kit::base`, assets from
    `gpui_kit::assets`, and platform APIs from `gpui_kit::platform`.

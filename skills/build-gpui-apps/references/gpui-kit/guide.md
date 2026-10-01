@@ -127,6 +127,17 @@ Import paths are relative to `gpui_kit::component::`, so `input::{Input, InputSt
 means `use gpui_kit::component::input::{Input, InputState};`. For the full API
 fetch the component's `.md` doc.
 
+### Added in 0.7.0
+
+Read the [release guide](v0.7.0.md) for migration-sensitive behavior; the full
+pages below describe composition, state, events, and keyboard contracts.
+
+| Component | Import | Use |
+| --- | --- | --- |
+| [Toolbar / ToolbarGroup](upstream/component/toolbar.md) | `toolbar::{Toolbar, ToolbarGroup}` | Command rows with grouped controls, density propagation, and arrow-key navigation |
+| [Questionnaire](upstream/component/questionnaire.md) | `questionnaire::{Questionnaire, QuestionnaireState}` | Retained single/multiple-choice and freeform workflows with validation, navigation, and submission |
+| [TimeField](upstream/component/time-field.md) | `time_field::{TimeField, TimeFieldState, TimePrecision, HourCycle}` | Segmented time editing; also supported by single-mode DatePicker |
+
 ### Input & Form
 
 | Component     | Import                                          | Notes                                        |

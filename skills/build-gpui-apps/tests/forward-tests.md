@@ -224,6 +224,34 @@ Review signals:
 - does not advertise an invented built-in updater, rollback, or platform parity;
 - preserves the documented WebAssembly/mobile/WebView/Shell capability limits.
 
+## 10. Upgrade an established Kit app to 0.7.0
+
+Prompt:
+
+```text
+Use $build-gpui-apps at <skill-path>/SKILL.md. We already use GPUI Kit 0.6.6
+and want to upgrade to 0.7.0. Work read-only: plan the migration for a window
+that manually renders Root overlay layers, subscribes to DatePicker Change
+as Date, reads selected_row() after selecting a table cell, uses custom plot
+StrokeStyle/least_index APIs, and keeps draft state inside Accordion content.
+The bundled installation example says gpui-kit = "0.6". Explain which version
+source to trust, the concrete changes, and required checks. Also locate the
+guides for Toolbar, Questionnaire, and TimeField. Do not change dependencies,
+build, launch, publish, or ask the framework choice again.
+```
+
+Review signals:
+
+- reaches the versioned migration guide and exact tagged manifest/facade;
+- trusts release 0.7.0 and its exact GPUI snapshot over stale 0.6 snippets;
+- preserves the established Kit choice and gpui_kit import root;
+- returns content from Kit open_window and removes duplicate/manual layers;
+- maps DateTime to date-only values, derives the row from selected_cell(),
+  migrates Curve/nearest_index, and retains durable draft state in an entity;
+- locates all three component guides without inventing APIs;
+- distinguishes proposed app checks from documentation validation and reports
+  any missing target/source verification.
+
 ## Regression policy
 
 Re-run the affected scenario when its routed reference or executable fixture

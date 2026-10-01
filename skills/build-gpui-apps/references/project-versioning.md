@@ -32,15 +32,16 @@ version/commit, not only a moving branch or the facade's semver requirement.
 
 Start with [Installation](gpui-kit/upstream/docs/installation.md) and
 [Getting Started](gpui-kit/upstream/docs/getting-started.md). The documentation
-retrieved on 2026-09-28 specifies Kit `0.7.0` with `gpui-pre` `0.3.7` as its
-recorded GPUI snapshot. Treat these as snapshot facts; confirm the chosen
-release and its source before creating or upgrading a project. Some upstream
-pages can lag the release and show an older semver; use the selected release's
-manifest and installation page rather than copying conflicting snippets.
+refreshed on 2026-10-01 includes older `0.6` dependency examples even though
+the [published 0.7.0 manifest](https://github.com/longbridge/gpui-kit/blob/v0.7.0/Cargo.toml)
+declares Kit `0.7.0` and pins `gpui-pre` to `=0.3.7`. The release manifest and
+locked source take precedence over conflicting installation snippets.
+Read the [0.7.0 migration guide](gpui-kit/v0.7.0.md) before upgrading; retain
+the target's version for work that does not include an upgrade.
 
 ```toml
 [dependencies]
-gpui-kit = "0.7.0" # snapshot example; commit the resolved Cargo.lock
+gpui-kit = "0.7.0" # audited release example; commit the resolved Cargo.lock
 ```
 
 ```rust
@@ -54,6 +55,15 @@ snapshot, not another renderer. Do not independently override its version or
 add a second direct GPUI dependency. `gpui-shell` is separate for JavaScript
 extension hosts; persistence, networking, updater, and other application
 crates can still be added for actual product needs.
+
+### Upgrade a selected Kit app
+
+An established Kit choice does not require another framework-adoption question.
+Honor the requested upgrade scope, record old/new lockfile versions, and review
+[0.7.0 breaking changes](gpui-kit/v0.7.0.md#breaking-changes) against actual
+callers. Migrate startup, events, state lifetime, and appearance only where
+affected; validate those paths in the owning app. A newer GPUI snapshot alone
+is not a reason to override Kit's exact dependency pins.
 
 ### Bootstrap and overlays
 

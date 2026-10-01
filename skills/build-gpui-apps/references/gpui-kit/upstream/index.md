@@ -1,6 +1,6 @@
 # GPUI Kit documentation index
 
-Retrieved 2026-09-28T11:20:24+00:00. All **183 English pages** from the [official index](https://gpui-kit.com/llms.txt) are bundled below. Chinese translations remain discoverable in `llms.txt`; images stay remote.
+Retrieved 2026-10-01T10:02:28+00:00. All **183 English pages** from the [official index](https://gpui-kit.com/llms.txt) are bundled below. Chinese translations remain discoverable in `llms.txt`; images stay remote.
 
 Read only the pages relevant to the task. These are documentation snapshots, not proof that an API exists in a project's locked version. See `manifest.json` for page sources and SHA-256 hashes.
 

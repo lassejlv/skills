@@ -3,9 +3,38 @@
 This reference records the primary sources used to build the suite. Refresh
 time-sensitive API claims against the target checkout.
 
+## GPUI Kit 0.7.0 release audit
+
+Audited on **2026-10-01** against the [published release](https://github.com/longbridge/gpui-kit/releases/tag/v0.7.0)
+(published 2026-09-28) and tag commit
+`0c830f4d257e69fdd17200650533ab4ca9a40cc0`. Checked the tag's
+[workspace manifest](https://github.com/longbridge/gpui-kit/blob/v0.7.0/Cargo.toml)
+and [Kit facade](https://github.com/longbridge/gpui-kit/blob/v0.7.0/crates/kit/src/lib.rs).
+Kit is `0.7.0`, its GPUI snapshot is exactly `=0.3.7`, and `open_window`
+constructs one Base Root and returns the window handle plus content entity.
+The [release guide](gpui-kit/v0.7.0.md) routes the new capabilities and every
+breaking-change category to the affected documentation.
+
+Refreshed all **183 English indexed pages**; coverage is unchanged. Nine
+original source hashes changed: docs landing, installation, getting started,
+assets, i18n, multi-window, packaging, Component image, and Shell capabilities.
+Those changes revert dependency/example versions to older `0.6`/`0.6.5`
+values. Preserve the upstream text and hashes, but use the audited release
+manifest for version selection. The September bundle already included the
+new components and automatic Root hosting; this audit adds explicit upgrade
+routing rather than claiming they were previously missing.
+
+Context7 resolution selected `/longbridge/gpui-kit` (high-reputation official
+repository). A focused Root/overlay migration query again returned older
+manual-layer recipes. They conflict with the tag source and current Root
+documentation and must not be copied into 0.7.0 applications. Versioned
+documentation is advertised upstream, but the release installation Markdown
+URLs tested under `/versions/v0.7.0` and `/versions/0.7.0` returned 404; use
+the verified tag source when a versioned page is unavailable.
+
 ## GPUI Kit merge and documentation snapshot
 
-Refreshed on **2026-09-28** from the [official documentation](https://gpui-kit.com/docs/)
+Initially bundled on **2026-09-28** from the [official documentation](https://gpui-kit.com/docs/)
 and [machine-readable index](https://gpui-kit.com/llms.txt). Context7 was
 resolved through `bunx ctx7@latest library 'GPUI Kit'` to
 `/longbridge/gpui-kit`, then queried for facade/bootstrap documentation.
@@ -21,7 +50,7 @@ retrieval time, source URL, original SHA-256, and adapted snapshot SHA-256 for
 every page. Documentation links are localized and attribution is added;
 prose and code are otherwise retained from the website.
 
-The current installation page specifies `gpui-kit = "0.7.0"` and its recorded
+At merge time the installation page specified `gpui-kit = "0.7.0"` and its recorded
 `gpui-pre = 0.3.7` dependency. Other pages can contain older example versions.
 Resolve that discrepancy from the selected release's manifest/source rather
 than treating every snippet as a version recommendation. Current

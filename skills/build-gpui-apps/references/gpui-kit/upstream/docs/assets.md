@@ -70,7 +70,7 @@ Add the umbrella crate to `Cargo.toml`; its default features include `component`
 
 ```toml
 [dependencies]
-gpui-kit = "0.7.0"
+gpui-kit = "0.6"
 ```
 
 For a native desktop app, register the source before opening a window. This complete `src/main.rs` renders a default icon:
@@ -189,7 +189,7 @@ Add [rust-embed] alongside `gpui-kit`:
 
 ```toml
 [dependencies]
-gpui-kit = "0.7.0"
+gpui-kit = "0.6"
 rust-embed = { version = "8.7", features = ["include-exclude"] }
 ```
 
@@ -325,10 +325,10 @@ On WebAssembly, `Assets::new(endpoint)` and `AllAssets::new(endpoint)` use the s
 - [Lucide Icons](https://lucide.dev/) - GPUI Kit's icon catalog is based on the open-source Lucide collection.
 
 [rust-embed]: https://docs.rs/rust-embed/latest/rust_embed/
-[IconName]: https://docs.rs/gpui-kit-assets/0.7.0/gpui_kit_assets/enum.IconName.html
+[IconName]: https://docs.rs/gpui-kit-assets/0.6.5/gpui_kit_assets/enum.IconName.html
 [Icon]: https://docs.rs/gpui-component/latest/gpui_component/struct.Icon.html
 [assets]: https://github.com/longbridge/gpui-kit/tree/main/crates/assets/assets/icons
-[gpui-kit-assets]: https://docs.rs/crate/gpui-kit-assets/0.7.0
+[gpui-kit-assets]: https://docs.rs/crate/gpui-kit-assets/0.6.5
 
 > Documentation license: original prose and illustrations for which GPUI Kit holds licensing rights are also offered under CC BY 4.0. When copying or adapting, credit GPUI Kit, link the source (https://gpui-kit.com/docs/assets) and https://creativecommons.org/licenses/by/4.0/, and indicate changes. Code examples and software source use Apache-2.0; third-party material retains its terms; existing Apache-2.0 permissions remain.
 

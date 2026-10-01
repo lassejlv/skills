@@ -1,6 +1,6 @@
 {
   "source": "https://gpui-kit.com/llms.txt",
-  "retrieved_at": "2026-09-28T11:20:24+00:00",
+  "retrieved_at": "2026-10-01T10:02:28+00:00",
   "scope": "All English pages in llms.txt; translated pages remain in the source index.",
   "index_sha256": "30a3b2dc6f34ed3089250f87bfa535aed2c73d0cb7cd24073c6da4527913464d",
   "pages": [
@@ -141,8 +141,8 @@
       "title": "Capabilities",
       "path": "shell/capabilities.md",
       "source": "https://gpui-kit.com/shell/capabilities.md",
-      "source_sha256": "fceb210a3c79677c655830e99cfaa5a78cea6c913e2a053a57f39067f82bc910",
-      "snapshot_sha256": "46f51faac6a476f55411d21463fcafdb510007c15b39a49be9d2c5d5c419d92e"
+      "source_sha256": "9455730ba44f8e5d5fde0187c63ba1cd97d6e4f72613bac93665c4dc49626481",
+      "snapshot_sha256": "e89bd6bf0031a9d16b8091d990067b3cb93e0228b6147a938978e446e62c5ddd"
     },
     {
       "title": "Carousel",
@@ -456,8 +456,8 @@
       "title": "Getting Started",
       "path": "docs/getting-started.md",
       "source": "https://gpui-kit.com/docs/getting-started.md",
-      "source_sha256": "6cec3c1d52c6c5d395b0f22dff0e435db991fb51302310ce27aeb30851f23d43",
-      "snapshot_sha256": "f1b7f3b57490461a0c508c5a8aab1adb671c05369e9f13d72b4c1b203f64bd50"
+      "source_sha256": "813e259a74a3ebbb8330b3365340f129137d405f9be52cbd8dc640b6dcb3c1ff",
+      "snapshot_sha256": "84b5105d68ae44da0c48e06dc2fb10a8e0d962a95b27f304a8ec85ff3a11e086"
     },
     {
       "title": "Getting Started",
@@ -484,8 +484,8 @@
       "title": "GPUI Kit",
       "path": "docs.md",
       "source": "https://gpui-kit.com/docs.md",
-      "source_sha256": "b01a23257b4d411e83eb3599933a2228a187e954c4cdbbe76d2da782cd4f415b",
-      "snapshot_sha256": "8941a0fb82694b255b95fb1f362f464a3ad5ca0f4c577fea1f76338fb7aac6ea"
+      "source_sha256": "e300119611a99bd82975c60ff0725f5e27c89553432013899d7d679b428d4aa5",
+      "snapshot_sha256": "59033733a5046784e0cf3dac11baac46d8945f4131f3d7a454d61918b15434cb"
     },
     {
       "title": "GPUI Shell",
@@ -540,8 +540,8 @@
       "title": "I18N",
       "path": "docs/i18n.md",
       "source": "https://gpui-kit.com/docs/i18n.md",
-      "source_sha256": "31b615c83cc31f7cacbf1fa4f600b910587ee84b57fbff29f2eb48ec5a221db4",
-      "snapshot_sha256": "4c10d36873fff6737405dd6f965198497f0311465be9e3f14de62dcf383bb33d"
+      "source_sha256": "f47e1e962d8f6e287a45353ffd9fe94bc9024bb1f869f6343d3abd0559e8cabf",
+      "snapshot_sha256": "6e69f73334a89102964051870976aea90ddcd18f5e47fc9bb171a2c8c4975af4"
     },
     {
       "title": "Icon",
@@ -554,15 +554,15 @@
       "title": "Icons & Assets",
       "path": "docs/assets.md",
       "source": "https://gpui-kit.com/docs/assets.md",
-      "source_sha256": "9325adb97e421c3fbcac69bf12d2cca9ba82fe0ea408b65d2308373e9db9b15e",
-      "snapshot_sha256": "23ecd4884e3fb447be4938c2e9ab91030e673c15cdfe9c8d7227e4afbe4c2897"
+      "source_sha256": "b3d8f6ea0f425264151004a62060304fc04f70d9cf29c151820c7a61bcf9f9b7",
+      "snapshot_sha256": "46b8cdd964de345db1635e5b9534688126ebfa677425ab72478bb7736387b0b4"
     },
     {
       "title": "Image",
       "path": "component/image.md",
       "source": "https://gpui-kit.com/component/image.md",
-      "source_sha256": "3fda4742c6c6ce3269afb3238d95f88a02eda61603b3317e43ee3f636800b3ae",
-      "snapshot_sha256": "9e56efa47952c429c10cd1ad5efea9b332e60b0f4d1b5a624ef876b92d2689d7"
+      "source_sha256": "9a140d10959574adf0e8aa3027b5f2bc88aeebe2e09e9ea215b93a189b78c6a3",
+      "snapshot_sha256": "ff98c3bfc22c33580ce15b9c574848e1fe4cf18c2f5623ffbce488d30d5c94e9"
     },
     {
       "title": "Images",
@@ -596,8 +596,8 @@
       "title": "Installation",
       "path": "docs/installation.md",
       "source": "https://gpui-kit.com/docs/installation.md",
-      "source_sha256": "7e77c3e05d34f3d14849156d92555a7bcc7d8da720e2ba898c45a87ce7df1075",
-      "snapshot_sha256": "04d2e758cc6ec9987292dd09cb6f7a9b3a222d6e5be573e455f8b81604650107"
+      "source_sha256": "8523fc88286c4f36fa6f9ad32bd168dbb6417db5ee917ef4bcf1bebd5efb58c5",
+      "snapshot_sha256": "a2c238c941475a09d53fc7e1b552f0866ac5633bec6f11d48d3ee62fdcbf3780"
     },
     {
       "title": "Kbd",
@@ -680,8 +680,8 @@
       "title": "Multi Window",
       "path": "docs/multi-window.md",
       "source": "https://gpui-kit.com/docs/multi-window.md",
-      "source_sha256": "aca2d74817c158a76e3900de66b0de2fb935a33356aebb9874b97d2b22c12543",
-      "snapshot_sha256": "3d4207bd5cdfb81ae880471ebb3d493ff9e7c4f6f03f42b5d90fae474a2cc95c"
+      "source_sha256": "eb6b002fbe44ade460d962f70c2ee4a53dde5d588503f21f80375f5a6d9ea55c",
+      "snapshot_sha256": "b82b860b1408d2fd32ec6ef8e8bfeed9a3d40244670d10ad6e25a3ac652c191a"
     },
     {
       "title": "Native Extensions",
@@ -743,8 +743,8 @@
       "title": "Packaging",
       "path": "docs/packaging.md",
       "source": "https://gpui-kit.com/docs/packaging.md",
-      "source_sha256": "7d55057a5f9d79b849a098cb5ee70164a4305de1149827041db990d3dbe794d6",
-      "snapshot_sha256": "da3d8a8873e3acb6ad0463bd68375347f039c5856738c87b79d1938a088f6f29"
+      "source_sha256": "68021971a6ba254624ee7ce98ba606299de518b9902a45d82e42d10924183035",
+      "snapshot_sha256": "5f7cd4aa3b2acd7b6b30b075859342f2a28c4ca75694449bcab89ff99a6f50be"
     },
     {
       "title": "Pagination",
