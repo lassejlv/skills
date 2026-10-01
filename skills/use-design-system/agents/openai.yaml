@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use Design System"
+  short_description: "Build app tokens, components, and design-system pages"
+  default_prompt: "Use $use-design-system to turn this app, brief, or reference into a reusable design system on its own page, using Paper by default, then Figma, and asking only for details that affect the result."

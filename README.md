@@ -44,6 +44,7 @@ npx skills add lassejlv/skills --skill use-goal
 npx skills add lassejlv/skills --skill codex-image-generation
 npx skills add lassejlv/skills --skill the-cloudflare-stack
 npx skills add lassejlv/skills --skill create-ui-kit-from-website
+npx skills add lassejlv/skills --skill use-design-system
 npx skills add lassejlv/skills --skill sign-macos-for-github
 ```
 
@@ -73,6 +74,7 @@ npx skills add https://github.com/lassejlv/skills --skill use-goal
 npx skills add https://github.com/lassejlv/skills --skill codex-image-generation
 npx skills add https://github.com/lassejlv/skills --skill the-cloudflare-stack
 npx skills add https://github.com/lassejlv/skills --skill create-ui-kit-from-website
+npx skills add https://github.com/lassejlv/skills --skill use-design-system
 npx skills add https://github.com/lassejlv/skills --skill sign-macos-for-github
 ```
 
@@ -103,6 +105,7 @@ npx skills add . --skill use-goal
 npx skills add . --skill codex-image-generation
 npx skills add . --skill the-cloudflare-stack
 npx skills add . --skill create-ui-kit-from-website
+npx skills add . --skill use-design-system
 npx skills add . --skill sign-macos-for-github
 ```
 
@@ -212,6 +215,10 @@ skills/
     SKILL.md
     examples.md
     agents/
+  use-design-system/
+    SKILL.md
+    references/
+    agents/
   the-cloudflare-stack/
     SKILL.md
     references/
@@ -308,6 +315,10 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 - `create-ui-kit-from-website`: Inspect websites with available browser tools and
   extract editable components, original SVGs, tokens, states, and motion guides
   into Paper, with an HTML/CSS fallback and evidence-based visual verification.
+- `use-design-system`: Turn app briefs, existing products, or references
+  into reusable foundations, tokens, components, and usage patterns on a
+  dedicated design-system page. Defaults to Paper, then Figma, with targeted
+  questions when important context or a workable design destination is missing.
 - `sign-macos-for-github`: Configure Developer ID signing, generic Apple
   credentials, runner keychains, and notarized macOS DMG/ZIP downloads, then
   verify a credentialed GitHub build and its distributed artifacts.
