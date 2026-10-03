@@ -1,0 +1,10 @@
+interface:
+  display_name: "Mentor Mode"
+  short_description: "Learn to build: you lead the design, the agent writes code"
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
+  default_prompt: "Use $mentor-mode to start learning-first development in this project."
+
+policy:
+  # Run only when explicitly invoked.
+  allow_implicit_invocation: false

@@ -29,6 +29,7 @@ require_command rustc
 require_command python3
 
 python3 "$repo_root/skills/use-goal/scripts/test_goal_state.py"
+python3 -B -m unittest discover -s "$repo_root/skills/mentor-mode/tests"
 
 while IFS= read -r -d '' script; do
   bash -n "$script"
