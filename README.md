@@ -46,6 +46,7 @@ npx skills add lassejlv/skills --skill the-cloudflare-stack
 npx skills add lassejlv/skills --skill create-ui-kit-from-website
 npx skills add lassejlv/skills --skill use-design-system
 npx skills add lassejlv/skills --skill sign-macos-for-github
+npx skills add lassejlv/skills --skill mentor-mode
 ```
 
 You can also install from the full GitHub URL:
@@ -76,6 +77,7 @@ npx skills add https://github.com/lassejlv/skills --skill the-cloudflare-stack
 npx skills add https://github.com/lassejlv/skills --skill create-ui-kit-from-website
 npx skills add https://github.com/lassejlv/skills --skill use-design-system
 npx skills add https://github.com/lassejlv/skills --skill sign-macos-for-github
+npx skills add https://github.com/lassejlv/skills --skill mentor-mode
 ```
 
 For local development from this checkout:
@@ -107,6 +109,7 @@ npx skills add . --skill the-cloudflare-stack
 npx skills add . --skill create-ui-kit-from-website
 npx skills add . --skill use-design-system
 npx skills add . --skill sign-macos-for-github
+npx skills add . --skill mentor-mode
 ```
 
 ## Layout
@@ -226,6 +229,12 @@ skills/
   sign-macos-for-github/
     SKILL.md
     agents/
+  mentor-mode/
+    SKILL.md
+    scripts/             # session-restore hook, hook installer, reset helper
+    tests/
+    assets/
+    agents/
 ```
 
 ## Validate
@@ -322,3 +331,7 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 - `sign-macos-for-github`: Configure Developer ID signing, generic Apple
   credentials, runner keychains, and notarized macOS DMG/ZIP downloads, then
   verify a credentialed GitHub build and its distributed artifacts.
+- `mentor-mode`: Learning-first development: the agent asks for your approach,
+  explains concepts, and writes only the code you approve through Build, Design,
+  and Implementation checkpoints. Keeps local notes in `.mentor-mode/`, restores
+  them through an optional per-agent SessionStart hook, and supports a guarded reset.
