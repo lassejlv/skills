@@ -1,9 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
-  <title id="title">Mentor Mode</title>
-  <desc id="desc">An abstract brain with angle brackets inside, drawn with rounded lime strokes on deep green.</desc>
-  <rect width="256" height="256" rx="56" fill="#132B24"/>
-  <g fill="none" stroke="#BDF788" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M128 78C128 51 88 49 81 77C56 77 43 104 57 124C37 147 53 179 80 179C86 207 128 206 128 178V78C128 51 168 49 175 77C200 77 213 104 199 124C219 147 203 179 176 179C170 207 128 206 128 178"/>
-    <path d="M102 111L83 128L102 145M154 111L173 128L154 145" stroke-width="10"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" aria-labelledby="title desc" role="img" viewBox="0 0 256 256"><title id="title">Mentor Mode</title><desc id="desc">An abstract brain with angle brackets inside, drawn with rounded lime strokes on deep green.</desc><rect width="256" height="256" fill="#132B24" rx="56"/><g fill="none" stroke="#BDF788" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"><path d="M128 78C128 51 88 49 81 77C56 77 43 104 57 124C37 147 53 179 80 179C86 207 128 206 128 178V78C128 51 168 49 175 77C200 77 213 104 199 124C219 147 203 179 176 179C170 207 128 206 128 178"/><path stroke-width="10" d="M102 111L83 128L102 145M154 111L173 128L154 145"/></g></svg>
