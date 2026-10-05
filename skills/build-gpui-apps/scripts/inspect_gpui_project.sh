@@ -50,7 +50,16 @@ search() {
       -g '!.git/**' \
       "$@" -- "$pattern" "$project_path" 2>/dev/null || true
   else
-    grep -RIn "$pattern" "$project_path" 2>/dev/null || true
+    # Mirror rg: extended regex, the same excludes, and -g globs as includes.
+    set -- --exclude-dir=target --exclude-dir=.git "$@"
+    local grep_args=()
+    while [ "$#" -gt 0 ]; do
+      case "$1" in
+        -g) grep_args+=("--include=$2"); shift 2 ;;
+        *) grep_args+=("$1"); shift ;;
+      esac
+    done
+    grep -RInE "${grep_args[@]}" -- "$pattern" "$project_path" 2>/dev/null || true
   fi
 }
 
