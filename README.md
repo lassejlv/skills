@@ -47,6 +47,8 @@ npx skills add lassejlv/skills --skill create-ui-kit-from-website
 npx skills add lassejlv/skills --skill use-design-system
 npx skills add lassejlv/skills --skill sign-macos-for-github
 npx skills add lassejlv/skills --skill mentor-mode
+npx skills add lassejlv/skills --skill project-board
+npx skills add lassejlv/skills --skill use-svgl
 ```
 
 You can also install from the full GitHub URL:
@@ -78,6 +80,8 @@ npx skills add https://github.com/lassejlv/skills --skill create-ui-kit-from-web
 npx skills add https://github.com/lassejlv/skills --skill use-design-system
 npx skills add https://github.com/lassejlv/skills --skill sign-macos-for-github
 npx skills add https://github.com/lassejlv/skills --skill mentor-mode
+npx skills add https://github.com/lassejlv/skills --skill project-board
+npx skills add https://github.com/lassejlv/skills --skill use-svgl
 ```
 
 For local development from this checkout:
@@ -110,6 +114,8 @@ npx skills add . --skill create-ui-kit-from-website
 npx skills add . --skill use-design-system
 npx skills add . --skill sign-macos-for-github
 npx skills add . --skill mentor-mode
+npx skills add . --skill project-board
+npx skills add . --skill use-svgl
 ```
 
 ## Layout
@@ -235,6 +241,16 @@ skills/
     tests/
     assets/
     agents/
+  project-board/
+    SKILL.md
+    scripts/             # board init, path lookup, and consistency check
+    references/
+    assets/
+    agents/
+  use-svgl/
+    SKILL.md
+    scripts/             # SVGL search and download helper
+    agents/
 ```
 
 ## Validate
@@ -335,3 +351,9 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   explains concepts, and writes only the code you approve through Build, Design,
   and Implementation checkpoints. Keeps local notes in `.mentor-mode/`, restores
   them through an optional per-agent SessionStart hook, and supports a guarded reset.
+- `project-board`: Keep a private, local `.board/BOARD.md` for the agent with
+  current state, next step, open and waiting work, findings, and standing rules,
+  so long projects survive new sessions and compacts. Never committed or shared.
+- `use-svgl`: Find official brand and technology SVG logos on svgl.app through
+  its free API, pick icon or wordmark and light/dark variants, and add them to
+  the project as local, themed, accessible assets with a stdlib helper script.

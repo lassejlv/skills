@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use SVGL"
+  short_description: "Find brand and tech SVG logos through the SVGL API"
+  default_prompt: "Use $use-svgl to find the official SVG logos this UI needs on svgl.app, pick the right icon or wordmark and light/dark variants, and add them to the project as local, accessible assets."
