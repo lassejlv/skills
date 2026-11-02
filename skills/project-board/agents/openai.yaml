@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Board"
+  short_description: "Keep a private agent board that survives sessions"
+  default_prompt: "Use $project-board to find or set up this project's private .board/BOARD.md, read its Rules and Now sections, check it against the real state, and keep it current after each step."
