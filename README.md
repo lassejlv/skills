@@ -27,6 +27,7 @@ npx skills add lassejlv/skills --skill legal-policy-drafter
 npx skills add lassejlv/skills --skill plain-design-engineer
 npx skills add lassejlv/skills --skill backend-security-audit
 npx skills add lassejlv/skills --skill libtermy-implementation
+npx skills add lassejlv/skills --skill use-libtermy
 npx skills add lassejlv/skills --skill use-aws
 npx skills add lassejlv/skills --skill no-vibe-code
 npx skills add lassejlv/skills --skill no-yak-shaving
@@ -60,6 +61,7 @@ npx skills add https://github.com/lassejlv/skills --skill legal-policy-drafter
 npx skills add https://github.com/lassejlv/skills --skill plain-design-engineer
 npx skills add https://github.com/lassejlv/skills --skill backend-security-audit
 npx skills add https://github.com/lassejlv/skills --skill libtermy-implementation
+npx skills add https://github.com/lassejlv/skills --skill use-libtermy
 npx skills add https://github.com/lassejlv/skills --skill use-aws
 npx skills add https://github.com/lassejlv/skills --skill no-vibe-code
 npx skills add https://github.com/lassejlv/skills --skill no-yak-shaving
@@ -94,6 +96,7 @@ npx skills add . --skill legal-policy-drafter
 npx skills add . --skill plain-design-engineer
 npx skills add . --skill backend-security-audit
 npx skills add . --skill libtermy-implementation
+npx skills add . --skill use-libtermy
 npx skills add . --skill use-aws
 npx skills add . --skill no-vibe-code
 npx skills add . --skill no-yak-shaving
@@ -146,6 +149,10 @@ skills/
     SKILL.md
     scripts/
     references/
+    agents/
+  use-libtermy/
+    SKILL.md
+    references/          # native (Rust, C ABI, engine, Swift) and web (@termysh) guides
     agents/
   plain-design-engineer/
     SKILL.md
@@ -290,6 +297,10 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   markdown files from a real codebase.
 - `libtermy-implementation`: Implement and optimize libtermy hosts across the
   Rust core, C FFI, and native macOS Swift rendering stack.
+- `use-libtermy`: Embed Termy's terminal engine in apps through the Rust crate,
+  C ABI, engine-only library, Swift SDK, or the `@termysh` web packages, with
+  do/don't rules for rendering, input, protocol replies, ownership, shutdown,
+  bundlers, xterm.js and node-pty migration, and troubleshooting.
 - `plain-design-engineer`: Create, restyle, or review frontend interfaces with a
   plain infrastructure-product visual direction.
 - `use-aws`: Operate and investigate AWS accounts through profile-aware CLI

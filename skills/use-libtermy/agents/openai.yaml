@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use libtermy"
+  short_description: "Embed Termy's terminal engine natively or on the web"
+  default_prompt: "Use $use-libtermy to pick the right libtermy or @termysh surface for this app, then integrate it following the documented rendering, input, reply, ownership, and shutdown contracts and validate it with the smoke-test matrix."
