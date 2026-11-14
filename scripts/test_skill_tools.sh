@@ -87,6 +87,58 @@ expect_output "$kit_output" '#\[gpui_kit::test\]'
 
 python3 "$repo_root/skills/build-gpui-apps/scripts/sync_gpui_kit_docs.py" --check
 
+rune_skill="$repo_root/skills/build-rune-apps"
+rune_app="$rune_skill/assets/reference-app"
+python3 "$rune_skill/scripts/sync_rune_docs.py" --check
+rune_output="$tmp_dir/rune-inspector.txt"
+"$rune_skill/scripts/inspect_rune_project.sh" "$rune_app" > "$rune_output"
+expect_output "$rune_output" "## Rune dependencies"
+expect_output "$rune_output" "rev = \"65f8eb43f710e078f92cb82039212de50cb03113\""
+expect_output "$rune_output" "Kit constructors: 1"
+expect_output "$rune_output" "scripts/add-task.json"
+
+rune_rev="65f8eb43f710e078f92cb82039212de50cb03113"
+rune_root="$tmp_dir/rune-root"
+mkdir -p "$rune_root/crates/rune"
+cat > "$rune_root/Cargo.toml" <<'TOML'
+[workspace]
+members = ["crates/rune"]
+[patch.crates-io]
+wgpu-hal = { path = "vendor/wgpu-hal" }
+winit = { path = "vendor/winit" }
+parley_engine = { path = "vendor/parley_engine" }
+accesskit_windows = { path = "vendor/accesskit_windows" }
+TOML
+python3 "$rune_skill/scripts/check_rune_patches.py" "$rune_app" --rune-root "$rune_root" > "$tmp_dir/rune-patch-ok.txt"
+expect_output "$tmp_dir/rune-patch-ok.txt" "ok: one rev"
+
+rune_broken="$tmp_dir/rune-broken"
+mkdir -p "$rune_broken"
+cat > "$rune_broken/Cargo.toml" <<TOML
+[package]
+name = "broken"
+version = "0.1.0"
+[dependencies]
+rune = { git = "https://github.com/anomalyco/rune", rev = "$rune_rev" }
+rune-kit = { git = "https://github.com/anomalyco/rune", branch = "dev" }
+[patch.crates-io]
+winit = { git = "https://github.com/anomalyco/rune", rev = "0000000" }
+TOML
+set +e
+python3 "$rune_skill/scripts/check_rune_patches.py" "$rune_broken" --rune-root "$rune_root" > "$tmp_dir/rune-patch-broken.txt"
+rune_status="$?"
+set -e
+if [[ "$rune_status" -ne 1 ]]; then
+  echo "error: broken Rune manifest returned $rune_status instead of 1" >&2
+  sed -n '1,60p' "$tmp_dir/rune-patch-broken.txt" >&2
+  exit 1
+fi
+expect_output "$tmp_dir/rune-patch-broken.txt" "pin a rev, not branch/tag"
+expect_output "$tmp_dir/rune-patch-broken.txt" "is missing parley_engine"
+expect_output "$tmp_dir/rune-patch-broken.txt" "winit: rev 0000000 differs"
+python3 "$rune_skill/scripts/check_rune_patches.py" --print-table "$rune_rev" --rune-root "$rune_root" > "$tmp_dir/rune-table.txt"
+expect_output "$tmp_dir/rune-table.txt" "accesskit_windows = { git = \"https://github.com/anomalyco/rune\", rev = \"$rune_rev\" }"
+
 paper_output="$tmp_dir/paper-gpui-inspector.txt"
 "$repo_root/skills/paper-to-gpui/scripts/inspect_gpui_project.sh" \
   "$reference_app" > "$paper_output"

@@ -1,0 +1,581 @@
+{
+  "repository": "https://github.com/anomalyco/rune",
+  "rev": "65f8eb43f710e078f92cb82039212de50cb03113",
+  "retrieved": "2026-11-14",
+  "files": [
+    {
+      "source": "README.md",
+      "section": "Rune overview",
+      "dest": "overview.md",
+      "source_sha256": "7503c02a4f6f038d60e03f24c51ef690d980189dc9ee29708e4a6f94edbcd144",
+      "sha256": "dc4630bc759fede21c46fd61349ef2e1ad428306e5b680dd976062b243140ebe"
+    },
+    {
+      "source": "AGENTS.md",
+      "section": "Rune's agent rules (state machines, performance)",
+      "dest": "agents.md",
+      "source_sha256": "d8f7d2ab1d640a0dd2bc81ff7e409bc9edde89c92564ebaa7a8dc49c86865724",
+      "sha256": "58d61c5f20a997465420a8d6e68dbb5dc6314b1d322a468e089ae7ba6c01757e"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Core crate (`rune`)",
+      "dest": "rune/intro.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "73542e67d92d9bd53dc97fda66aa89ae14c304b58099c3773e2db8bf54228574"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "What exists",
+      "dest": "rune/what-exists.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "4a354195c3414d9691bf6314119a504cf075f53c15bc8b5daf8f6419c9d6bc33"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Rich text, scrolling and app hooks",
+      "dest": "rune/rich-text-scrolling-and-app-hooks.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "25b375c8d5276b01f683854aaa3183b20673887c6824950cf1a1bf24a7a15879"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Canvas handlers: live-only events and coordinate spaces",
+      "dest": "rune/canvas-handlers.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "2fa470c9c9112c604c5a19577dfcd9e596a30c6d878b69d93519cd30bc520e56"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "App lifetime (`app.rs`, for apps that outlive their window)",
+      "dest": "rune/app-lifetime.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "3992f527b135e33deb9f1216ea6ea720a32a32ac190e77e56416c8d0d79d4b8b"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Launching fast",
+      "dest": "rune/launching-fast.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "a56bd9157b929e8c8f74007799d481a18d243900160225d63250aad57befde95"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Smooth scrolling",
+      "dest": "rune/smooth-scrolling.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "9228458a8efcc53a54c6df13f657e770cf109dc39223e6421da0c232465fdfc6"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Requests off the main thread (`rune::Latest`)",
+      "dest": "rune/requests-off-the-main-thread.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "d4255d68007e1839a68ee3462c39642a4e80eac2d502cf752cc28cead6a3e906"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "State machines (`rune::machine`)",
+      "dest": "rune/state-machines.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "d1ed7c0d1056ce735607695d29f93c8e06297837b3fc9f6b08f2698317537df6"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Relaunching a Mac app (`scripts/mac-app`, `rune-mac`)",
+      "dest": "rune/relaunching-a-mac-app.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "009d38df19c7d708c8127105bfa76a8c336bdeb7103608abadb623cc976eced3"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Logging frame and input timing",
+      "dest": "rune/logging-frame-and-input-timing.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "54965d86a350615b00fb5587731ab7dd233079407b3ab1edabfdb94715f8acdb"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Compact tray-controlled windows",
+      "dest": "rune/compact-tray-controlled-windows.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "675bfe55dda25298dcaf2fa43d93db14fcd1033e249c5055bdcdd73da6b13534"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Resizing and centring a window",
+      "dest": "rune/resizing-and-centring-a-window.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "551e2205ceca885867a89c2330eff30930dd9fd6561d1a01aede492f8659ff9e"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Window chrome and shell controls (OpenCode Desktop fidelity)",
+      "dest": "rune/window-chrome-and-shell-controls.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "18a5a5f2b6a9343a1050236910e649cbaf2f0ecbedc919059a1e6bea8358c138"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Finite choreography",
+      "dest": "rune/finite-choreography.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "9860e48a91bc05f1a4918d6511890eb0357d1fa6aaddc03295c92101339d506f"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Shared-element motion",
+      "dest": "rune/shared-element-motion.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "110f5160b90392d156685149329422171fcc67c239fed5195990681fa153ed02"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "High-frequency values",
+      "dest": "rune/high-frequency-values.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "8d5497fb23770d8d8cef5a1f02b56d0bd0846ea0fd93615284b7cba1d9a35d11"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Text fields",
+      "dest": "rune/text-fields.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "749af845cf6abc138f51958ad8643dbcc5b9324779efc43140fd6e44b437b4b7"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Rich text editing",
+      "dest": "rune/rich-text-editing.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "4360056c1026e995c677dba0f783bafe95fa107f71c8813dcdce62690c335626"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Selectable text",
+      "dest": "rune/selectable-text.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "6d35a016fd5ca80456b95b9ba41fd9ffbffee3e704eecf26b2668841afba0af2"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Help tooltips",
+      "dest": "rune/help-tooltips.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "d28e72f419aea865e9a85c586bcae1f3e0a8983c6b6d5fae453e28c4ace2efc0"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "File dialogs",
+      "dest": "rune/file-dialogs.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "7a757119188505c5efb48f7f900e5af960628d9378518026f783993f797cad0f"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Dragging out to other apps (`drag_out`)",
+      "dest": "rune/dragging-out-to-other-apps.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "0dd63dd46a26912a553efec95d94c3b1a869f210693dc457744d379b0598929a"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Dropping files in from other apps (`on_drop_files`)",
+      "dest": "rune/dropping-files-in-from-other-apps.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "9097352053e0c2c4b276886569622a7f21f5f394169679b3cc93514b25c87f3a"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Pop-up and context menus",
+      "dest": "rune/pop-up-and-context-menus.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "a36c86547c9554e590afc8d25b446919bdb69eaf877db8fe2f5c3a7118ff2b3f"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Multiple windows and overlays",
+      "dest": "rune/multiple-windows-and-overlays.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "f78a351f8583b613dfc70831603fc7e165223b1e3d8c85bf5d420939464865b6"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Pixels (`pixels.rs`)",
+      "dest": "rune/pixels.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "82e2029bc240d76a6763545f78fe44703b37a14e188bd909c28b83f35946d32e"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "NativeSurface video",
+      "dest": "rune/nativesurface-video.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "67514474626b62252d8f430994f31cd374ca53fa8065dcf0403a99d143d5dcf2"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Playing video and audio (`Player`, `video/`)",
+      "dest": "rune/playing-video-and-audio.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "31a1efda1922e7a638841fab957554244626fc5ea4b510c04be1afb191036283"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Recording audio (`Recorder`, `recorder/`)",
+      "dest": "rune/recording-audio.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "bc2d2a4de3a0e0f432ef8ee9989bc68de32f6d0eeca61cc0885a5935819a7f2e"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Edge overlays (`App::overlay`, `overlay.rs`, `platform/layer_shell.rs`)",
+      "dest": "rune/edge-overlays.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "972a47ef0b7736bc9d6c550834ee2df7fcc974196b91b33d986a2418e57d1cd2"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Compositor hook (lighting and effects)",
+      "dest": "rune/compositor-hook.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "a7bdcbf2ac64a454081c4e5ff19b36d6631efe86592f58642eaceb35e0d07d85"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Isolated opacity",
+      "dest": "rune/isolated-opacity.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "5b00261b7c5a14157967379770b094f386e31d9fc4e0b0e38d6f037ea8150c52"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Subtree blur and rounded layer clips",
+      "dest": "rune/subtree-blur-and-rounded-layer-clips.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "976627b434df51eaddbaf18ea428ff4cf81625df015d1af143b026f4e2dfa350"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "System materials (`El::system_material`, `system_material/`)",
+      "dest": "rune/system-materials.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "b6a4147ac0a9822298363e738ea18b8cc7e8f157d87c16e9cfde4496058e31eb"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Frosted panels",
+      "dest": "rune/frosted-panels.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "90484b63ff7dd2e9b4f57dcd5cc984dea6870dcb9b84206591ea460b3a1f89ce"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Backdrop blur (`El::backdrop_blur`)",
+      "dest": "rune/backdrop-blur.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "b98caab998bae6eb4e151e8832931bae51bb9958a816c37f58554a2eaecd7439"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Accessibility",
+      "dest": "rune/accessibility.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "c4710f5710c44cd83367d9d5ebf9abf1498cb56dce8e194fc5cdeca3a8c53f34"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Run",
+      "dest": "rune/run.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "7a38169a676d96ea33c30411e1f3fd883bcd1f811a649c1eb0be7fc9178e6bde"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Depending on Rune",
+      "dest": "rune/depending-on-rune.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "cceb8534e77e8c543c8bde607042febd611edcdb87c6949f4557873f7775f3e0"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Linux",
+      "dest": "rune/linux.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "485ade3b78e715925cb2d6c1835bc867df1a0a8812e92488ab2365abd4517a66"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Agent tooling (headless, no window, same renderer, fixed virtual clock)",
+      "dest": "rune/agent-tooling.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "d9759592015285084ac020fa6a65b7d0fc8728f1baca5b8045652527a8e8edbe"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Playground",
+      "dest": "rune/playground.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "0003785316da9f4300ecd27df7b270daece308cabaa08e0d1390cb28b31e284a"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Testing stories",
+      "dest": "rune/testing-stories.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "8dc70bb0a2f55e49f9feb60acaa818fac4be0c7684a928826a47505c6660ca46"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Moving a story table onto it",
+      "dest": "rune/moving-a-story-table-onto-it.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "d49b71761f5ec122acc84501b02ed9737561db047c5c07d44d1379e744bc3e4d"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Live Rust editing (desktop development)",
+      "dest": "rune/live-rust-editing.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "317e5cdf9d8b9a63d6c5d6b33d2caec384a45e33987aad66d73b5f6b2d0b57e5"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "An external app crate",
+      "dest": "rune/an-external-app-crate.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "69fd76c3b84fc85a6bb2f0c3326755da616856d968245f6064692dfae6a8bbdf"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "The desk Mac",
+      "dest": "rune/the-desk-mac.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "d1323e8c1acea5ffd9d68c8df95c84e12a6d001d62ecaaa31c67d0350e7498c2"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Compatible edits and restart boundaries",
+      "dest": "rune/compatible-edits-and-restart-boundaries.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "21c9bc8f0a2b424da7671f6d6cae96c728c713cf8780d4bb7e274bd15271bf0f"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Headless input and patch acknowledgement",
+      "dest": "rune/headless-input-and-patch-acknowledgement.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "db69aabbb803a253fbf2f80aed32e267a8d07e80a61164d790f3a8bc747a2306"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Measured (Apple silicon, headless at 2\u00d7)",
+      "dest": "rune/measured.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "08cdafb35fa2937b340e721fd237e508be03ab0504978555ac74e253331b60a1"
+    },
+    {
+      "source": "crates/rune/README.md",
+      "section": "Differences from PLAN.md",
+      "dest": "rune/differences-from-planmd.md",
+      "source_sha256": "1cfcad3281a78094418a2a83231a1095414e2d7707cb9603c36d3db73632eeed",
+      "sha256": "f77e0305fe5ec786cd2efc7f5de5c558837966e67b5f048701501118f9bb58da"
+    },
+    {
+      "source": "crates/rune/src/shortcuts/README.md",
+      "section": "Shortcuts, global chords and native menus",
+      "dest": "rune-shortcuts.md",
+      "source_sha256": "b0a095fff23ae36add29f9dedcdbf45b5d5c62b8ff862ca8a07823c5ee4f2420",
+      "sha256": "1ab15803ef58ea7ab92a31392663fb29cfdac5662a59a0af4ed7f30041e2b189"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "Components (`rune-kit`)",
+      "dest": "kit/intro.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "fe5df3e86f3af2ef8b5beca1da992e3ddf6dcb2dd4c30a96511c90e23c0f288b"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "The split (PLAN.md \u00a77)",
+      "dest": "kit/the-split.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "4eaa07690892439d6f73acdf579264219a260cc10da0394af06d9a2b1a6c18cb"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "Use",
+      "dest": "kit/use.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "d1b16ea8a2d0819a4b9de3c65c67cdc54333cae97ce49a910a5baa641aed0a98"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "Components",
+      "dest": "kit/components.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "511118818f8ce98c242d6f277a0dc6e4af375f9d6ab96971b9e88aed14778d48"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "App shell",
+      "dest": "kit/app-shell.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "dd6925bd0629359ec5bbab8d748b28e577b05c8f16545489fb4f24e5ff21de33"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "Tree and Table",
+      "dest": "kit/tree-and-table.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "77ac5309823d851fb4561e0683e2e30177d49b7f2cf0a383e21c94d8d4caecb5"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "Markdown",
+      "dest": "kit/markdown.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "208234ae965b93f631cb80757e4bd8f1a24ba3612d3fbc1592628874944991ef"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "Diff",
+      "dest": "kit/diff.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "5b78d330d110286d709cd1a353fd72562b5d34686063f49860c710a820a52b6e"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "Checking against Storybook",
+      "dest": "kit/checking-against-storybook.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "40a8178c3fbb30955f15a20511fd1bda040c879db4f7785db702d830e306326a"
+    },
+    {
+      "source": "crates/rune-kit/README.md",
+      "section": "Comparison (lavapipe vs headless Chromium, 2\u00d7)",
+      "dest": "kit/comparison.md",
+      "source_sha256": "655c0a1c51191de6acc1a3620afb24cc3e38a8db575aa75fb6908e01ed940dd4",
+      "sha256": "17e8b7019928b2b214bfd995fedbd8a97ea6cbecac778f1882b502bfc3bcd0ad"
+    },
+    {
+      "source": "crates/rune-motion/README.md",
+      "section": "Springs and transitions (`rune-motion`)",
+      "dest": "rune-motion.md",
+      "source_sha256": "082d6952c0b2c22abdab84d67c3f536200efde56baf66f82fecee17d8b63c4b9",
+      "sha256": "ce9aa60b1ee5b9af4a301c12a98bf36aea8856b9e0b5f479a0e62f3e8dcac2bf"
+    },
+    {
+      "source": "crates/rune-fx/README.md",
+      "section": "GPU effects (`rune-fx`)",
+      "dest": "rune-fx.md",
+      "source_sha256": "2a457a39931ca88ad46f3f36d322429be3ff46838b322d31dda68f25dd611dd1",
+      "sha256": "121a24bed18dbc9d58ca5a8d42add1c45638df934ea56045b991597e179dc4d4"
+    },
+    {
+      "source": "crates/rune-light/README.md",
+      "section": "Lighting and materials (`rune-light`)",
+      "dest": "rune-light.md",
+      "source_sha256": "78fe3283aa636b81db3c81c563063616dbe43cddf52db4b7e484d0e316192cc8",
+      "sha256": "8045e2ac15060db9fa3efb966b93f233342a52f7920e22356bcb0c9744530edd"
+    },
+    {
+      "source": "crates/rune-luau/README.md",
+      "section": "Luau scripting (`rune-luau`)",
+      "dest": "rune-luau.md",
+      "source_sha256": "4c35615913dff34b48452c32cf9a9a238b4c1a21aca40fef8e90f8514a92f3d0",
+      "sha256": "27d216aeeb88319ed1bd08a8f4d45963e4a10513d8c98a640e6f554ce06a21db"
+    },
+    {
+      "source": "crates/rune-mac/README.md",
+      "section": "macOS app helpers (`rune-mac`)",
+      "dest": "rune-mac.md",
+      "source_sha256": "d4fd45514f27ce41de734948732240c6819f14e14ef3eeca756c01402d682f86",
+      "sha256": "d49dd090fdcda3690c6bab255da5873db47930b919f9633a98d2c6d3f10c932d"
+    },
+    {
+      "source": "crates/rune-notify/README.md",
+      "section": "System notifications (`rune-notify`)",
+      "dest": "rune-notify.md",
+      "source_sha256": "60fb66dd6ee59cffba70d8dfe29b64dd743dd9ef9dd3186d0d3d8201b9460449",
+      "sha256": "b9fc9f09a4b9de570272755e92b8a3091873623b6fa5df766a7df4252b3b2ec2"
+    },
+    {
+      "source": "crates/rune-perf/README.md",
+      "section": "Performance logging (`rune-perf`)",
+      "dest": "rune-perf.md",
+      "source_sha256": "744c2727a9beab901431aa29ac40eb07f255884ef00b1d8b6957f9f7804ad469",
+      "sha256": "4bdfd822233fa9f9ae75a983f59dc939dade8a411c47eb5c9dc5e13507e0f16e"
+    },
+    {
+      "source": "crates/rune-knobs/README.md",
+      "section": "Live tuning knobs (`rune-knobs`)",
+      "dest": "rune-knobs.md",
+      "source_sha256": "cb74810f10761e31fe07e2f8eb3100ce0de7725e56157522b5de2e1243d7d6fe",
+      "sha256": "0dc24c24cbfc1f6689576ff82ad9fad906d3999fca8843ce53cc88cddfbc2f36"
+    },
+    {
+      "source": "WEB.md",
+      "section": "Web target (WebGPU canvas)",
+      "dest": "web.md",
+      "source_sha256": "9a9cc8dbddf0368fad0d261bb42eb2597a367fb46d9004a8578724c2047bcbef",
+      "sha256": "44a376af99d5c30e802410cd58a940770996c7006c5ca59e9e25da73d6a8d48f"
+    },
+    {
+      "source": "scripts/mac-app.md",
+      "section": "Installing and relaunching a Mac app",
+      "dest": "scripts-mac-app.md",
+      "source_sha256": "231e9568e02802b1def76d22871f416ead32c7cd994bd94c735c562880322bb6",
+      "sha256": "80a6e4f6b6343e00755b3ca0c845e5007cd197ae8103c97eabbf85250a91fb62"
+    },
+    {
+      "source": "scripts/motion-audit/README.md",
+      "section": "Motion audit and gate",
+      "dest": "scripts-motion-audit.md",
+      "source_sha256": "f7aed6320beeb8e21ba3d96b1adc87d5545357433e89bedef5b7a04b42e6d093",
+      "sha256": "9d38a96735a28e3890784e428e450d37ebe3c7332c2d8b59490e9b43cbb0dcda"
+    },
+    {
+      "source": "examples/live-values/README.md",
+      "section": "Example: live values",
+      "dest": "examples/live-values.md",
+      "source_sha256": "849a8901c8276760ccc6f1f9945cfb34416743bc1200567d3aca00c68487b265",
+      "sha256": "225af8222b0ecac808cc2a4178bc32b7c5221488c5d6819b33e288cbc1401afa"
+    },
+    {
+      "source": "examples/motion-bento/README.md",
+      "section": "Example: motion bento",
+      "dest": "examples/motion-bento.md",
+      "source_sha256": "2ffa68df5580fcf02a09f479b185a6882ea74a8323ed1f9404e1933b4f5c4e2e",
+      "sha256": "ed4b66add88a91a5004ce67c5f213a9ac2faf96f30518650bcccbf34e08f75d0"
+    },
+    {
+      "source": "examples/overlay/README.md",
+      "section": "Example: edge overlay",
+      "dest": "examples/overlay.md",
+      "source_sha256": "eb8c880c3e607c57137644f170e71d500a0dae8534a3ec88b9b9ce185e4d1df6",
+      "sha256": "6e173249aac5f165963a7df1f4f871fd36e18be18355af06452bff7967cbda6d"
+    },
+    {
+      "source": "examples/overlay-lab/README.md",
+      "section": "Example: overlay lab",
+      "dest": "examples/overlay-lab.md",
+      "source_sha256": "b2f0dd474923c8e2753da2e4f9c490c69cda282b51bc8656adb78ba9b87965fb",
+      "sha256": "231a65dfa9615ce7086dd2fe73e8f5cd8b63792ec717c090f4b413eb4979a7f1"
+    },
+    {
+      "source": "examples/overlay-lab/window-panel.md",
+      "section": "Example: window panel",
+      "dest": "examples/overlay-lab-window-panel.md",
+      "source_sha256": "fe58c896f77db579da65638f94b1e7398ca35c4f3f98564e4f1e4f71affcfe31",
+      "sha256": "79bb29100ce37a67bc31b1f6089377d09bb3cf4de4e230fb11031780322afe40"
+    },
+    {
+      "source": "examples/video-tiles/README.md",
+      "section": "Example: video tiles",
+      "dest": "examples/video-tiles.md",
+      "source_sha256": "5cc9530a98a9be8690564cd88f2a20befa190e23833a40e5d0eb71bda998dd26",
+      "sha256": "bce90ba7876cd579a445df071999d3cbffbbffc6be2f9b63c5439d700eb202cd"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+interface:
+  display_name: "Build Rune Apps"
+  short_description: "Build GPU-rendered Rust apps with Rune and rune-kit"
+  default_prompt: "Use $build-rune-apps to build or review a Rune app; recommend rune-kit and ask before adopting it, pin one dev rev with Rune's patch table, and check every change headlessly with --snap, --tree and --script."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "paper"
+      description: "Conditionally inspect a Paper design's frames, computed styles, fonts, screenshots and assets when a Rune view translates one"
+      transport: "streamable_http"
+      url: "http://127.0.0.1:29979/mcp"

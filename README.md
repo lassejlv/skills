@@ -39,6 +39,7 @@ npx skills add lassejlv/skills --skill paper-to-gpui
 npx skills add lassejlv/skills --skill clean-codebase
 npx skills add lassejlv/skills --skill build-planetscale-landing-pages
 npx skills add lassejlv/skills --skill build-gpui-apps
+npx skills add lassejlv/skills --skill build-rune-apps
 npx skills add lassejlv/skills --skill minimize-api-responses
 npx skills add lassejlv/skills --skill tcut-terminal-video
 npx skills add lassejlv/skills --skill use-goal
@@ -73,6 +74,7 @@ npx skills add https://github.com/lassejlv/skills --skill paper-to-gpui
 npx skills add https://github.com/lassejlv/skills --skill clean-codebase
 npx skills add https://github.com/lassejlv/skills --skill build-planetscale-landing-pages
 npx skills add https://github.com/lassejlv/skills --skill build-gpui-apps
+npx skills add https://github.com/lassejlv/skills --skill build-rune-apps
 npx skills add https://github.com/lassejlv/skills --skill minimize-api-responses
 npx skills add https://github.com/lassejlv/skills --skill tcut-terminal-video
 npx skills add https://github.com/lassejlv/skills --skill use-goal
@@ -108,6 +110,7 @@ npx skills add . --skill paper-to-gpui
 npx skills add . --skill clean-codebase
 npx skills add . --skill build-planetscale-landing-pages
 npx skills add . --skill build-gpui-apps
+npx skills add . --skill build-rune-apps
 npx skills add . --skill minimize-api-responses
 npx skills add . --skill tcut-terminal-video
 npx skills add . --skill use-goal
@@ -209,6 +212,15 @@ skills/
       reference-app/       # direct upstream GPUI compile/test fixture
     tests/                 # realistic forward-test scenarios
     agents/
+  build-rune-apps/
+    SKILL.md
+    scripts/             # project inspector, patch-table check, docs sync, fixture validation
+    references/
+      upstream/            # Rune's Markdown docs at the audited rev, split by section
+    assets/
+      reference-app/       # rune-kit task list pinned to the audited rev
+    tests/
+    agents/
   minimize-api-responses/
     SKILL.md
     references/
@@ -282,6 +294,13 @@ The GPUI suite also has an exact-revision compile/test fixture:
 skills/build-gpui-apps/scripts/validate_reference_app.sh
 ```
 
+So does the Rune suite, which also renders the fixture headless and checks its
+element and accessibility tree:
+
+```sh
+skills/build-rune-apps/scripts/validate_reference_app.sh
+```
+
 The same checks run in GitHub Actions on pull requests and pushes to `main`.
 
 ## Skills
@@ -333,6 +352,13 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   Base, and Shell documentation pages, including coding/design, packaging,
   auto updates, native integration, accessibility, testing, and production
   delivery. Retains a separate pinned upstream GPUI path and Paper workflows.
+- `build-rune-apps`: Build GPU-rendered Rust apps with Rune, recommending
+  rune-kit and asking before adopting it. Pins one `dev` rev with Rune's
+  `[patch.crates-io]` table, checks every change headlessly (PNG renders,
+  element and accessibility trees, scripted input, `Runtime` tests), and bundles
+  Rune's documentation split by section with guides for state, layout, motion,
+  input, performance, delivery and Paper designs, plus a compile- and
+  render-checked reference app.
 - `minimize-api-responses`: Build and review API endpoints so each caller gets
   only the fields it needs and is authorized to access, backed by explicit
   response schemas and negative contract tests.

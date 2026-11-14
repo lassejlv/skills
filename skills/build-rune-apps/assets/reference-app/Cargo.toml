@@ -1,0 +1,38 @@
+[package]
+name = "rune-reference-app"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+# Keep this fixture out of any enclosing workspace.
+[workspace]
+
+[dependencies]
+# Rune is pre-release: pin one `dev` rev and use it for every Rune crate and every patch below.
+rune = { git = "https://github.com/anomalyco/rune", rev = "65f8eb43f710e078f92cb82039212de50cb03113" }
+rune-kit = { git = "https://github.com/anomalyco/rune", rev = "65f8eb43f710e078f92cb82039212de50cb03113" }
+
+[features]
+# Live Rust editing through Rune's scripts/rune-dev or scripts/rune-hot.
+hot = ["rune/hot"]
+# Headless agent tooling (--snap, --tree, --script) in release builds; debug builds always have it.
+tooling = ["rune/tooling"]
+
+# Rune patches these crates. A dependency's [patch] doesn't reach this workspace, so repeat the
+# [patch.crates-io] table from Rune's root Cargo.toml at the same rev.
+[patch.crates-io]
+winit = { git = "https://github.com/anomalyco/rune", rev = "65f8eb43f710e078f92cb82039212de50cb03113" }
+parley_engine = { git = "https://github.com/anomalyco/rune", rev = "65f8eb43f710e078f92cb82039212de50cb03113" }
+wgpu-hal = { git = "https://github.com/anomalyco/rune", rev = "65f8eb43f710e078f92cb82039212de50cb03113" }
+accesskit_windows = { git = "https://github.com/anomalyco/rune", rev = "65f8eb43f710e078f92cb82039212de50cb03113" }
+
+# Rune's own profiles: line tables keep backtraces without huge debug builds.
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
+
+[profile.release]
+codegen-units = 16
+incremental = true

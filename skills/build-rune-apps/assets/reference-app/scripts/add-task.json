@@ -1,0 +1,7 @@
+{"events": [
+  {"t": 0.2, "type": "tap", "key": "draft"},
+  {"t": 0.4, "type": "type", "text": "Write the forward tests"},
+  {"t": 1.2, "type": "key", "name": "Enter"},
+  {"t": 1.6, "type": "tap", "key": "task-3/check"},
+  {"t": 2.4, "type": "mark", "name": "end"}
+]}
