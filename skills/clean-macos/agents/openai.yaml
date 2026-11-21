@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clean macOS"
+  short_description: "Dry-run-first deep clean and app wipe for a Mac"
+  default_prompt: "Use $clean-macos to scan my Mac for what can be cleaned as a dry run, then report it in tiers before deleting anything."
