@@ -37,6 +37,7 @@ npx skills add lassejlv/skills --skill project-roadmap
 npx skills add lassejlv/skills --skill gitty
 npx skills add lassejlv/skills --skill paper-to-gpui
 npx skills add lassejlv/skills --skill clean-codebase
+npx skills add lassejlv/skills --skill clean-macos
 npx skills add lassejlv/skills --skill build-planetscale-landing-pages
 npx skills add lassejlv/skills --skill build-gpui-apps
 npx skills add lassejlv/skills --skill build-rune-apps
@@ -72,6 +73,7 @@ npx skills add https://github.com/lassejlv/skills --skill project-roadmap
 npx skills add https://github.com/lassejlv/skills --skill gitty
 npx skills add https://github.com/lassejlv/skills --skill paper-to-gpui
 npx skills add https://github.com/lassejlv/skills --skill clean-codebase
+npx skills add https://github.com/lassejlv/skills --skill clean-macos
 npx skills add https://github.com/lassejlv/skills --skill build-planetscale-landing-pages
 npx skills add https://github.com/lassejlv/skills --skill build-gpui-apps
 npx skills add https://github.com/lassejlv/skills --skill build-rune-apps
@@ -108,6 +110,7 @@ npx skills add . --skill project-roadmap
 npx skills add . --skill gitty
 npx skills add . --skill paper-to-gpui
 npx skills add . --skill clean-codebase
+npx skills add . --skill clean-macos
 npx skills add . --skill build-planetscale-landing-pages
 npx skills add . --skill build-gpui-apps
 npx skills add . --skill build-rune-apps
@@ -196,6 +199,11 @@ skills/
     agents/
   clean-codebase/
     SKILL.md
+    references/
+    agents/
+  clean-macos/
+    SKILL.md
+    scripts/             # read-only scan, leftover check and per-app footprint search
     references/
     agents/
   build-planetscale-landing-pages/
@@ -343,6 +351,10 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
   Rust/GPUI views with screenshot-driven validation.
 - `clean-codebase`: Coordinate eight evidence-first cleanup agents across
   duplication, types, dead code, cycles, error handling, legacy paths, and slop.
+- `clean-macos`: Deep-clean a Mac dry run first: scan the disk read-only, report
+  findings in tiers, verify each item is unused before deleting, and report what
+  was freed. Also finds and wipes every trace of one app or CLI tool, with
+  guards for signing keys, credentials, and anything still in use.
 - `build-planetscale-landing-pages`: Design and implement technical,
   proof-heavy landing pages with monospace type, ruled grids, editorial copy,
   restrained accents, and responsive production QA.
