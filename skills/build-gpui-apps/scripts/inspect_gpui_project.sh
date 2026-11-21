@@ -50,7 +50,19 @@ search() {
       -g '!.git/**' \
       "$@" -- "$pattern" "$project_path" 2>/dev/null || true
   else
-    grep -RIn "$pattern" "$project_path" 2>/dev/null || true
+    # grep fallback: the patterns are extended regexes, and rg's `-g GLOB`
+    # file filters become `--include=GLOB`.
+    includes=()
+    while [ "$#" -gt 0 ]; do
+      if [ "$1" = "-g" ] && [ "$#" -ge 2 ]; then
+        includes+=("--include=$2")
+        shift 2
+      else
+        shift
+      fi
+    done
+    grep -RInE --exclude-dir=target --exclude-dir=.git \
+      ${includes[@]+"${includes[@]}"} -- "$pattern" "$project_path" 2>/dev/null || true
   fi
 }
 
