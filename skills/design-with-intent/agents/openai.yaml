@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design With Intent"
+  short_description: "Design from purpose, not the average pattern"
+  default_prompt: "Use $design-with-intent to design this from the user's purpose: write an intent brief, give every element a job, and check the four traps."

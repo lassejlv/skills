@@ -52,6 +52,7 @@ npx skills add lassejlv/skills --skill sign-macos-for-github
 npx skills add lassejlv/skills --skill mentor-mode
 npx skills add lassejlv/skills --skill project-board
 npx skills add lassejlv/skills --skill use-svgl
+npx skills add lassejlv/skills --skill design-with-intent
 ```
 
 You can also install from the full GitHub URL:
@@ -88,6 +89,7 @@ npx skills add https://github.com/lassejlv/skills --skill sign-macos-for-github
 npx skills add https://github.com/lassejlv/skills --skill mentor-mode
 npx skills add https://github.com/lassejlv/skills --skill project-board
 npx skills add https://github.com/lassejlv/skills --skill use-svgl
+npx skills add https://github.com/lassejlv/skills --skill design-with-intent
 ```
 
 For local development from this checkout:
@@ -125,6 +127,7 @@ npx skills add . --skill sign-macos-for-github
 npx skills add . --skill mentor-mode
 npx skills add . --skill project-board
 npx skills add . --skill use-svgl
+npx skills add . --skill design-with-intent
 ```
 
 ## Layout
@@ -278,6 +281,10 @@ skills/
     SKILL.md
     scripts/             # SVGL search and download helper
     agents/
+  design-with-intent/
+    SKILL.md
+    references/          # worked example taken through every step
+    agents/
 ```
 
 ## Validate
@@ -406,3 +413,7 @@ The same checks run in GitHub Actions on pull requests and pushes to `main`.
 - `use-svgl`: Find official brand and technology SVG logos on svgl.app through
   its free API, pick icon or wordmark and light/dark variants, and add them to
   the project as local, themed, accessible assets with a stdlib helper script.
+- `design-with-intent`: Design screens and flows from purpose instead of copied
+  patterns: an intent brief per surface, a named job for every element, and
+  checks for misplaced complexity, explaining onboarding, sidebar-only
+  navigation, and design with no position.
