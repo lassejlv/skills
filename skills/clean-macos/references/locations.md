@@ -59,6 +59,7 @@ Run these through one `osascript ... with administrator privileges` call (see SK
 
 - Spotlight document-processing store: `~/Library/Metadata/CoreSpotlight/DocumentProcessing/PipelineStorage`. A journal backlog can reach several GB. The journal files are **hard-linked into every pipeline stage folder**, so deleting one stage frees nothing; stop `spotlightknowledged.*`, clear each stage's `Journals/*/` contents, and confirm with `df`. It may grow back.
 - `/System/Library/AssetsV2`: simulator runtimes, offline developer docs, Apple Intelligence models. SIP-protected (`restricted` flag): even root cannot delete. Remove through the owning app (Xcode settings, `xcrun simctl runtime delete`).
+- Local Time Machine snapshots (`tmutil listlocalsnapshots /`): they hold on to deleted files and can be tens of GB. They are restore points and expire on their own within about 24 hours; remove them only on request (`tmutil deletelocalsnapshots <date>`).
 - Old toolchains and runtimes that a project may pin. Check whether they were used recently before proposing them.
 - Global CLI binaries. Ask per group, and say which ones were built from the user's own source.
 - Messages attachments, Mail, Photos: personal data. Report size only.
@@ -78,6 +79,7 @@ Run these through one `osascript ... with administrator privileges` call (see SK
 - Folders blocked by macOS privacy (TCC) without Full Disk Access.
 - Root-only and SIP-protected stores (system Spotlight index, AssetsV2 model folders).
 - Local snapshots: `tmutil listlocalsnapshots /`, `diskutil apfs listSnapshots <data volume>`.
-- Space not yet released: files deleted while a process still has them open, and hard-linked files with remaining links.
+- Space not yet released: files in an unemptied Trash, files deleted while a process still has them open, and hard-linked files with remaining links.
+- Finder's "available" figure includes purgeable space, so it is larger than `df` by design.
 
 Report the gap honestly rather than guessing what fills it.

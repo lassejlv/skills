@@ -56,6 +56,8 @@ defaults domains 2>/dev/null | tr ',' '\n' | sed 's/^ //' | grep -iE "$RE"
 echo; echo "===== LAUNCH ITEMS ====="
 grep -rl -iE "$RE" "$H/Library/LaunchAgents" /Library/LaunchAgents /Library/LaunchDaemons 2>/dev/null
 ls /Library/PrivilegedHelperTools 2>/dev/null | grep -iE "$RE"
+sfltool dumpbtm 2>/dev/null | grep -E '^ +(Identifier|URL|Bundle Identifier): ' | grep -iE "$RE" |
+  sed -E 's/^ +/background item /' | sort -u
 
 echo; echo "===== SHELL CONFIG (values hidden) ====="
 grep -n -iE "$RE" "$H/.zshrc" "$H/.zprofile" "$H/.zshenv" "$H/.bashrc" "$H/.bash_profile" "$H/.profile" \

@@ -44,7 +44,7 @@ Order that keeps things consistent:
 
 1. Package managers first: `brew uninstall`, `npm uninstall -g`, `bun remove -g`, `cargo uninstall`, `pipx uninstall`. Then remove whatever they left behind (a Bun `trustedDependencies` entry, a cask's `share/` folder).
 2. `defaults delete <domain>` before removing the plist, otherwise `cfprefsd` can write it back.
-3. Data, caches, launchers, the app bundle.
+3. Data, caches, launchers, the app bundle. Move them with `trash -v -s` (macOS 15 and later) so the user can restore a wrong call from Finder; caches can be deleted outright.
 4. Keychain: `security delete-generic-password -s "<service>"` in a loop until it fails; one call deletes one item. Use `-a "<account>"` when only the account name identifies it.
 5. Shell config: remove only the tool's own marked block (`# >>> x installer >>>` to `# <<< x installer <<<`). Do it with a script that checks the markers appear exactly once, then syntax-check the file (`zsh -n ~/.zshrc`, `bash -n ~/.bashrc`), and restore the original if the check fails. Do not print the surrounding lines: shell configs often hold secrets.
 6. Agent skills and their symlinks: remove the symlink only if its target is the skill being removed, and drop the entry from the skills lock file so an update does not reinstall it.
@@ -52,6 +52,6 @@ Order that keeps things consistent:
 
 ## 5. Verify
 
-Re-run the name search, the keychain grep and `defaults domains`. Report "removed N, failed M", what was kept on purpose, and anything macOS refused (app containers and Group Containers need Full Disk Access).
+Re-run the name search, the keychain grep and `defaults domains`. Background item records (`sfltool dumpbtm`) stay behind after the app is gone; the user removes them in System Settings > General > Login Items, so name them in the report. Report "removed N, failed M", what was kept on purpose, and anything macOS refused (app containers and Group Containers need Full Disk Access).
 
 Mention side effects the user would not expect: a credential that another app was reading, a skill that other agents shared, an MCP server entry that will now fail to connect.

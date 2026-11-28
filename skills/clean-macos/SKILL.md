@@ -64,10 +64,12 @@ When the evidence says "in use" or "irreplaceable", keep it and report why. That
 
 Prefer the owning tool's cleanup command over `rm` (`brew uninstall`, `cargo uninstall`, a cache tool's `gc`, a version manager's `clean`); it keeps that tool's records consistent. `references/locations.md` has the command per tool. Preview with the tool's dry-run flag when it has one.
 
+**Trash anything that does not regenerate.** Items from the "Your call" and "Leftovers" tiers, and everything in an app wipe, go to the Trash with `trash -v -s <path>` (built into macOS 15 and later, and it works without Full Disk Access), so a wrong call can be restored from Finder. Caches, temp files and logs can be deleted outright. Trashed files still take space until the Trash is emptied, so report them separately from what was freed and tell the user to empty the Trash in Finder once they have checked nothing is missing. Root-owned items cannot go to the user's Trash; they go in the admin script. On macOS 14 and earlier there is no `trash` command: use `rm` and say the delete cannot be undone.
+
 Shell practicalities that otherwise waste turns:
 
 - Run multi-step deletions as a `bash <<'EOF' ... EOF` script with `shopt -s nullglob`. In zsh an unmatched glob aborts the whole command.
-- Print one line per path ("removed" or "FAILED") and a final count, and re-check existence after `rm`; `rm -rf` reports success on things macOS silently protects.
+- Print one line per path ("removed", "trashed" or "FAILED") and a final count, and re-check existence after `rm` or `trash`; `rm -rf` reports success on things macOS silently protects.
 - Guard computed paths before using them (`case "$T" in /var/folders/*/T) ;; *) exit 1;; esac`).
 - Record `df` before and after each batch.
 
@@ -90,11 +92,18 @@ open -R "/path/to/That.app"
 
 Tell the user to drag the app into the list and restart the terminal. Test with `ls ~/.Trash`. An admin `du` through `osascript` still cannot read privacy-protected folders, so expect some space to stay unexplained.
 
-**When the number does not move.** If `df` barely changes after a large delete, the space is still referenced: a process holds the files open, or they are hard-linked elsewhere (`stat -f %l` shows the link count). Find the other links before reporting the space as freed.
+**When the number does not move.** If `df` barely changes after a large delete, the space is still referenced. Check in this order:
+
+1. The files went to the Trash, which has not been emptied.
+2. Local Time Machine snapshots: `tmutil listlocalsnapshots /`. Files deleted after the newest snapshot stay on disk until it expires (usually within 24 hours). The snapshots are the user's restore points, so ask before removing them (`tmutil deletelocalsnapshots <date>` or `tmutil thinlocalsnapshots / <bytes> 4`).
+3. A process still holds the files open (`lsof +L1` lists open files that were deleted).
+4. The files are hard-linked elsewhere (`stat -f %l` shows the link count). Find the other links before reporting the space as freed.
+
+Finder's "available" figure also counts purgeable space (snapshots, iCloud files it can evict, caches macOS can drop), so it is always higher than `df`. When the user compares the two, explain this rather than chasing the difference.
 
 ## 5. Report the result
 
-State the space freed from `df`, not from summing sizes. List what was removed, what was held back and why, and what could not be done (protected by macOS, needs a quit, needs admin). Mention consequences the user will notice: cold builds, a re-login, a tool that will re-download a runtime, icons that redraw.
+State the space freed from `df`, not from summing sizes, and the size moved to the Trash separately. List what was removed, what was held back and why, and what could not be done (protected by macOS, needs a quit, needs admin). Mention consequences the user will notice: cold builds, a re-login, a tool that will re-download a runtime, icons that redraw.
 
 Caches regrow, so a later `df` can be lower than the peak; say that when the user asks for a total. Suggest a restart at the end, once, so system caches rebuild cleanly.
 

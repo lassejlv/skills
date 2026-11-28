@@ -14,7 +14,10 @@ size() { for p in "$@"; do [ -e "$p" ] && du -sh "$p" 2>/dev/null; done; }
 echo "===== DISK ====="
 sw_vers 2>/dev/null | tr '\n' ' '; echo "| $(uname -m)"
 df -h "$DATA" | tail -1
-echo "local snapshots: $(tmutil listlocalsnapshots / 2>/dev/null | grep -c 'com.apple')"
+snaps="$(tmutil listlocalsnapshots / 2>/dev/null | grep 'com.apple')"
+echo "local snapshots: $(echo "$snaps" | grep -c .)"
+[ -n "$snaps" ] && echo "$snaps" | sed 's/^/  /' | head -10
+echo "(snapshots keep deleted files on disk until they expire; Finder's 'available' also counts purgeable space, so it reads higher than df)"
 
 echo; echo "===== FULL DISK ACCESS ====="
 if ls "$H/.Trash" >/dev/null 2>&1 && ls "$H/Library/Safari" >/dev/null 2>&1; then
@@ -48,7 +51,7 @@ if command -v brew >/dev/null 2>&1; then
   echo "-- Homebrew"; du -sh "$(brew --prefix)" 2>/dev/null; top "$(brew --prefix)/Cellar" 12
 fi
 command -v docker >/dev/null 2>&1 && { echo "-- Docker"; docker system df 2>/dev/null; }
-command -v xcrun >/dev/null 2>&1 && { echo "-- Simulator runtimes"; xcrun simctl runtime list 2>/dev/null | tail -4; }
+xcode-select -p >/dev/null 2>&1 && { echo "-- Simulator runtimes"; xcrun simctl runtime list 2>/dev/null | tail -4; }
 
 echo; echo "===== TEMP AND PER-USER SYSTEM CACHE ====="
 [ -d "$V" ] && { top "$V/T" 12; top "$V/C" 8; size "$V/X"; }
@@ -57,14 +60,13 @@ size /private/tmp /private/var/tmp
 echo; echo "===== OUTSIDE HOME ====="
 top /Applications 20
 size /Library /opt /usr/local /private/var/db/diagnostics /private/var/db/uuidtext /private/var/vm \
-     /Library/Caches /Library/Logs /Library/Developer /System/Library/AssetsV2
+     /Library/Caches /Library/Logs /Library/Developer
 top /System/Library/AssetsV2 8
 echo "(root-only stores such as /System/Library/Caches/com.apple.coresymbolicationd need an admin du)"
 
 echo; echo "===== VERY LARGE FILES (>500 MB) ====="
-find "$H" /Applications /opt /usr/local -xdev -type f -size +500M 2>/dev/null | head -40 | while read -r f; do
-  printf "%6s  %s\n" "$(du -h "$f" 2>/dev/null | cut -f1)" "$f"
-done | sort -rh
+find "$H" /Applications /opt /usr/local -xdev -type f -size +500M -print0 2>/dev/null |
+  xargs -0 du -h 2>/dev/null | sort -rh | head -40
 
 echo; echo "===== INSTALLERS LEFT IN HOME ====="
 find "$H/Downloads" "$H/Desktop" "$H/Documents" -maxdepth 3 \( -name '*.dmg' -o -name '*.pkg' -o -name '*.iso' \) -size +10M 2>/dev/null |
